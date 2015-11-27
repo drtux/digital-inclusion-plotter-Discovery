@@ -1,0 +1,94 @@
+<!doctype html>
+<!--[if lt IE 7 ]> <html class="ie ie6 ie-lt10 ie-lt9 ie-lt8 ie-lt7 no-js" lang="en"> <![endif]-->
+<!--[if IE 7 ]>    <html class="ie ie7 ie-lt10 ie-lt9 ie-lt8 no-js" lang="en"> <![endif]-->
+<!--[if IE 8 ]>    <html class="ie ie8 ie-lt10 ie-lt9 no-js" lang="en"> <![endif]-->
+<!--[if IE 9 ]>    <html class="ie ie9 ie-lt10 no-js" lang="en"> <![endif]-->
+<!--[if gt IE 9]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+	<meta charset="utf-8">
+	<title>GOV.UK</title>
+	<meta name="author" content="Tom Harrop" />
+	<meta name="Copyright" content="Open Government Licence v3.0, except where otherwise stated" />
+	<!--[if gt IE 8]><!--><link href="govuk-assets/stylesheets/govuk-template.css?0.12.0" media="screen" rel="stylesheet" type="text/css" /><!--<![endif]-->
+	<!--[if IE 6]><link href="govuk-assets/stylesheets/govuk-template-ie6.css?0.12.0" media="screen" rel="stylesheet" type="text/css" /><![endif]-->
+	<!--[if IE 7]><link href="govuk-assets/stylesheets/govuk-template-ie7.css?0.12.0" media="screen" rel="stylesheet" type="text/css" /><![endif]-->
+	<!--[if IE 8]><link href="govuk-assets/stylesheets/govuk-template-ie8.css?0.12.0" media="screen" rel="stylesheet" type="text/css" /><![endif]-->
+	<link href="govuk-assets/stylesheets/govuk-template-print.css?0.12.0" media="print" rel="stylesheet" type="text/css" />
+	<link href="govuk-assets/application.css" media="all" rel="stylesheet" type="text/css" />
+	<link href="govuk-assets/stylesheets/fonts.css?0.12.0" media="all" rel="stylesheet" type="text/css" />
+
+	<script type="text/javascript" src="scripts/jquery.min.js"></script>
+	<script type="text/javascript" src="scripts/form.storage.js"></script>
+	<script type="text/javascript" src="scripts/application.js"></script>
+	<script type="text/javascript" src="scripts/details.polyfill.js"></script>
+
+	<script type="text/javascript" src="DigitalScript.js"></script>
+
+	<link href="//cdnjs.cloudflare.com/ajax/libs/jquery-form-validator/2.2.8/theme-default.min.css" rel="stylesheet" type="text/css"/>
+	<script src="//cdnjs.cloudflare.com/ajax/libs/jquery-form-validator/2.2.43/jquery.form-validator.min.js"></script>
+
+
+	<link rel="stylesheet" type="text/css" href="stylesheets/styles.css" />
+</head>
+<body>
+
+	<header data-includefile="header"></header>
+	<main id="content" role="main">
+		<div data-includefile="banner-alpha"></div>
+
+		<h1 class="heading-xlarge">Interview Metadata
+			<span class="heading-secondary">
+				This information is recorded to assist your recollection of the participant.
+			</span>
+		</h1>
+		<p>For this tool the definition of digital is:</br>
+			A device such as PCs, Macs, tablets, mobile phones that access the internet</p>
+		<p>* Field required</p>
+
+		<form name="scaleForm" class="form" autocomplete="off">
+
+<!-- ID -->
+			<div class="form-group">
+				<label class="form-label-bold" for="id">Participant Identifier/alias</label>
+				<input type="text" class="form-control" id="id" name="id"/>
+			</div>
+
+<!-- Location -->
+			<div class="form-group">
+				<label class="form-label-bold" for="location">Research location</label>
+				<input type="text" class="form-control" id="location" name="location"/>
+			</div>
+
+<!-- Age -->
+			<div class="form-group">
+				<label class="form-label-bold" for="age"><span class="required">*</span>Participant's age</label>
+				<input type="number" name="age" id="age"
+				data-validation="number"
+				data-validation-allowing="range[10;120]"
+				data-validation-error-msg="Please enter a number between 10 & 120"/>
+			</div>
+
+<!-- Gender -->
+			<div class="form-group">
+					<label class="form-label-bold" for="gender">Participant's gender</label>
+					<input class="form-control" id="gender" name="gender" type="text" data-suggestions="Female, Male, Transgender">
+			</div>
+
+<!-- End of Form -->
+			<a class="button" href="DigitalInclusion.html">Back</a>
+			<a class="button" name="formSubmit" nextPage="Access">Continue</a>
+
+		</form>
+		
+		<script type="text/javascript">
+
+			
+		</script>
+
+<!-- STOP DELETING! -->
+
+	</main>
+
+	<footer data-includefile="footer"></footer>
+</body>
+</html>

@@ -1,0 +1,282 @@
+<!doctype html>
+<!--[if lt IE 7 ]> <html class="ie ie6 ie-lt10 ie-lt9 ie-lt8 ie-lt7 no-js" lang="en"> <![endif]-->
+<!--[if IE 7 ]>    <html class="ie ie7 ie-lt10 ie-lt9 ie-lt8 no-js" lang="en"> <![endif]-->
+<!--[if IE 8 ]>    <html class="ie ie8 ie-lt10 ie-lt9 no-js" lang="en"> <![endif]-->
+<!--[if IE 9 ]>    <html class="ie ie9 ie-lt10 no-js" lang="en"> <![endif]-->
+<!--[if gt IE 9]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+	<meta charset="utf-8">
+	<title>GOV.UK</title>
+	<meta name="author" content="Tom Harrop" />
+	<meta name="Copyright" content="Open Government Licence v3.0, except where otherwise stated" />
+	<!--[if gt IE 8]><!--><link href="govuk-assets/stylesheets/govuk-template.css?0.12.0" media="screen" rel="stylesheet" type="text/css" /><!--<![endif]-->
+	<!--[if IE 6]><link href="govuk-assets/stylesheets/govuk-template-ie6.css?0.12.0" media="screen" rel="stylesheet" type="text/css" /><![endif]-->
+	<!--[if IE 7]><link href="govuk-assets/stylesheets/govuk-template-ie7.css?0.12.0" media="screen" rel="stylesheet" type="text/css" /><![endif]-->
+	<!--[if IE 8]><link href="govuk-assets/stylesheets/govuk-template-ie8.css?0.12.0" media="screen" rel="stylesheet" type="text/css" /><![endif]-->
+	<link href="govuk-assets/stylesheets/govuk-template-print.css?0.12.0" media="print" rel="stylesheet" type="text/css" />
+	<link href="govuk-assets/application.css" media="all" rel="stylesheet" type="text/css" />
+	<link href="govuk-assets/stylesheets/fonts.css?0.12.0" media="all" rel="stylesheet" type="text/css" />
+
+	<script type="text/javascript" src="scripts/jquery.min.js"></script>
+	<script type="text/javascript" src="scripts/form.storage.js"></script>
+	<script type="text/javascript" src="scripts/application.js"></script>
+	<script type="text/javascript" src="scripts/details.polyfill.js"></script>
+
+	<script type="text/javascript" src="DigitalScript.js"></script>
+
+	<link href="//cdnjs.cloudflare.com/ajax/libs/jquery-form-validator/2.2.8/theme-default.min.css" rel="stylesheet" type="text/css"/>
+	<script src="//cdnjs.cloudflare.com/ajax/libs/jquery-form-validator/2.2.43/jquery.form-validator.min.js"></script>
+
+
+	<link rel="stylesheet" type="text/css" href="stylesheets/styles.css" />
+</head>
+<body>
+
+	<header data-includefile="header"></header>
+	<main id="content" role="main">
+		<div data-includefile="banner-alpha"></div>
+
+		<h1 class="heading-xlarge">Digital Access
+			<span class="heading-secondary">
+				This is capturing the degree to which the participant is <strong>able</strong> to access digital.
+			</span>
+		</h1>
+		<p>For this tool the definition of digital is:</br>
+			A device such as PCs, Macs, tablets, mobile phones that access the internet</p>
+
+		<form name="scaleForm" class="form" autocomplete="off">
+
+<!-- Digital Use -->
+			<div class="form-group">
+				<fieldset class="inline">
+					<label class="form-label-bold" for="use"><span class="required">*</span>Has the participant ever used digital technology?</label>
+					<label class="block-label"><input id="useEver" name="useEver" type="radio" data-validation="required" data-storage="1">Yes</label>
+					<label class="block-label"><input id="useEver" name="useEver" type="radio" data-validation="required" data-storage="-1">No</label>
+				</fieldset>
+			</div>
+			<div class="form-group">
+				<fieldset class="inline">
+					<label class="form-label-bold" for="use"><span class="required">*</span>Does the participant currently use digital technology?</label>
+					<label class="block-label"><input id="useCurrent" name="useCurrent" type="radio" data-validation="required" data-storage="1">Yes</label>
+					<label class="block-label"><input id="useCurrent" name="useCurrent" type="radio" data-validation="required" data-storage="-1">No</label>
+				</fieldset>
+			</div>
+			
+<!-- Digital Skills -->
+			<table class="form-group">
+			  <tr>
+			    <th rowspan="2">Action/Activity</th>
+			    <th></th>
+			    <th colspan="2"><span class="required">*</span>Could you do this?</th>
+			    <th rowspan="2"><span class="required">*</span>Have you done this in the last 3 months?</th>
+			  </tr>
+			  <tr>
+			    <td>I have no idea what you’re talking about</td>
+			    <td>I could do this if I was asked to</td>
+			    <td>I couldn’t do this if I was asked to</td>
+			  </tr>
+			  <tr>
+			    <td>Use a search engine to look for information online</td>
+				<td><label class="block-label"><input type="radio" name="row1" id="row1" data-validation="required" data-storage="-1"/>No Idea</label></td>
+				<td><label class="block-label"><input type="radio" name="row1" id="row1" data-validation="required" data-storage="1"/>Could do</label></td>
+				<td><label class="block-label"><input type="radio" name="row1" id="row1" data-validation="required" data-storage="0"/>Couldn't do</label></td>
+			    <td>
+					<label class="block-label"><input id="ynRow1" name="ynRow1" type="radio" data-validation="required" data-storage="1">Yes</label>
+					<label class="block-label"><input id="ynRow1" name="ynRow1" type="radio" data-validation="required" data-storage="-1">No</label>
+				</td>
+			  </tr>
+			  <tr>
+			    <td>Download/save a photo you found online</td>
+			    <td><label class="block-label"><input type="radio" name="row2" id="row2" data-validation="required" data-storage="-1"/>No Idea</label></td>
+				<td><label class="block-label"><input type="radio" name="row2" id="row2" data-validation="required" data-storage="1"/>Could do</label></td>
+				<td><label class="block-label"><input type="radio" name="row2" id="row2" data-validation="required" data-storage="0"/>Couldn't do</label></td>
+			    <td>
+					<label class="block-label"><input id="ynRow2" name="ynRow2" type="radio" data-validation="required" data-storage="1">Yes</label>
+					<label class="block-label"><input id="ynRow2" name="ynRow2" type="radio" data-validation="required" data-storage="-1">No</label>
+				</td>
+			  </tr>
+			  <tr>
+			    <td>Find a website you have visited before</td>
+			    <td><label class="block-label"><input type="radio" name="row3" id="row3" data-validation="required" data-storage="-1"/>No Idea</label></td>
+				<td><label class="block-label"><input type="radio" name="row3" id="row3" data-validation="required" data-storage="1"/>Could do</label></td>
+				<td><label class="block-label"><input type="radio" name="row3" id="row3" data-validation="required" data-storage="0"/>Couldn't do</label></td>
+			    <td>
+					<label class="block-label"><input id="ynRow3" name="ynRow3" type="radio" data-validation="required" data-storage="1">Yes</label>
+					<label class="block-label"><input id="ynRow3" name="ynRow3" type="radio" data-validation="required" data-storage="-1">No</label>
+				</td>
+			  </tr>
+			  <tr>
+			    <td>Send a personal message to another person via email</td>
+			    <td><label class="block-label"><input type="radio" name="row4" id="row4" data-validation="required" data-storage="-1"/>No Idea</label></td>
+				<td><label class="block-label"><input type="radio" name="row4" id="row4" data-validation="required" data-storage="1"/>Could do</label></td>
+				<td><label class="block-label"><input type="radio" name="row4" id="row4" data-validation="required" data-storage="0"/>Couldn't do</label></td>
+			    <td>
+					<label class="block-label"><input id="ynRow4" name="ynRow4" type="radio" data-validation="required" data-storage="1">Yes</label>
+					<label class="block-label"><input id="ynRow4" name="ynRow4" type="radio" data-validation="required" data-storage="-1">No</label>
+				</td>
+			  </tr>
+			  <tr>
+			    <td>Send a personal message to another person via online messaging service</td>
+			    <td><label class="block-label"><input type="radio" name="row5" id="row5" data-validation="required" data-storage="-1"/>No Idea</label></td>
+				<td><label class="block-label"><input type="radio" name="row5" id="row5" data-validation="required" data-storage="1"/>Could do</label></td>
+				<td><label class="block-label"><input type="radio" name="row5" id="row5" data-validation="required" data-storage="0"/>Couldn't do</label></td>
+			    <td>
+					<label class="block-label"><input id="ynRow5" name="ynRow5" type="radio" data-validation="required" data-storage="1">Yes</label>
+					<label class="block-label"><input id="ynRow5" name="ynRow5" type="radio" data-validation="required" data-storage="-1">No</label>
+				</td>
+			  </tr>
+			  <tr>
+			    <td>Carefully make comments and share information online</td>
+			    <td><label class="block-label"><input type="radio" name="row6" id="row6" data-validation="required" data-storage="-1"/>No Idea</label></td>
+				<td><label class="block-label"><input type="radio" name="row6" id="row6" data-validation="required" data-storage="1"/>Could do</label></td>
+				<td><label class="block-label"><input type="radio" name="row6" id="row6" data-validation="required" data-storage="0"/>Couldn't do</label></td>
+			    <td>
+					<label class="block-label"><input id="ynRow6" name="ynRow6" type="radio" data-validation="required" data-storage="1">Yes</label>
+					<label class="block-label"><input id="ynRow6" name="ynRow6" type="radio" data-validation="required" data-storage="-1">No</label>
+				</td>
+			  </tr>
+			  <tr>
+			    <td>Buy items or services from a website</td>
+			    <td><label class="block-label"><input type="radio" name="row7" id="row7" data-validation="required" data-storage="-1"/>No Idea</label></td>
+				<td><label class="block-label"><input type="radio" name="row7" id="row7" data-validation="required" data-storage="1"/>Could do</label></td>
+				<td><label class="block-label"><input type="radio" name="row7" id="row7" data-validation="required" data-storage="0"/>Couldn't do</label></td>
+			    <td>
+					<label class="block-label"><input id="ynRow7" name="ynRow7" type="radio" data-validation="required" data-storage="1">Yes</label>
+					<label class="block-label"><input id="ynRow7" name="ynRow7" type="radio" data-validation="required" data-storage="-1">No</label>
+				</td>
+			  </tr>
+			  <tr>
+			    <td>Buy and install software on a device</td>
+			    <td><label class="block-label"><input type="radio" name="row8" id="row8" data-validation="required" data-storage="-1"/>No Idea</label></td>
+				<td><label class="block-label"><input type="radio" name="row8" id="row8" data-validation="required" data-storage="1"/>Could do</label></td>
+				<td><label class="block-label"><input type="radio" name="row8" id="row8" data-validation="required" data-storage="0"/>Couldn't do</label></td>
+			    <td>
+					<label class="block-label"><input id="yn-row8" name="yn-row8" type="radio" data-validation="required" data-storage="1">Yes</label>
+					<label class="block-label"><input id="yn-row8" name="yn-row8" type="radio" data-validation="required" data-storage="-1">No</label>
+				</td>
+			  </tr>
+			  <tr>
+			    <td>Solve a problem you have with a device or digital service using online help</td>
+			    <td><label class="block-label"><input type="radio" name="row9" id="row9" data-validation="required" data-storage="-1"/>No Idea</label></td>
+				<td><label class="block-label"><input type="radio" name="row9" id="row9" data-validation="required" data-storage="1"/>Could do</label></td>
+				<td><label class="block-label"><input type="radio" name="row9" id="row9" data-validation="required" data-storage="0"/>Couldn't do</label></td>
+			    <td>
+					<label class="block-label"><input id="ynRow9" name="ynRow9" type="radio" data-validation="required" data-storage="1">Yes</label>
+					<label class="block-label"><input id="ynRow9" name="ynRow9" type="radio" data-validation="required" data-storage="-1">No</label>
+				</td>
+			  </tr>
+			  <tr>
+			    <td>Verify sources of information you found online</td>
+			    <td><label class="block-label"><input type="radio" name="row10" id="row10" data-validation="required" data-storage="-1"/>No Idea</label></td>
+				<td><label class="block-label"><input type="radio" name="row10" id="row10" data-validation="required" data-storage="1"/>Could do</label></td>
+				<td><label class="block-label"><input type="radio" name="row10" id="row10" data-validation="required" data-storage="0"/>Couldn't do</label></td>
+			    <td>
+					<label class="block-label"><input id="ynRow10" name="ynRow10" type="radio" data-validation="required" data-storage="1">Yes</label>
+					<label class="block-label"><input id="ynRow10" name="ynRow10" type="radio" data-validation="required" data-storage="-1">No</label>
+				</td>
+			  </tr>
+			  <tr>
+			    <td>Complete online application forms which include personal/finacial details</td>
+			    <td><label class="block-label"><input type="radio" name="row11" id="row11" data-validation="required" data-storage="-1"/>No Idea</label></td>
+				<td><label class="block-label"><input type="radio" name="row11" id="row11" data-validation="required" data-storage="1"/>Could do</label></td>
+				<td><label class="block-label"><input type="radio" name="row11" id="row11" data-validation="required" data-storage="0"/>Couldn't do</label></td>
+			    <td>
+					<label class="block-label"><input id="ynRow11" name="ynRow11" type="radio" data-validation="required" data-storage="1">Yes</label>
+					<label class="block-label"><input id="ynRow11" name="ynRow11" type="radio" data-validation="required" data-storage="-1">No</label>
+				</td>
+			  </tr>
+			  <tr>
+			    <td>Create something new from existing online images, music or video</td>
+			    <td><label class="block-label"><input type="radio" name="row12" id="row12" data-validation="required" data-storage="-1"/>No Idea</label></td>
+				<td><label class="block-label"><input type="radio" name="row12" id="row12" data-validation="required" data-storage="1"/>Could do</label></td>
+				<td><label class="block-label"><input type="radio" name="row12" id="row12" data-validation="required" data-storage="0"/>Couldn't do</label></td>
+			    <td>
+					<label class="block-label"><input id="ynRow12" name="ynRow12" type="radio" data-validation="required" data-storage="1">Yes</label>
+					<label class="block-label"><input id="ynRow12" name="ynRow12" type="radio" data-validation="required" data-storage="-1">No</label>
+				</td>
+			  </tr>
+			</table>
+
+<!-- Digital learning -->
+			<div class="form-group">
+				<label class="form-label-bold" for="learn"><span class="required">*</span>Does the participant feel confident to learning a new digital technology?</label>
+				<fieldset class="inline">
+					<label class="block-label"><input id="learn" name="learn" type="radio" data-validation="required" data-storage="1">Yes</label>
+					<label class="block-label"><input id="learn" name="learn" type="radio" data-validation="required" data-storage="-1">No</label>
+					<label class="block-label"><input id="learn" name="learn" type="radio" data-validation="required" data-storage="0">Unsure</label>
+				</fieldset>
+			</div>
+
+<!-- Internet Speed -->
+			<div class="form-group">
+				<label class="form-label-bold" for="speed"><span class="required">*</span>What speed is the participant's internet access?</label>
+				<fieldset class="inline">
+					<label class="block-label"><input id="speed" name="speed" type="radio" data-validation="required" data-storage="6">+100mb</label>
+					<label class="block-label"><input id="speed" name="speed" type="radio" data-validation="required" data-storage="5">50-100mb</label>
+					<label class="block-label"><input id="speed" name="speed" type="radio" data-validation="required" data-storage="4">25-50mb</label>
+					<label class="block-label"><input id="speed" name="speed" type="radio" data-validation="required" data-storage="3">10-25mb</label>
+					<label class="block-label"><input id="speed" name="speed" type="radio" data-validation="required" data-storage="2">5-10mb</label>
+					<label class="block-label"><input id="speed" name="speed" type="radio" data-validation="required" data-storage="1"><5mb</label>
+					<label class="block-label"><input id="speed" name="speed" type="radio" data-validation="required" data-storage="0">Unsure</label>
+				</fieldset>
+			</div>
+
+<!-- Internet type -->
+			<div class="form-group">
+				<label class="form-label-bold" for="type"><span class="required">*</span>What type of internet connection dose the participant have?</label>
+				<fieldset class="inline">
+					<label class="block-label"><input id="type" name="type" type="radio" data-validation="required" data-storage="5">Broadband - Fiberoptic</label>
+					<label class="block-label"><input id="type" name="type" type="radio" data-validation="required" data-storage="4">Broadband - ADSL/2/+</label>
+					<label class="block-label"><input id="type" name="type" type="radio" data-validation="required" data-storage="3">Mobile internet</label>
+					<label class="block-label"><input id="type" name="type" type="radio" data-validation="required" data-storage="2">Satellite internet</label>
+					<label class="block-label"><input id="type" name="type" type="radio" data-validation="required" data-storage="1">Dial-up</label>
+					<label class="block-label"><input id="type" name="type" type="radio" data-validation="required" data-storage="1">No internet at home</label>
+					<label class="block-label"><input id="type" name="type" type="radio" data-validation="required" data-storage="0">Unsure</label>
+				</fieldset>
+			</div>			
+
+<!-- Number of Devices -->
+			<div class="form-group">
+				<label class="form-label-bold" for="device-number"><span class="required">*</span>How many digital devices dose the participant own and reguarly use?</label>
+				<input type="number" id="deviceNumber" name="deviceNumber"
+				data-validation="number"
+				data-validation-allowing="range[0;100]"
+				data-validation-error-msg="Please enter a number between 0 & 100"/>
+			</div>
+
+<!-- Fequency Online -->
+			<div class="form-group">
+				<label class="form-label-bold" for="fequencyOnline"><span class="required">*</span>In the average day/month/year, how often dose the participant use the digital technology?</label>
+				<input type="number" id="fequencyOnline" name="fequencyOnline"
+				data-validation="number"
+				data-validation-allowing="range[0;100]"
+				data-validation-error-msg="Please enter a number between 0 & 100"
+				data-validation-help=" 1: once, 2: twice etc"/>
+				<fieldset class="inline">
+					<label class="block-label"><input id="fequencyOnlineScale" name="fequencyOnlineScale" type="radio" data-validation="required" data-storage="d">Day</label>
+					<label class="block-label"><input id="fequencyOnlineScale" name="fequencyOnlineScale" type="radio" data-validation="required" data-storage="m">Month</label>
+					<label class="block-label"><input id="fequencyOnlineScale" name="fequencyOnlineScale" type="radio" data-validation="required" data-storage="y">Year</label>
+				</fieldset>
+			</div>
+
+<!-- Time Online -->
+			<div class="form-group">
+				<label class="form-label-bold" for="timeOnline"><span class="required">*</span>On average, how much time dose the participant spend online in a single session?</label>
+				<input type="number" id="timeOnline" name="timeOnline" 
+				data-validation="number"
+				data-validation-allowing="range[0;24]"
+				data-validation-error-msg="Please enter a number between 0 & 24"/>
+			</div>
+
+<!-- End of Form -->
+			<a class="button" href="DigitalInclusion_Metadata.html">Back</a>
+			<a class="button" name="formSubmit" nextPage="Motivation">Continue</a>
+		</form>
+
+<!-- STOP DELETING! -->
+
+	</main>
+
+	<footer data-includefile="footer"></footer>
+</body>
+</html>

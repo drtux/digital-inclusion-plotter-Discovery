@@ -1,4 +1,12 @@
 
+#content {
+	max-width: 640px;
+}
+
+.required {
+	color: red;
+}
+
 .instructions {
 	padding: 20px;
 	border: 1px solid #990000;

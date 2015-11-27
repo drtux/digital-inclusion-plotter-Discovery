@@ -1,0 +1,113 @@
+<!doctype html>
+<!--[if lt IE 7 ]> <html class="ie ie6 ie-lt10 ie-lt9 ie-lt8 ie-lt7 no-js" lang="en"> <![endif]-->
+<!--[if IE 7 ]>    <html class="ie ie7 ie-lt10 ie-lt9 ie-lt8 no-js" lang="en"> <![endif]-->
+<!--[if IE 8 ]>    <html class="ie ie8 ie-lt10 ie-lt9 no-js" lang="en"> <![endif]-->
+<!--[if IE 9 ]>    <html class="ie ie9 ie-lt10 no-js" lang="en"> <![endif]-->
+<!--[if gt IE 9]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+	<meta charset="utf-8">
+	<title>GOV.UK</title>
+	<meta name="author" content="Tom Harrop" />
+	<meta name="Copyright" content="Open Government Licence v3.0, except where otherwise stated" />
+	<!--[if gt IE 8]><!--><link href="govuk-assets/stylesheets/govuk-template.css?0.12.0" media="screen" rel="stylesheet" type="text/css" /><!--<![endif]-->
+	<!--[if IE 6]><link href="govuk-assets/stylesheets/govuk-template-ie6.css?0.12.0" media="screen" rel="stylesheet" type="text/css" /><![endif]-->
+	<!--[if IE 7]><link href="govuk-assets/stylesheets/govuk-template-ie7.css?0.12.0" media="screen" rel="stylesheet" type="text/css" /><![endif]-->
+	<!--[if IE 8]><link href="govuk-assets/stylesheets/govuk-template-ie8.css?0.12.0" media="screen" rel="stylesheet" type="text/css" /><![endif]-->
+	<link href="govuk-assets/stylesheets/govuk-template-print.css?0.12.0" media="print" rel="stylesheet" type="text/css" />
+	<link href="govuk-assets/application.css" media="all" rel="stylesheet" type="text/css" />
+	<link href="govuk-assets/stylesheets/fonts.css?0.12.0" media="all" rel="stylesheet" type="text/css" />
+
+	<script type="text/javascript" src="scripts/jquery.min.js"></script>
+	<script type="text/javascript" src="scripts/form.storage.js"></script>
+	<script type="text/javascript" src="scripts/application.js"></script>
+	<script type="text/javascript" src="scripts/details.polyfill.js"></script>
+
+	<script type="text/javascript" src="DigitalScript.js"></script>
+
+	<link href="//cdnjs.cloudflare.com/ajax/libs/jquery-form-validator/2.2.8/theme-default.min.css" rel="stylesheet" type="text/css"/>
+	<script src="//cdnjs.cloudflare.com/ajax/libs/jquery-form-validator/2.2.43/jquery.form-validator.min.js"></script>
+
+	<link rel="stylesheet" type="text/css" href="stylesheets/styles.css" />
+</head>
+<body>
+
+	<header data-includefile="header"></header>
+	<main id="content" role="main">
+		<div data-includefile="banner-alpha"></div>
+
+		<h1 class="heading-xlarge">Researcher's assessment
+			<span class="heading-secondary">
+				This is your chance to assess the participants placment on the GDS Digital Inclusion Scale.
+			</span>
+		</h1>
+		<p>For this tool the definition of digital is:</br>
+			A device such as PCs, Macs, tablets, mobile phones that access the internet</p>
+
+		<form name="scaleForm" class="form" autocomplete="off">
+
+			<div class="form-group">
+				<label class="form-label-bold" for="researcherScore"><span class="required">*</span>Please choose a score for this participant</label>
+				<div class="inline">
+					<label class="block-label"><input type="radio" name="researcherScore" id="researcherScore" data-validation="required" data-storage="1"/>1: Never have, never will</label>
+					<label class="block-label"><input type="radio" name="researcherScore" id="researcherScore" data-validation="required" data-storage="2"/>2: Was online, but no longer online</label>
+					<label class="block-label"><input type="radio" name="researcherScore" id="researcherScore" data-validation="required" data-storage="3"/>3: Willing and unable</label>
+					<label class="block-label"><input type="radio" name="researcherScore" id="researcherScore" data-validation="required" data-storage="4"/>4: Reluctantly online</label>
+					<label class="block-label"><input type="radio" name="researcherScore" id="researcherScore" data-validation="required" data-storage="5"/>5: Learning the ropes</label>
+					<label class="block-label"><input type="radio" name="researcherScore" id="researcherScore" data-validation="required" data-storage="6"/>6: Task specific</label>
+					<label class="block-label"><input type="radio" name="researcherScore" id="researcherScore" data-validation="required" data-storage="7"/>7: Basic digital skills and capabilities</label>
+					<label class="block-label"><input type="radio" name="researcherScore" id="researcherScore" data-validation="required" data-storage="8"/>8: Confident</label>
+					<label class="block-label"><input type="radio" name="researcherScore" id="researcherScore" data-validation="required" data-storage="9"/>9: Expert</label>
+				</div>
+				<details class="form-group">
+					<summary role="button" aria-controls="details-content-0" tabindex="0" aria-expanded="false">
+						<span class="summary">Help with choosing a score</span>
+					</summary>
+					<div class="panel-indent" id="details-content-0" aria-hidden="true" style="display: none;">
+						<p><strong>1: Never have, never will</strong></br>
+						They may feel they have ‘missed the boat’ and that learning how to use the internet doesn’t fit into their lives.</p>
+
+						<p><strong>2: Was online, but no longer online</strong></br>
+						 They might have lost trust in the internet. They might be afraid of fraud or seeing inappropriate things online. They might have lost internet access because of cost or physical or mental capability.</p>
+
+						<p><strong>3: Willing and unable</strong></br>
+						People in this category predominantly have a positive perception of being online but have problems with low skills and they struggle to learn.</p>
+
+						<p><strong>4: Reluctantly online</strong></br>
+						They understand the general benefits of being online, they have yet to experience them personally.</p>
+
+						<p><strong>5: Learning the ropes</strong></br>
+						These users are predominantly very positive about the benefits of the internet and have willingly started to engage with digital technologies.</p>
+
+						<p><strong>6: Task specific</strong></br>
+						Their tasks may include online banking or updating social media. These tasks are often limited and specific.</p>
+
+						<p><strong>7: Basic digital skills and capabilities</strong></br>
+						These people have enough skills to be able to navigate online independently and perform all tasks at a basic level.</p>
+
+						<p><strong>8: Confident</strong></br>
+						Confident users make use of digital tools at work and in their everyday lives.</p>
+
+						<p><strong>9: Expert</strong></br>
+						Expert internet users have advanced digital skills.</p>
+					</div>
+				</details>
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="form-label-bold" for="researcherComment">Researcher's comments</label>
+				<textarea class="form-control" cols="100" rows="10" id="researcherComment" name="researchComment" placeholder="Any comments you have about this participant and the plotter"></textarea>
+			</div>
+			
+			<a class="button" href="DigitalInclusion_Motivation.html">Back</a>
+			<a class="button" name="formSubmit" nextPage="Summary">Continue</a>
+
+<!-- End of Form -->
+		</form>
+
+<!-- STOP DELETING! -->
+
+	</main>
+
+	<footer data-includefile="footer"></footer>
+</body>
+</html>

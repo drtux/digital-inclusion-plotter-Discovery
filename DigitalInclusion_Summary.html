@@ -1,0 +1,66 @@
+<!doctype html>
+<!--[if lt IE 7 ]> <html class="ie ie6 ie-lt10 ie-lt9 ie-lt8 ie-lt7 no-js" lang="en"> <![endif]-->
+<!--[if IE 7 ]>    <html class="ie ie7 ie-lt10 ie-lt9 ie-lt8 no-js" lang="en"> <![endif]-->
+<!--[if IE 8 ]>    <html class="ie ie8 ie-lt10 ie-lt9 no-js" lang="en"> <![endif]-->
+<!--[if IE 9 ]>    <html class="ie ie9 ie-lt10 no-js" lang="en"> <![endif]-->
+<!--[if gt IE 9]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+	<meta charset="utf-8">
+	<title>GOV.UK</title>
+	<meta name="author" content="Tom Harrop" />
+	<meta name="Copyright" content="Open Government Licence v3.0, except where otherwise stated" />
+	<!--[if gt IE 8]><!--><link href="govuk-assets/stylesheets/govuk-template.css?0.12.0" media="screen" rel="stylesheet" type="text/css" /><!--<![endif]-->
+	<!--[if IE 6]><link href="govuk-assets/stylesheets/govuk-template-ie6.css?0.12.0" media="screen" rel="stylesheet" type="text/css" /><![endif]-->
+	<!--[if IE 7]><link href="govuk-assets/stylesheets/govuk-template-ie7.css?0.12.0" media="screen" rel="stylesheet" type="text/css" /><![endif]-->
+	<!--[if IE 8]><link href="govuk-assets/stylesheets/govuk-template-ie8.css?0.12.0" media="screen" rel="stylesheet" type="text/css" /><![endif]-->
+	<link href="govuk-assets/stylesheets/govuk-template-print.css?0.12.0" media="print" rel="stylesheet" type="text/css" />
+	<link href="govuk-assets/application.css" media="all" rel="stylesheet" type="text/css" />
+	<link href="govuk-assets/stylesheets/fonts.css?0.12.0" media="all" rel="stylesheet" type="text/css" />
+
+	<script type="text/javascript" src="scripts/jquery.min.js"></script>
+	<script type="text/javascript" src="scripts/form.storage.js"></script>
+	<script type="text/javascript" src="scripts/application.js"></script>
+	<script type="text/javascript" src="scripts/details.polyfill.js"></script>
+
+	<link rel="stylesheet" type="text/css" href="stylesheets/styles.css" />
+	<script type="text/javascript" src="http://papaparse.com/resources/js/papaparse.js"></script>
+    <script type="text/javascript" src="DigitalScriptGraph.js"></script>
+
+
+    <link href="http://nvd3.org/assets/css/nv.d3.css" rel="stylesheet">
+	<script src="http://nvd3.org/assets/lib/d3.v3.js"></script>
+	<script src="http://nvd3.org/assets/js/nv.d3.js"></script>
+
+
+</head>
+<body>
+
+	<header data-includefile="header"></header>
+
+	<main id="content" role="main">
+		<div data-includefile="banner-alpha"></div><!-- Editied to send feedback to mailto:benjamin.walker1@homeoffice.gsi.gov.uk -->
+
+<!-- DELETE FROM HERE -->
+
+<h1 class="heading-xlarge">Summary</h1>
+
+<canvas id="scaleGraph" width="970" height="640"></canvas>
+
+<div id='chart'><svg height="640"></svg></div>
+
+<p><a href="DigitalInclusion_Metadata.html" class="button newParticipant">New participant</a></p>
+<hr>
+<div class="inline">
+	<a href="#" class="button" id="exportCSV">Export CSV</a>
+	<a href="#" class="button" id="exportJSON">Export JSON</a>
+</div>
+<p>Press the button below to delete the tools current group of participants data to start again</p>
+<p><a href="DigitalInclusion.html" class="button clearStorage">Clear saved data</a></p>
+
+<!-- STOP DELETING! -->
+
+
+	</main>
+	<footer data-includefile="footer"></footer>
+</body>
+</html>

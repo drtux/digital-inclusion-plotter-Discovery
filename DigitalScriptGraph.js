@@ -272,7 +272,7 @@ $(document).ready(function()
 	function plotScore(lable, age, score)
 	{
 		var colour = 'black'; //Initalising colour
-		var xPosition = colWidth*score; //Where to position the plot on xAxis
+		var xPosition = colWidth*3/*score*/; //Where to position the plot on xAxis
 		var yPosition = graphHieght - ((age- minAge)*(interval/targetTicks));
 
 		switch (score) //Switch colour depending the othe participant score

@@ -1,5 +1,8 @@
 $(document).ready(function(){
-	$.validate();
+	if($("form"))
+	{
+		$.validate();
+	}
 
 /** LISTENERS **/
 	$('.continue').click(function () {

@@ -8,7 +8,7 @@ $(document).ready(function(){
 	$('.continue').click(function () {
 	    if($(this).parents("form").isValid())
 		{
-			window.location.replace("DigitalInclusion_" + $(this).attr('nextPage') + ".html");
+			window.location.replace("digitalInclusion_" + $(this).attr('nextPage') + ".html");
 		}
 	});
 
@@ -18,14 +18,14 @@ $(document).ready(function(){
 		localStorage.removeItem("scaleForm");//Delete old form data
 		if($(this).parents("form").isValid())
 		{
-			window.location.replace("DigitalInclusion_" + $(this).attr('nextPage') + ".html");
+			window.location.replace("digitalInclusion_" + $(this).attr('nextPage') + ".html");
 		}
 	});
 
 	$('.newParticipant').click(function () {
 	    
 	    localStorage.removeItem("scaleForm");//Delete old form data
-		window.location.replace("DigitalInclusion_" + $(this).attr('nextPage') + ".html");
+		window.location.replace("digitalInclusion_Metadata.html");
 		
 	});
 

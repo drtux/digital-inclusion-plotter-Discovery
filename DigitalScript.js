@@ -24,6 +24,7 @@ $(document).ready(function(){
 	//Connect to local storage and save the form data
 	function connectAndSave()
 	{
+		var participants = [];
 		var now = new Date;
 		if(typeof(Storage)!=="undefined")
 		{

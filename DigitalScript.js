@@ -22,6 +22,13 @@ $(document).ready(function(){
 		}
 	});
 
+	$('.newParticipant').click(function () {
+	    
+	    localStorage.removeItem("scaleForm");//Delete old form data
+		window.location.replace("DigitalInclusion_" + $(this).attr('nextPage') + ".html");
+		
+	});
+
 /** FUNCTIONS **/
 
 	//Connect to local storage and save the form data

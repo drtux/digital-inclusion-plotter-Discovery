@@ -198,8 +198,7 @@ $(document).ready(function()
 			.showDistX(true)    //showDist, when true, will display those little distribution lines on the axis.
         	.showDistY(true)
             .transitionDuration(350)
-            .color(d3.scale.category20().range())
-            .legendPosition("right");
+            .color(d3.scale.category20().range());
 
 	  //Configure how the tooltip looks.
 	  chart.tooltipContent(function(key) {
@@ -214,7 +213,7 @@ $(document).ready(function()
 
 	  //We want to show shapes other than circles.
 	  chart.scatter.onlyCircles(false);
-	  chart.sizeRange([100,100]);
+	  chart.sizeRange([100,100]);//Force all points to be 100 pixel in size
 	  chart.showLegend(true);
 
 	  var myData = convertData(/*participants*/);

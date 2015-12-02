@@ -1,5 +1,5 @@
 $(document).ready(function(){
-	if($("form"))
+	if($("form").length >0)
 	{
 		$.validate();
 	}

@@ -214,7 +214,7 @@ $(document).ready(function()
 	  //We want to show shapes other than circles.
 	  chart.scatter.onlyCircles(false);
 	  chart.sizeRange([100,100]);
-	  chart.showLegend(false);
+	  chart.showLegend(true);
 
 	  var myData = convertData(/*participants*/);
 	  d3.select('#chart svg')

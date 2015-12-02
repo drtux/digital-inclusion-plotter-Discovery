@@ -198,7 +198,8 @@ $(document).ready(function()
 			.showDistX(true)    //showDist, when true, will display those little distribution lines on the axis.
         	.showDistY(true)
             .transitionDuration(350)
-            .color(d3.scale.category20().range());
+            .color(d3.scale.category20().range())
+            .legendPosition("right");
 
 	  //Configure how the tooltip looks.
 	  chart.tooltipContent(function(key) {

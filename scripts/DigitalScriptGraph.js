@@ -66,11 +66,11 @@ $(document).ready(function()
 		for (var i = 0; i < participants.length; i++) {
 			if (participants[i].researcherScore != undefined)
 			{
-				plotScore(participants[i].researcherScore, participants[i].age, participants[i].applicationScore);
+				plotScore(participants[i].researcherScore, randomiseAge(parseInt(participants[i].age)), participants[i].applicationScore);
 			}
 			else
 			{
-				plotScore('N/A', participants[i].age, participants[i].applicationScore);
+				plotScore('N/A', randomiseAge(parseInt(participants[i].age)), participants[i].applicationScore);
 			};
 		};
 		
@@ -113,6 +113,29 @@ $(document).ready(function()
 		context.restore();
 	}
 
+	//
+	function randomiseAge(age)
+	{
+		var max = 0;
+		var min = 0;
+
+		switch(age)
+		{
+			case 1: min = 10; max = 17; break;
+			case 2: min = 18; max = 25; break;
+			case 3: min = 26; max = 30; break;
+			case 4: min = 31; max = 40; break;
+			case 5: min = 41; max = 50; break;
+			case 6: min = 51; max = 60; break;
+			case 7: min = 61; max = 70; break;
+			case 8: min = 71; max = 80; break;
+			case 9: min = 81; max = 90; break;
+			case 10: min = 91; max = 100 ; break;
+			default:  min = 101; max = 120 ; break;
+		}
+		return Math.floor(Math.random() * (max - min + 1)) + min;
+	}
+
 	//Source: http://stackoverflow.com/questions/8855026/generate-axis-scale
 	function calculateTicks(min, max, tickCount)
 	{
@@ -149,16 +172,16 @@ $(document).ready(function()
 
 		switch (score) //Switch colour depending the othe participant score
 		{
-		case 1: colour = '#DA7357'; break; //Score 1 graph colour match
-		case 2: colour = '#EA8C5C'; break; //Score 2 graph colour match
-		case 3: colour = '#EC9E5A'; break; //Score 3 graph colour match
-		case 4: colour = '#F4C15B'; break; //Score 4 graph colour match
-		case 5: colour = '#F9D45E'; break; //Score 5 graph colour match
-		case 6: colour = '#EAE05F'; break; //Score 6 graph colour match
-		case 7: colour = '#D6DA5D'; break; //Score 7 graph colour match
-		case 8: colour = '#B0CC5B'; break; //Score 8 graph colour match
-		case 9: colour = '#9CC55A'; break; //Score 9 graph colour match
-		default:
+			case 1: colour = '#DA7357'; break; //Score 1 graph colour match
+			case 2: colour = '#EA8C5C'; break; //Score 2 graph colour match
+			case 3: colour = '#EC9E5A'; break; //Score 3 graph colour match
+			case 4: colour = '#F4C15B'; break; //Score 4 graph colour match
+			case 5: colour = '#F9D45E'; break; //Score 5 graph colour match
+			case 6: colour = '#EAE05F'; break; //Score 6 graph colour match
+			case 7: colour = '#D6DA5D'; break; //Score 7 graph colour match
+			case 8: colour = '#B0CC5B'; break; //Score 8 graph colour match
+			case 9: colour = '#9CC55A'; break; //Score 9 graph colour match
+			default: /*Invisable?*/ break;
 		}
 
 		//Add plot point
@@ -216,7 +239,7 @@ $(document).ready(function()
 	  chart.sizeRange([100,100]);//Force all points to be 100 pixel in size
 	  chart.showLegend(true);
 
-	  var myData = convertData(/*participants*/);
+	  var myData = convertData();
 	  d3.select('#chart svg')
 	      .datum(myData)
 	      .call(chart);
@@ -226,9 +249,10 @@ $(document).ready(function()
 	  return chart;
 	});
 
-	function convertData(participants) {
+	function convertData()
+	{
 
-		participants = [
+		/*participants = [
 			{"age":56,"researcherScore":5,"applicationScore":9},
 			{"age":100,"researcherScore":7,"applicationScore":2},
 			{"age":98,"researcherScore":8,"applicationScore":3},
@@ -247,43 +271,61 @@ $(document).ready(function()
 			{"age":19,"researcherScore":1,"applicationScore":7},
 			{"age":18,"researcherScore":4,"applicationScore":8},
 			{"age":23,"researcherScore":2,"applicationScore":4}
-		]
+		]*/
 
 
 
-	  var data = [];
+		var data = [];
 
-	  for (i = 0; i < participants.length; i++) {
+		for (i = 0; i < participants.length; i++)
+		{
+			var y=randomiseAge(parseInt(participants[i].age));
+
 			data.push({
-				key: "Application Score for Participant " + (i+1),
+				key: "Score for Participant " + (i+1),
 				values: []
 			});
 
-	    //Application point
-			data[i].values.push({
-				x: participants[i].applicationScore,
-				y: participants[i].age,
-				shape: "circle"  //Configure the shape of each scatter point.
-			});
-	    
-	    }
-	    for (i = 0; i < participants.length; i++) {
-			data.push({
-				key: "Researcher Score for Participant " + (i+1),
-				values: []
-			});
-
-	    //Researcher point
-			data[i].values.push({
-				x: participants[i].researcherScore,
-				y: participants[i].age,
-				shape: 'cross'  //Configure the shape of each scatter point.
-			});
-	    
-	    }
-	  
-	  
-
+			if(participants[i].applicationScore == participants[i].researcherScore)
+			{
+				//Point
+				data[i].values.push({
+					x: participants[i].applicationScore,//They the same so doesn't matter which plotted
+					y: y,
+					shape: "circle" //Configure the shape of each scatter point.
+				});
+			}
+			else if (participants[i].applicationScore > participants[i].researcherScore)
+			{
+			//Application point
+				data[i].values.push({
+					x: participants[i].applicationScore,
+					y: y,
+					shape: "triangle-up"  //Configure the shape of each scatter point.
+				});
+			//Researcher point
+				data[i].values.push({
+					x: participants[i].researcherScore,
+					y: y,
+					shape: 'circle'  //Configure the shape of each scatter point.
+				});
+			}
+			else //Application score < researcher score
+			{
+			//Application point
+				data[i].values.push({
+					x: participants[i].applicationScore,
+					y: y,
+					shape: "triangle-down"  //Configure the shape of each scatter point.
+				});
+			//Researcher point
+				data[i].values.push({
+					x: participants[i].researcherScore,
+					y: y,
+					shape: 'circle'  //Configure the shape of each scatter point.
+				});
+			}
+    	}
 	  return data;
 	}
 

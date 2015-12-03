@@ -1,7 +1,7 @@
-# Unofficial Static Government Digital Prototype kit
-Simple prototyping kit for GOV.UK service designers. This kit does not contain all of the functionality of the express kit, however, you will not need node.js or git experience, and you will not need to run anything in command line.
+# Home Office Digital (HOD) Inclusion Scale Plotter - Alpha
+Simple tool to provide HOD User Researchers with a toolkit to aid them in plotting research participants on the Digital Inclusion Scale with accuracy. To that end the toolkit will be automating the coding process and it is intended that over a number of itteration the accuracy of this coding process can be improved. This toolkit is designed to fucntion without an internet connection for in the field research sessions. 
 
-Created internally at Home Office Digital - not supported, not created by GDS, supplied as-is
+Created internally at Home Office Digital - not supported, not created by GDS.
 
 This is not finished! It's Alpha Alpha!
 
@@ -10,18 +10,7 @@ This is not finished! It's Alpha Alpha!
 #### You will need:
 - A mac (sorry, this isn't tested on PCs yet)
 
-#### Nice to have:
-- _Some_ HTML knowledge
-
-First, either:
-
 - Download a zip of this repository from https://github.com/tjharrop/simple_prototype_kit/archive/master.zip and unzip it to your computer
-
-*- OR -*
-
-- If you're comfortable with git, either clone the repo in the git desktop client or via command line (`git clone https://github.com/tjharrop/simple_prototype_kit.git`)
-
-Once you have the folder on your computer, you will see the index.html and example files. The example files contain demonstrations of various pieces of functionality. index.html has buttons to guide you through each page. Full instructions on each demo to follow.
 
 ## Running the thing
 
@@ -37,25 +26,14 @@ There are 2 options here. You can either open index.html in Safari or Firefox di
 _You may see an unauthorised developer warning message. If you do, cmd + click and click "open" instead (thanks Joe)_
 
 1. Double click run.command (see above if you get a warning)
-2. In chrome, go to http://localhost:1987/index.html
+2. In chrome, go to http://localhost:1987/
 
 ## Working on it
-
-A good place to start in index.html.
 
 1. Open this in your chosen HTML editor (if you don't have one, see https://atom.io/).
 2. Hack away! Change some content, add some buttons or form fields according to your design
 3. Press refresh in your browser.
 
-#### Changing the service name
-
-There is a file called service-name.txt which looks like this:
-
-```Digital Service Name```
-
-1. Open it
-2. Change it to your service name
-3. Save it
 
 #TODO
 

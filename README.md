@@ -37,4 +37,31 @@ _You may see an unauthorised developer warning message. If you do, cmd + click a
 
 #TODO
 
-1. Full instructions on the examples pages
+##Design crit feedback
+
+###Metadata
+- Plain English
+- Change page heading
+
+###Form
+- Smaller form elements
+- Maybe show block rather then inline
+- Have button on each column of table to choose all
+
+###Chart
+- Separate key to run through 9 points of scale
+- Export is great
+- Double plotted chart - join researcher and participant on scale
+- Double plotted chart - Arrow pointing in the direction of the actual participant score
+
+###Ideas
+- Performance dashboard for particular project
+- Track trends across projects
+- Sync when back online
+- Device based digital inclusion scale
+- More then one point on scale - one for mobile and tablet / one for desktop
+- Hierarchy of action buttons - one major plus secondary
+- Add to github and open source
+
+##Other
+- Fix exporting to CSV to deal with new data structure

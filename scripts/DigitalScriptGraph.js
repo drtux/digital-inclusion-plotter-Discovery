@@ -8,20 +8,20 @@ $(document).ready(function()
 	/*
 	 * START 'global' variables
 	 */
-	 var participants = [];
+	 var session = [];
 
 	//Connect to local storage
 	if(typeof(Storage)!=="undefined")
 	{
-		if (localStorage.getItem("participants") != null)
+		if (localStorage.getItem("session") != null)
 		{//There are other participants so get their data
-			participants = JSON.parse(localStorage.getItem("participants"));
+			session = JSON.parse(localStorage.getItem("session"));
 
 			//Set up the export to csv
-	        document.getElementById('exportCSV').setAttribute('href', 'data:text/csv;base64,' + window.btoa(Papa.unparse(participants)));
+	        document.getElementById('exportCSV').setAttribute('href', 'data:text/csv;base64,' + window.btoa(Papa.unparse(session /*THIS NEED FIXING*/)));
 	        document.getElementById('exportCSV').setAttribute("download", "data.csv");
 	        //Set up the export to json
-	        document.getElementById('exportJSON').setAttribute('href', 'data:text/text;charset=utf-8,' + encodeURIComponent(JSON.stringify(participants)));
+	        document.getElementById('exportJSON').setAttribute('href', 'data:text/text;charset=utf-8,' + encodeURIComponent(JSON.stringify(session)));
 	        document.getElementById('exportJSON').setAttribute("download", "data.json");
 		}
 	}
@@ -63,16 +63,21 @@ $(document).ready(function()
 		context.drawImage(imageObj, 0, 0); //Draw the backdrop graph
 		drawYAxis();
 		//Draw the required points
-		for (var i = 0; i < participants.length; i++) {
-			if (participants[i].researcherScore != undefined)
+		for (var j = 0; j < session.length; j++)
+		{
+			for (var i = 0; i < session[j].participant.length; i++)
 			{
-				plotScore(participants[i].researcherScore, randomiseAge(parseInt(participants[i].age)), participants[i].applicationScore);
-			}
-			else
-			{
-				plotScore('N/A', randomiseAge(parseInt(participants[i].age)), participants[i].applicationScore);
+				if (session[j].participant[i].researcherScore != undefined)
+				{
+					plotScore(session[j].participant[i].researcherScore, randomiseAge(parseInt(session[j].participant[i].age)), session[j].participant[i].applicationScore);
+				}
+				else
+				{
+					plotScore('N/A', randomiseAge(parseInt(session[j].participant[i].age)), session[j].participant[i].applicationScore);
+				};
 			};
 		};
+		
 		
 	};
 
@@ -215,7 +220,7 @@ $(document).ready(function()
     /////////////////////////////////////////
     /////////////////////////////////////////
     //////////  D3 graph test code  /////////
-
+/*
     nv.addGraph(function() {
 		var chart = nv.models.scatterChart()
 			.showDistX(true)    //showDist, when true, will display those little distribution lines on the axis.
@@ -248,7 +253,7 @@ $(document).ready(function()
 
 	  return chart;
 	});
-
+*/
 	function convertData()
 	{
 
@@ -277,56 +282,59 @@ $(document).ready(function()
 
 		var data = [];
 
-		for (i = 0; i < participants.length; i++)
+		for (var j = 0; j < session.length; j++)
 		{
-			var y=randomiseAge(parseInt(participants[i].age));
+			for (i = 0; i < session[j].participant.length; i++)
+			{
+				var y=randomiseAge(parseInt(session[j].participant[i].age));
 
-			data.push({
-				key: "Score for Participant " + (i+1),
-				values: []
-			});
+				data.push({
+					key: "Score for Participant " + (i+1),
+					values: []
+				});
 
-			if(participants[i].applicationScore == participants[i].researcherScore)
-			{
-				//Point
-				data[i].values.push({
-					x: participants[i].applicationScore,//They the same so doesn't matter which plotted
-					y: y,
-					shape: "circle" //Configure the shape of each scatter point.
-				});
-			}
-			else if (participants[i].applicationScore > participants[i].researcherScore)
-			{
-			//Application point
-				data[i].values.push({
-					x: participants[i].applicationScore,
-					y: y,
-					shape: "triangle-up"  //Configure the shape of each scatter point.
-				});
-			//Researcher point
-				data[i].values.push({
-					x: participants[i].researcherScore,
-					y: y,
-					shape: 'circle'  //Configure the shape of each scatter point.
-				});
-			}
-			else //Application score < researcher score
-			{
-			//Application point
-				data[i].values.push({
-					x: participants[i].applicationScore,
-					y: y,
-					shape: "triangle-down"  //Configure the shape of each scatter point.
-				});
-			//Researcher point
-				data[i].values.push({
-					x: participants[i].researcherScore,
-					y: y,
-					shape: 'circle'  //Configure the shape of each scatter point.
-				});
-			}
-    	}
-	  return data;
+				if(session[j].participant[i].applicationScore == session[j].participant[i].researcherScore)
+				{
+					//Point
+					data[i].values.push({
+						x: session[j].participant[i].applicationScore,//They the same so doesn't matter which plotted
+						y: y,
+						shape: "circle" //Configure the shape of each scatter point.
+					});
+				}
+				else if (session[j].participant[i].applicationScore > session[j].participant[i].researcherScore)
+				{
+				//Application point
+					data[i].values.push({
+						x: session[j].participant[i].applicationScore,
+						y: y,
+						shape: "triangle-up"  //Configure the shape of each scatter point.
+					});
+				//Researcher point
+					data[i].values.push({
+						x: session[j].participant[i].researcherScore,
+						y: y,
+						shape: 'circle'  //Configure the shape of each scatter point.
+					});
+				}
+				else //Application score < researcher score
+				{
+				//Application point
+					data[i].values.push({
+						x: session[j].participant[i].applicationScore,
+						y: y,
+						shape: "triangle-down"  //Configure the shape of each scatter point.
+					});
+				//Researcher point
+					data[i].values.push({
+						x: session[j].participant[i].researcherScore,
+						y: y,
+						shape: 'circle'  //Configure the shape of each scatter point.
+					});
+				}
+	    	}
+		  return data;
+		}
 	}
 
 });

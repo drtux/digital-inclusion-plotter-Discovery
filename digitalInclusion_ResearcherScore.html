@@ -41,8 +41,9 @@
 		</h1>
 		<p>For this tool the definition of digital is:</br>
 			A device such as PCs, Macs, tablets, mobile phones that access the internet</p>
+		<p><span class="required">*</span> Required field</p>
 
-		<form name="scaleForm" class="form" autocomplete="off">
+		<form name="participantForm" class="form" autocomplete="off">
 
 			<div class="form-group">
 				<label class="form-label-bold" for="researcherScore"><span class="required">*</span>Please choose a score for this participant</label>
@@ -97,9 +98,10 @@
 				<textarea class="form-control" cols="100" rows="10" id="researcherComment" name="researchComment" placeholder="Any comments you have about this participant and the plotter"></textarea>
 			</div>
 			
-			<a class="button" href="digitalInclusion_Questions.html">Back</a>
-			<a class="button saveAndContinue" nextPage="Metadata">New participant</a>
-			<p><a class="button saveAndContinue" nextPage="Summary">View summary</a></p>
+			<a class="button back" nextPage="Questions">Back</a>
+			<a class="button cancelParticipant" nextPage="Questions">Cancel</a>
+			<a class="button newParticipant" nextPage="Questions">New participant</a>
+			<p><a class="button endSession" nextPage="Summary">View summary</a></p>
 
 <!-- End of Form -->
 		</form>

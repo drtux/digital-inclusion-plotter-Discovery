@@ -12,10 +12,15 @@ $(document).ready(function(){
 		}
 	});
 
-	$('.saveAndContinue').click(function()
+	$('.back').click(function () {
+		window.location.replace("digitalInclusion_" + $(this).attr('nextPage') + ".html");
+	});
+
+	$('.endSession').click(function()
 	{
 		connectAndSave();//Save the participant to storage
-		localStorage.removeItem("scaleForm");//Delete old form data
+		localStorage.removeItem("participantForm");//Delete old participant form data
+		localStorage.removeItem("sessionForm");//Delete old session form data
 		if($(this).parents("form").isValid())
 		{
 			window.location.replace("digitalInclusion_" + $(this).attr('nextPage') + ".html");
@@ -23,10 +28,24 @@ $(document).ready(function(){
 	});
 
 	$('.newParticipant').click(function () {
-	    
-	    localStorage.removeItem("scaleForm");//Delete old form data
+		connectAndSave();//Save the participant to storage
+	    localStorage.removeItem("participantForm");//Delete old participant form data
 		window.location.replace("digitalInclusion_" + $(this).attr('nextPage') + ".html");
-		
+	});
+
+	$('.newSession').click(function () {
+	    localStorage.removeItem("participantForm");//Delete old participant form data
+		localStorage.removeItem("sessionForm");//Delete old session form data
+		window.location.replace("digitalInclusion_" + $(this).attr('nextPage') + ".html");
+	});
+
+	$('.cancelSession').click(function () {
+			localStorage.removeItem("sessionForm");//Delete current session form data
+			window.location.replace("digitalInclusion_" + $(this).attr('nextPage') + ".html");
+	});
+	$('.cancelParticipant').click(function () {
+			localStorage.removeItem("participantForm");//Delete current participant form data
+			window.location.replace("digitalInclusion_" + $(this).attr('nextPage') + ".html");
 	});
 
 /** FUNCTIONS **/
@@ -34,35 +53,51 @@ $(document).ready(function(){
 	//Connect to local storage and save the form data
 	function connectAndSave()
 	{
-		var participants = [];
+		var session = [];
 		var now = new Date;
 		if(typeof(Storage)!=="undefined")
 		{
-			if (localStorage.getItem("scaleForm") === "{}" || localStorage.getItem("scaleForm") == null)
-			{
-				//Do nothing as no form data
-	        }
-	        else
-	        {//If the form data exsists
-				if (localStorage.getItem("participants") != null)
-				{//There are other participants so get their data
-					participants = JSON.parse(localStorage.getItem("participants"));
-					if (localStorage.getItem("scaleForm") != null)
-					{//Add the new participant's data (if there is any)
-						participants[participants.length] = JSON.parse(localStorage.getItem("scaleForm"));
-						participants[participants.length-1].applicationScore = generateScore(participants[participants.length-1]); // Generate the application score for this participant
-						participants[participants.length-1].researchDateTime = now.toUTCString(); //Append the current date/time
-					};
-				}
-				else
-				{//This is the first participant
-					participants[0] = JSON.parse(localStorage.getItem("scaleForm")); //Add the participant's data
-					participants[0].applicationScore = generateScore(participants[0]); // Generate the application score for this participant
-					participants[0].researchDateTime = now.toUTCString(); //Append the current date/time
-				}
-				//Save the participants data
-				localStorage.setItem("participants", JSON.stringify(participants));
-	        }
+			if (localStorage.getItem("sessionForm") === "{}" || localStorage.getItem("sessionForm") == null) {
+				//Do nothing as no session started
+			}
+			else
+			{//A session has been started
+				if (localStorage.getItem("participantForm") === "{}" || localStorage.getItem("participantForm") == null)
+				{
+					//Do nothing must have participant to save
+		        }
+		        else
+		        {//Have both session and participant so can save
+		        	//Save session metadata
+					if (localStorage.getItem("session") != null)
+					{//There are other sessions so get their data
+						session = JSON.parse(localStorage.getItem("session"));
+						session[session.length] = JSON.parse(localStorage.getItem("sessionForm"));
+						session[session.length-1].participant=[];//set up structure for future use
+					}
+					else
+					{//This is the first session
+						session[0] = JSON.parse(localStorage.getItem("sessionForm")); //Add the session's data
+						session[0].participant=[];//set up structure for future use
+					}
+
+					if (session[session.length-1].participant != null)
+					{//There are other participants so append to the end
+						session[session.length-1].participant[session[session.length-1].participant.length] = JSON.parse(localStorage.getItem("participantForm"));
+						session[session.length-1].participant[session[session.length-1].participant.length-1].applicationScore = generateScore(session[session.length-1].participant[session[session.length-1].participant.length-1]); // Generate the application score for this participant
+						session[session.length-1].participant[session[session.length-1].participant.length-1].researchDateTime = now.toUTCString(); //Append the current date/time
+					}
+					else
+					{//This is the first participant
+						session[session.length-1].participant[0] = JSON.parse(localStorage.getItem("participantForm"));
+						session[session.length-1].participant[0].applicationScore = generateScore(session[session.length-1].participant[session[session.length-1].participant.length-1]); // Generate the application score for this participant
+						session[session.length-1].participant[0].researchDateTime = now.toUTCString(); //Append the current date/time
+					}
+					//Save the participants data
+					localStorage.setItem("session", JSON.stringify(session));
+		        }
+			}
+			
 		}
 		else
 		{

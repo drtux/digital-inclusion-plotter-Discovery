@@ -28,14 +28,9 @@ _You may see an unauthorised developer warning message. If you do, cmd + click a
 1. Double click run.command (see above if you get a warning)
 2. In chrome, go to http://localhost:1987/
 
-## Working on it
-
-1. Open this in your chosen HTML editor (if you don't have one, see https://atom.io/).
-2. Hack away! Change some content, add some buttons or form fields according to your design
-3. Press refresh in your browser.
-
-
 #TODO
+
+_Not all of these are things to be included, they are suggestions, ideas and prompts for future development._
 
 ##Design crit feedback
 

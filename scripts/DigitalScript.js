@@ -5,48 +5,55 @@ $(document).ready(function(){
 	}
 
 /** LISTENERS **/
-	$('.continue').click(function () {
-	    if($(this).parents("form").isValid())
-		{
-			window.location.replace("digitalInclusion_" + $(this).attr('nextPage') + ".html");
-		}
-	});
 
-	$('.back').click(function () {
-		window.location.replace("digitalInclusion_" + $(this).attr('nextPage') + ".html");
-	});
-
-	$('.endSession').click(function()
+	$('.navigation').click(function()
 	{
+		switch($(this).attr('navType'))
+		{
+			case 'newParticipant': newParticipant(); break;
+			case 'cancelParticipant': cancelParticipant(); break;
+			case 'newSession': newSession(); break;
+			case 'cancelSession': cancelSession(); break;
+			case 'endSession': endSession(); break;
+			default: break;
+		}
+
+		
+	});
+
+	var URL = "digitalInclusion_";
+	var FILETYPE = ".html";
+
+	function endSession() {
 		connectAndSave();//Save the participant to storage
 		localStorage.removeItem("participantForm");//Delete old participant form data
 		localStorage.removeItem("sessionForm");//Delete old session form data
 		if($(this).parents("form").isValid())
 		{
-			window.location.replace("digitalInclusion_" + $(this).attr('nextPage') + ".html");
+			window.location.replace(URL + $(this).attr('nextPage') + FILETYPE);
 		}
-	});
+	}
 
-	$('.newParticipant').click(function () {
+	function newParticipant() {
 		connectAndSave();//Save the participant to storage
 	    localStorage.removeItem("participantForm");//Delete old participant form data
-		window.location.replace("digitalInclusion_" + $(this).attr('nextPage') + ".html");
-	});
+		window.location.replace(URL + $(this).attr('nextPage') + FILETYPE);
+	}
 
-	$('.newSession').click(function () {
+	function newSession() {
 	    localStorage.removeItem("participantForm");//Delete old participant form data
 		localStorage.removeItem("sessionForm");//Delete old session form data
-		window.location.replace("digitalInclusion_" + $(this).attr('nextPage') + ".html");
-	});
+		window.location.replace(URL + $(this).attr('nextPage') + FILETYPE);
+	}
 
-	$('.cancelSession').click(function () {
+	function cancelSession() {
 			localStorage.removeItem("sessionForm");//Delete current session form data
-			window.location.replace("digitalInclusion_" + $(this).attr('nextPage') + ".html");
-	});
-	$('.cancelParticipant').click(function () {
+			window.location.replace(URL + $(this).attr('nextPage') + FILETYPE);
+	}
+	function cancelParticipant() {
 			localStorage.removeItem("participantForm");//Delete current participant form data
-			window.location.replace("digitalInclusion_" + $(this).attr('nextPage') + ".html");
-	});
+			window.location.replace(URL + $(this).attr('nextPage') + FILETYPE);
+	}
 
 /** FUNCTIONS **/
 

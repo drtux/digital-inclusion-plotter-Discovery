@@ -1,6 +1,21 @@
 
 #content {
-	max-width: 640px;
+	max-width: 970px;
+}
+.rightCol {
+	max-width: 44%;
+	float: right;
+	margin-left: 1%; 
+}
+.leftCol {
+	max-width: 44%;
+	float:left;
+	margin-right: 1%; 
+}
+.control {
+	clear:both;
+	max-width: 100%;
+	text-align: center;
 }
 
 .required {

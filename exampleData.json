@@ -1,0 +1,13 @@
+[
+	{"sessionId":"Passport research AN sessions","sessionLocation":"2MS unbookable room","researchComment":"BY staff","participant":
+		[
+			{"age":"4","accessDevice":"2","accessWhere":"1","need":"t","fequencyOnline":"1","row3":"1","row8":"1","learn":"1","row1":"1","row5":"1","row10":"1","row11":"1","row12":"1","row9":"1","saftey":"-1","accessHCI":"-1","accessNeed":"0","convenience":"1","row2":"0","row4":"1","row6":"1","row7":"-1","row13":"-1","useEver":"1","researcherScore":"7","appDebugScore":[1,0,1,1,1,1,-1,1,1,1,1,1,null,1,null,null,1,null,null,null,null,null],"applicationScore":9,"researchDateTime":"Fri, 04 Dec 2015 10:09:01 GMT"},
+			{"useEver":"1","age":"5","need":"t","convenience":"1","accessWhere":"-1","accessDevice":"2","fequencyOnline":"1","accessHCI":"1","accessNeed":"-1","row6":"1","row8":"1","learn":"1","saftey":"0","row1":"0","row2":"0","row3":"0","row4":"0","row5":"1","row7":"0","row9":"0","row10":"0","row11":"0","row12":"0","row13":"0","researcherScore":"3","appDebugScore":[0,0,0,0,1,1,0,1,0,0,0,0,null,1,null,null,1,null,null,null,null,null],"applicationScore":9,"researchDateTime":"Fri, 04 Dec 2015 10:39:38 GMT"}
+		]
+	}
+	{"sessionId":"session2 AN","researchComment":"BY staff","sessionLocation":"2MS","participant":
+		[
+			{"age":"5","accessDevice":"-2","accessWhere":"2","useEver":"1","need":"t","convenience":"1","row6":"1","row7":"0","row5":"0","row4":"1","row3":"0","row8":"0","row9":"0","row10":"0","row11":"0","row12":"0","row13":"0","row2":"0","row1":"0","accessNeed":"0","accessHCI":"-1","saftey":"0","learn":"0","fequencyOnline":"1","researcherScore":"1","appDebugScore":[0,0,0,1,0,1,0,0,0,0,0,0,null,0,null,null,1,null,null,null,null,null],"applicationScore":9,"researchDateTime":"Fri, 04 Dec 2015 11:19:29 GMT"}
+		]
+	}
+]

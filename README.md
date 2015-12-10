@@ -10,7 +10,7 @@ This is not finished! It's Alpha Alpha!
 #### You will need:
 - A mac (sorry, this isn't tested on PCs yet)
 
-- Download a zip of this repository from https://github.com/tjharrop/simple_prototype_kit/archive/master.zip and unzip it to your computer
+- Download a zip of this repository from https://github.com/tjharrop/digital-inclusion-plotter/archive/Digital-Inclusion-Scale.zip and unzip it to your computer
 
 ## Running the thing
 

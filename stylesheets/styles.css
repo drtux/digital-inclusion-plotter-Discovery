@@ -5,7 +5,8 @@
 .rightCol {
 	max-width: 44%;
 	float: right;
-	margin-left: 1%; 
+	margin-left: 1%;
+	position: fixed;
 }
 .leftCol {
 	max-width: 44%;

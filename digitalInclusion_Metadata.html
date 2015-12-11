@@ -45,10 +45,10 @@
 
 		<form name="sessionForm" class="form" autocomplete="off">
 
-<!-- session ID -->
+<!-- session alias -->
 			<div class="form-group">
-				<label class="form-label-bold" for="sessionId"><span class="required">*</span>Session Identifier</label>
-				<input type="text" class="form-control" id="sessionId" name="sessionId" data-validation="required"/>
+				<label class="form-label-bold" for="sessionName"><span class="required">*</span>Session name</label>
+				<input type="text" class="form-control" id="sessionName" name="sessionName" data-validation="required"/>
 			</div>
 
 <!-- Location -->
@@ -60,7 +60,8 @@
 <!-- Session comment -->
 			<div class="form-group">
 				<label class="form-label-bold" for="sessionComment">Comments on this research session</label>
-				<textarea class="form-control" cols="100" rows="10" id="researcherComment" name="researchComment" placeholder="Any comments you have about this participant and the plotter"></textarea>
+				<p class="form-hint">Any comments you have about this participant and the plotter</p>
+				<textarea class="form-control" cols="100" rows="10" id="sessionComment" name="sessionComment"></textarea>
 			</div>
 
 <!-- End of Form -->

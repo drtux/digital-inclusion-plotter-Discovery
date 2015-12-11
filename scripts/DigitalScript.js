@@ -30,7 +30,7 @@ $(document).ready(function(){
 	var FILETYPE = ".html";
 
 	function endSession(btn) {
-		if(btn.parents("form").isValid())
+    	if($('form').isValid())
 		{
 			connectAndSave();//Save the participant to storage
 			localStorage.removeItem("participantForm");//Delete old participant form data
@@ -56,6 +56,13 @@ $(document).ready(function(){
 	function newSession(btn) {
 	    localStorage.removeItem("participantForm");//Delete old participant form data
 		localStorage.removeItem("sessionForm");//Delete old session form data
+		var sCount = 0;//Default to first session
+		if (localStorage.getItem("sCount") != null)
+		{//There are other participants get the count
+			sCount = parseInt(JSON.parse(localStorage.getItem("sCount")));
+			sCount++;//Increment for new session
+		}
+		localStorage.setItem("sCount", JSON.stringify(sCount));//Save the Count
 		window.location.replace(URL + btn.attr('nextPage') + FILETYPE);
 	}
 
@@ -88,35 +95,115 @@ $(document).ready(function(){
 		        }
 		        else
 		        {//Have both session and participant so can save
-		        	//Save session metadata
+		        	var sCount = 0;//Default to there being no other sessions
+		        	var pCount = 0;//Default to there being no other partipipants
+
 					if (localStorage.getItem("session") != null)
 					{//There are other sessions so get their data
 						session = JSON.parse(localStorage.getItem("session"));
-						session[session.length] = JSON.parse(localStorage.getItem("sessionForm"));
-						session[session.length-1].participant=[];//set up structure for future use
 					}
-					else
-					{//This is the first session
-						session[0] = JSON.parse(localStorage.getItem("sessionForm")); //Add the session's data
-						session[0].participant=[];//set up structure for future use
+					if (localStorage.getItem("sCount") != null)
+					{//There are other participants get the count
+						sCount = parseInt(JSON.parse(localStorage.getItem("sCount")));
+					}
+					if (localStorage.getItem("pCount") != null)
+					{//There are other participants get the count
+						pCount = parseInt(JSON.parse(localStorage.getItem("pCount")));
 					}
 
-					if (session[session.length-1].participant != null)
-					{//There are other participants so append to the end
-						session[session.length-1].participant[session[session.length-1].participant.length] = JSON.parse(localStorage.getItem("participantForm"));
-						session[session.length-1].participant[session[session.length-1].participant.length-1].applicationScore = generateScore(session[session.length-1].participant[session[session.length-1].participant.length-1]); // Generate the application score for this participant
-						session[session.length-1].participant[session[session.length-1].participant.length-1].researchDateTime = now.toUTCString(); //Append the current date/time
+					var dataObj = {//HACK to get round CSV exporting limitations by ensuring all properties present 
+						sessionID: null,
+						sessionName: null,
+						sessionLocation: null,
+						sessionComment: null,
+						researchDateTime: null,
+						age: null,
+						use1: null,
+						use2: null,
+						use3: null,
+						need1: null,
+						need2: null,
+						need3: null,
+						need4: null,
+						need5: null,
+						need6: null,
+						need7: null,
+						need8: null,
+						convenience: null,
+						accessWhere1: null,
+						accessWhere2: null,
+						accessWhere3: null,
+						accessWhere4: null,
+						accessWhere5: null,
+						accessDevice1: null,
+						accessDevice2: null,
+						accessDevice3: null,
+						accessDevice4: null,
+						accessDevice5: null,
+						fequencyOnline: null,
+						accessHCI1: null,
+						accessHCI2: null,
+						accessNeed1: null,
+						accessNeed2: null,
+						learn: null,
+						saftey: null,
+						row1_1: null,
+						row1_2: null,
+						row2_1: null,
+						row2_2: null,
+						row3_1: null,
+						row3_2: null,
+						row4_1: null,
+						row5_2: null,
+						row6_1: null,
+						row6_2: null,
+						row7_1: null,
+						row7_2: null,
+						row8_1: null,
+						row8_2: null,
+						row9_1: null,
+						row9_2: null,
+						row10_1: null,
+						row10_2: null,
+						row11_1: null,
+						row11_2: null,
+						row12_1: null,
+						row12_2: null,
+						row13_1: null,
+						row13_2: null,
+						researcherScore: null,
+						researcherComment: null};
+
+					dataObj.sessionID = sCount;
+					//Appending the session header
+					var head = JSON.parse(localStorage.getItem("sessionForm"));
+					for (var key in head) {
+						if (head.hasOwnProperty(key)) {
+							dataObj[key] = head[key];
+						}
 					}
-					else
-					{//This is the first participant
-						session[session.length-1].participant[0] = JSON.parse(localStorage.getItem("participantForm"));
-						session[session.length-1].participant[0].applicationScore = generateScore(session[session.length-1].participant[session[session.length-1].participant.length-1]); // Generate the application score for this participant
-						session[session.length-1].participant[0].researchDateTime = now.toUTCString(); //Append the current date/time
+
+					dataObj.researchDateTime = now.toUTCString(); //Append the current date/time
+
+					dataObj.participantID = pCount;
+					//Append the participant data body
+					var body = JSON.parse(localStorage.getItem("participantForm"));
+					for (var key in body) {
+						if (body.hasOwnProperty(key)) {
+							dataObj[key] = body[key];
+						}
 					}
+					dataObj.applicationScore = generateScore(dataObj); // Generate the application score for this participant
+					
+					pCount++;//Recored the added participant
+					localStorage.setItem("pCount", JSON.stringify(pCount));
+
 					//Save the participants data
+					session[session.length] = dataObj;
 					localStorage.setItem("session", JSON.stringify(session));
-		        }
-			}
+				}
+					
+		    }
 			
 		}
 		else
@@ -127,7 +214,7 @@ $(document).ready(function(){
 
 	//Generate the application score for the given participant
 	function generateScore(participant)
-	{
+	{/*
 		var score = 0;
 		var calc = [];
 
@@ -229,6 +316,6 @@ $(document).ready(function(){
 		participant.appDebugScore  = calc;
 		
 
-		return score;
+		return score;*/ return 9;
 	}
 });

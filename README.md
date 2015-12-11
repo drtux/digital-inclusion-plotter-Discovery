@@ -39,9 +39,16 @@ _Not all of these are things to be included, they are suggestions, ideas and pro
 - Change page heading
 
 ###Form
-- Smaller form elements
-- Maybe show block rather then inline
-- Have button on each column of table to choose all
+- Suggest the questions are phrased so that they can be read out by the researcher (or participant) without having to be rephrased
+- Suggest separating the blocks of Yes and No radio answers. Perhaps some colour and/or tick/cross icons too.
+- Home doesn’t necessarily = Broadband
+- Suggest ‘Desktop’ and ‘Laptop’ are the main options to be consistent with ’Tablet’ etrc. The explanation of ‘PC/Mac’ may not be necessary but if included for completeness you could have Linux too
+- Suggest ‘Yearly or less’
+- The answers to the Ability to get online  question don’t make sense.
+- Extra ‘to’ in ‘confident to learning to’
+- Suggest ‘unconfident’ instead of ‘unsure’
+- Wording of the ‘Action/Activity’ categories need proofing and making consistent
+- Add tick/cross iconography to toggles
 
 ###Chart
 - Separate key to run through 9 points of scale
@@ -56,7 +63,6 @@ _Not all of these are things to be included, they are suggestions, ideas and pro
 - Device based digital inclusion scale
 - More then one point on scale - one for mobile and tablet / one for desktop
 - Hierarchy of action buttons - one major plus secondary
-- Add to github and open source
 
 ##Other
-- Fix exporting to CSV to deal with new data structure
+- 

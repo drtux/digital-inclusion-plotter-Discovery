@@ -1,6 +1,8 @@
 $(document).ready(function(){
 	if($("form").length >0)
 	{//If a form element exsists
+		$(":checkbox").labelauty();
+		$(":radio").labelauty();
 		$.validate();
 	}
 

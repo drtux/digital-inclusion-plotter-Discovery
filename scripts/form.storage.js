@@ -8,8 +8,16 @@
 			var key = input.parents('form:first').attr('name');
 			var data = JSON.parse(localStorage[key]);
 
-			if(input.attr('type') == 'radio' || input.attr('type') == 'checkbox') {
+			if(input.attr('type') == 'radio'){
 				data[input.attr('name')] = input.attr("data-storage");
+			}
+			else if(input.attr('type') == 'checkbox'){
+				if(input.is(":checked"))
+				{
+					data[input.attr('name')] = input.attr("data-storage");
+				}else {
+					delete data[input.attr('name')];
+				}
 			}else if(input.attr('type') == 'file') {
 				var value = input.val();
 				//alert(value);

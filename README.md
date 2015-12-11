@@ -65,4 +65,4 @@ _Not all of these are things to be included, they are suggestions, ideas and pro
 - Hierarchy of action buttons - one major plus secondary
 
 ##Other
-- 
+- Fix score calculation

@@ -81,7 +81,74 @@ $(document).ready(function(){
 	function connectAndSave()
 	{
 		var session = [];
+		var dataObj = //HACK to get round CSV exporting limitations by ensuring all properties present 
+			{
+				sessionID: null,
+				sessionName: null,
+				sessionLocation: null,
+				sessionComment: null,
+				researchDateTime: null,
+				age: null,
+				use1: null,
+				use2: null,
+				use3: null,
+				need1: null,
+				need2: null,
+				need3: null,
+				need4: null,
+				need5: null,
+				need6: null,
+				need7: null,
+				need8: null,
+				convenience: null,
+				accessWhere1: null,
+				accessWhere2: null,
+				accessWhere3: null,
+				accessWhere4: null,
+				accessDevice1: null,
+				accessDevice2: null,
+				accessDevice3: null,
+				accessDevice4: null,
+				accessDevice5: null,
+				fequencyOnline: null,
+				accessHCI1: null,
+				accessHCI2: null,
+				accessNeed1: null,
+				accessNeed2: null,
+				learn: null,
+				saftey: null,
+				row1_1: null,
+				row1_2: null,
+				row2_1: null,
+				row2_2: null,
+				row3_1: null,
+				row3_2: null,
+				row4_1: null,
+				row5_2: null,
+				row6_1: null,
+				row6_2: null,
+				row7_1: null,
+				row7_2: null,
+				row8_1: null,
+				row8_2: null,
+				row9_1: null,
+				row9_2: null,
+				row10_1: null,
+				row10_2: null,
+				row11_1: null,
+				row11_2: null,
+				row12_1: null,
+				row12_2: null,
+				row13_1: null,
+				row13_2: null,
+				researcherScore: null,
+				researcherComment: null,
+				appDebugScore: null
+			};
+
 		var now = new Date;
+
+
 		if(typeof(Storage)!=="undefined")
 		{
 			if (localStorage.getItem("sessionForm") === "{}" || localStorage.getItem("sessionForm") == null) {
@@ -111,68 +178,7 @@ $(document).ready(function(){
 						pCount = parseInt(JSON.parse(localStorage.getItem("pCount")));
 					}
 
-					var dataObj = {//HACK to get round CSV exporting limitations by ensuring all properties present 
-						sessionID: null,
-						sessionName: null,
-						sessionLocation: null,
-						sessionComment: null,
-						researchDateTime: null,
-						age: null,
-						use1: null,
-						use2: null,
-						use3: null,
-						need1: null,
-						need2: null,
-						need3: null,
-						need4: null,
-						need5: null,
-						need6: null,
-						need7: null,
-						need8: null,
-						convenience: null,
-						accessWhere1: null,
-						accessWhere2: null,
-						accessWhere3: null,
-						accessWhere4: null,
-						accessWhere5: null,
-						accessDevice1: null,
-						accessDevice2: null,
-						accessDevice3: null,
-						accessDevice4: null,
-						accessDevice5: null,
-						fequencyOnline: null,
-						accessHCI1: null,
-						accessHCI2: null,
-						accessNeed1: null,
-						accessNeed2: null,
-						learn: null,
-						saftey: null,
-						row1_1: null,
-						row1_2: null,
-						row2_1: null,
-						row2_2: null,
-						row3_1: null,
-						row3_2: null,
-						row4_1: null,
-						row5_2: null,
-						row6_1: null,
-						row6_2: null,
-						row7_1: null,
-						row7_2: null,
-						row8_1: null,
-						row8_2: null,
-						row9_1: null,
-						row9_2: null,
-						row10_1: null,
-						row10_2: null,
-						row11_1: null,
-						row11_2: null,
-						row12_1: null,
-						row12_2: null,
-						row13_1: null,
-						row13_2: null,
-						researcherScore: null,
-						researcherComment: null};
+					
 
 					dataObj.sessionID = sCount;
 					//Appending the session header
@@ -214,19 +220,82 @@ $(document).ready(function(){
 
 	//Generate the application score for the given participant
 	function generateScore(participant)
-	{/*
+	{
 		var score = 0;
 		var calc = [];
 
-		if(participant.useEver === '-1')
+
+
+/*                                            NULL === NO 
+		use1: null, ever
+		use2: null, currently
+		use3: null, future
+		need1: null, yes everyday
+		need2: null, yes work
+		need3: null, yes tasks
+		need4: null, no skills
+		need5: null, no access
+		need6: null, no motivation
+		need7: null, no confidence
+		need8: null, no need
+		convenience: null, 1-4 very conveniant to very inconveniant (null is don't know)
+		accessWhere1: null, home
+		accessWhere2: null, mobile
+		accessWhere3: null, public
+		accessWhere4: null, work
+		accessDevice1: null, desktop
+		accessDevice2: null, laptop
+		accessDevice3: null, tablet
+		accessDevice4: null, smartphone
+		accessDevice5: null, brickphone
+		fequencyOnline: null, 1-4 daily, weekly, monthly, yearly
+		accessHCI1: null, every
+		accessHCI2: null, occational/task
+		accessNeed1: null, good/bad
+		accessNeed2: null, aquired
+		learn: null, 1-4 very confident to very unsure (null is don't know)
+		saftey: null, 1-4 very confident to very unsure (null is don't know) 
+		row1_1: null, no idea
+		row1_2: null, could/couldn't = NULL
+		row2_1: null,
+		row2_2: null,
+		row3_1: null,
+		row3_2: null,
+		row4_1: null,
+		row5_2: null,
+		row6_1: null,
+		row6_2: null,
+		row7_1: null,
+		row7_2: null,
+		row8_1: null,
+		row8_2: null,
+		row9_1: null,
+		row9_2: null,
+		row10_1: null,
+		row10_2: null,
+		row11_1: null,
+		row11_2: null,
+		row12_1: null,
+		row12_2: null,
+		row13_1: null,
+		row13_2: null,
+*/
+
+
+		if(participant.use1 != null)//Ever
 		{//Never used the internet "Never have, never will"
 			return 1;
 		}
 
-		if(participant.useCurrent === '-1')
+		if(participant.use2 != null)//Current
 		{//Dosen't currently use digital technology "Was online, but no longer online"
 			return 2;
 		}
+		if(participant.use3 != null)//Future
+		{//Dosen't currently use digital technology "Was online, but no longer online"
+			return 2;
+		}
+		if (participant.need1) {};
 		if(participant.ynRow1 === '1'){
 			calc.push(parseInt(participant.row1) * 2);
 		}else{
@@ -313,9 +382,8 @@ $(document).ready(function(){
 		else if(calcSum >80 && calcSum <=100){score =  8}
 		else{score = 9};
 
-		participant.appDebugScore  = calc;
-		
+		dataObj.appDebugScore  = calc;
 
-		return score;*/ return 9;
+		return score;
 	}
 });

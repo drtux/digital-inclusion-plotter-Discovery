@@ -117,30 +117,19 @@ $(document).ready(function(){
 				accessNeed2: null,
 				learn: null,
 				saftey: null,
-				row1_1: null,
-				row1_2: null,
-				row2_1: null,
-				row2_2: null,
-				row3_1: null,
-				row3_2: null,
-				row4_1: null,
-				row5_2: null,
-				row6_1: null,
-				row6_2: null,
-				row7_1: null,
-				row7_2: null,
-				row8_1: null,
-				row8_2: null,
-				row9_1: null,
-				row9_2: null,
-				row10_1: null,
-				row10_2: null,
-				row11_1: null,
-				row11_2: null,
-				row12_1: null,
-				row12_2: null,
-				row13_1: null,
-				row13_2: null,
+				row1: null,
+				row2: null,
+				row3: null,
+				row4: null,
+				row5: null,
+				row6: null,
+				row7: null,
+				row8: null,
+				row9: null,
+				row10: null,
+				row11: null,
+				row12: null,
+				row13: null,
 				researcherScore: null,
 				researcherComment: null,
 				appDebugScore: null
@@ -254,31 +243,20 @@ $(document).ready(function(){
 		accessNeed1: null, good/bad
 		accessNeed2: null, aquired
 		learn: null, 1-4 very confident to very unsure (null is don't know)
-		saftey: null, 1-4 very confident to very unsure (null is don't know) 
-		row1_1: null, no idea
-		row1_2: null, could/couldn't = NULL
-		row2_1: null,
-		row2_2: null,
-		row3_1: null,
-		row3_2: null,
-		row4_1: null,
-		row5_2: null,
-		row6_1: null,
-		row6_2: null,
-		row7_1: null,
-		row7_2: null,
-		row8_1: null,
-		row8_2: null,
-		row9_1: null,
-		row9_2: null,
-		row10_1: null,
-		row10_2: null,
-		row11_1: null,
-		row11_2: null,
-		row12_1: null,
-		row12_2: null,
-		row13_1: null,
-		row13_2: null,
+		saftey: null, 1-4 very confident to very unsure (null is don't know no idea
+		row1: null, search engine
+		row2: null, search engine advanced
+		row3: null, site search
+		row4: null, Upload/downlonad + email attachment
+		row5: null, History
+		row6: null, Msging
+		row7: null, VoIP
+		row8: null, news online
+		row9: null, banking
+		row10: null, shopping
+		row11: null, Gov services online
+		row12: null, install/uninstall
+		row13: null, high bandwidth
 */
 
 

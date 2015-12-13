@@ -61,7 +61,7 @@ input.labelauty + label > span.labelauty-checked-image
 {
 	display: inline-block;
 	width: 16px;
-	height: 16px;
+	height: 20px;
 	vertical-align: bottom;
 	background-repeat: no-repeat;
 	background-position: left center;
@@ -70,6 +70,12 @@ input.labelauty + label > span.labelauty-checked-image
 	-moz-transition: background-image 0.5s linear;
 	-webkit-transition: background-image 0.5s linear;
 	-o-transition: background-image 0.5s linear;
+}
+input[type="radio"].labelauty + label > span.labelauty-unchecked-image
+{
+	width: 11px;
+    padding-left: 0px;
+    margin-left: 5px;
 }
 
 /* When there's a label, add a little margin to the left */
@@ -133,9 +139,14 @@ input.labelauty[disabled] + label
 }
 
 /* Add a background to (un)checked images */
-input.labelauty + label > span.labelauty-unchecked-image
+input[type="checkbox"].labelauty + label > span.labelauty-unchecked-image
 {
-	background-image: url( ../images/input-unchecked.png );
+	background-image: url( ../images/input-unchecked_checkbox.png );
+}
+
+input[type="radio"].labelauty + label > span.labelauty-unchecked-image
+{
+	background-image: url( ../images/input-unchecked_radio.png );
 }
 
 input.labelauty + label > span.labelauty-checked-image

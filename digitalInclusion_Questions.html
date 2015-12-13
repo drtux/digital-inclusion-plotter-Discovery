@@ -43,7 +43,7 @@
 		</h1>
 		<p>The definition of digital is:</br>
 		A device such as PCs, Macs, tablets, mobile phones that access the internet</p>
-		<p><span class="required">*</span> Required field</p>
+		<p>Unless denoted by a <span class="required">*</span> as a required field, leaving a question blank is assumbed to be a 'don't know'/negative answer</p>
 
 
 			<h2 class="heading-large">Assessment questions</h2>
@@ -91,10 +91,19 @@
 	<!-- Convenience -->
 				<div class="form-group">
 					<label class="form-label-bold" for="convenience">Does the participant find it convenient to use the internet regularly to complete tasks?</label>
-					<input id="convenience1" name="convenience" type="radio" data-storage="1" data-labelauty="Very convenient"/>
-					<input id="convenience2" name="convenience" type="radio" data-storage="2" data-labelauty="Convenient"/>
-					<input id="convenience3" name="convenience" type="radio" data-storage="3" data-labelauty="Inconvenient"/>
-					<input id="convenience4" name="convenience" type="radio" data-storage="4" data-labelauty="Very inconvenient"/>
+					<input id="convenience1" name="convenience" type="radio" data-storage="4" data-labelauty="Very convenient"/>
+					<input id="convenience2" name="convenience" type="radio" data-storage="3" data-labelauty="Convenient"/>
+					<input id="convenience3" name="convenience" type="radio" data-storage="2" data-labelauty="Inconvenient"/>
+					<input id="convenience4" name="convenience" type="radio" data-storage="1" data-labelauty="Very inconvenient"/>
+				</div>
+
+	<!-- Confidence -->
+				<div class="form-group">
+					<label class="form-label-bold" for="confidence">Is the participant confident using digital?</label>
+					<input id="confidence1" name="confidence" type="radio" data-storage="4" data-labelauty="Very confident"/>
+					<input id="confidence2" name="confidence" type="radio" data-storage="3" data-labelauty="Confident"/>
+					<input id="confidence3" name="confidence" type="radio" data-storage="2" data-labelauty="Unsure"/>
+					<input id="confidence4" name="confidence" type="radio" data-storage="1" data-labelauty="Very unsure"/>
 				</div>
 
 	<!-- How access -->
@@ -102,8 +111,8 @@
 					<label class="form-label-bold" for="accessWhere">Where does the participant predominantly access the internet from?</label>
 					<input id="accessWhere1" name="accessWhere1" type="checkbox" data-storage="1" data-labelauty="Home"/>
 					<input id="accessWhere2" name="accessWhere2" type="checkbox" data-storage="2" data-labelauty="Mobile internet or hotspots"/>
-					<input id="accessWhere4" name="accessWhere4" type="checkbox" data-storage="3" data-labelauty="Public place - E.g. cyber-cafe or library"/>
-					<input id="accessWhere5" name="accessWhere5" type="checkbox" data-storage="4" data-labelauty="At work"/>
+					<input id="accessWhere3" name="accessWhere3" type="checkbox" data-storage="3" data-labelauty="Public place - E.g. cyber-cafe or library"/>
+					<input id="accessWhere4" name="accessWhere4" type="checkbox" data-storage="4" data-labelauty="At work"/>
 				</div>
 
 	<!-- Device access -->
@@ -119,10 +128,10 @@
 	<!-- Fequency Online -->
 				<div class="form-group">
 					<label class="form-label-bold" for="fequencyOnline">How often dose the participant use the internet?</label>
-					<input id="fequencyOnline1" name="fequencyOnline" type="radio" data-storage="1" data-labelauty="Daily - E.g. To access social media, or at work"/>
-					<input id="fequencyOnline2" name="fequencyOnline" type="radio" data-storage="2" data-labelauty="Weekly - E.g. To email family/friends"/>
-					<input id="fequencyOnline3" name="fequencyOnline" type="radio" data-storage="3" data-labelauty="Monthly - E.g. To pay bills"/>
-					<input id="fequencyOnline4" name="fequencyOnline" type="radio" data-storage="4" data-labelauty="Yearly - E.g. To use Government services"/>
+					<input id="fequencyOnline1" name="fequencyOnline" type="radio" data-storage="4" data-labelauty="Daily - E.g. To access social media, or at work"/>
+					<input id="fequencyOnline2" name="fequencyOnline" type="radio" data-storage="3" data-labelauty="Weekly - E.g. To email family/friends"/>
+					<input id="fequencyOnline3" name="fequencyOnline" type="radio" data-storage="2" data-labelauty="Monthly - E.g. To pay bills"/>
+					<input id="fequencyOnline4" name="fequencyOnline" type="radio" data-storage="1" data-labelauty="Yearly - E.g. To use Government services"/>
 				</div>
 
 	<!-- HCI access -->
@@ -142,20 +151,20 @@
 	<!-- Digital learning -->
 				<div class="form-group">
 					<label class="form-label-bold" for="learn">Does the participant feel confident to learning to use a new internet service/process?</label>
-					<input id="learn1" name="learn" type="radio" data-storage="1" data-labelauty="Very confident"/>
-					<input id="learn2" name="learn" type="radio" data-storage="2" data-labelauty="Confident"/>
-					<input id="learn3" name="learn" type="radio" data-storage="3" data-labelauty="Unsure"/>
-					<input id="learn4" name="learn" type="radio" data-storage="4" data-labelauty="Very unsure"/>
+					<input id="learn1" name="learn" type="radio" data-storage="4" data-labelauty="Very confident"/>
+					<input id="learn2" name="learn" type="radio" data-storage="3" data-labelauty="Confident"/>
+					<input id="learn3" name="learn" type="radio" data-storage="2" data-labelauty="Unsure"/>
+					<input id="learn4" name="learn" type="radio" data-storage="1" data-labelauty="Very unsure"/>
 				</div>
 
 	<!-- Digital saftey -->
 				<div class="form-group">
-					<label class="form-label-bold" for="saftey">Does the participant feel like they know how to be safe online?</label>
+					<label class="form-label-bold" for="safety">Does the participant feel like they know how to be safe online?</label>
 					<p class="form-hint">Aweness of malware/viruses, spyware, phishing - email/website scams</p>
-					<input id="saftey1" name="saftey" type="radio" data-storage="1" data-labelauty="Very confident"/>
-					<input id="saftey2" name="saftey" type="radio" data-storage="2" data-labelauty="Confident"/>
-					<input id="saftey3" name="saftey" type="radio" data-storage="3" data-labelauty="Unsure"/>
-					<input id="saftey4" name="saftey" type="radio" data-storage="4" data-labelauty="Very unsure"/>
+					<input id="safety1" name="safety" type="radio" data-storage="4" data-labelauty="Very confident"/>
+					<input id="safety2x" name="safety" type="radio" data-storage="3" data-labelauty="Confident"/>
+					<input id="safety3" name="safety" type="radio" data-storage="2" data-labelauty="Unsure"/>
+					<input id="safety4" name="safety" type="radio" data-storage="1" data-labelauty="Very unsure"/>
 				</div>
 				
 	<!-- Digital Skills -->

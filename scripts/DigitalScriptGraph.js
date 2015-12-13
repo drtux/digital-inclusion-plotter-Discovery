@@ -63,18 +63,15 @@ $(document).ready(function()
 		context.drawImage(imageObj, 0, 0); //Draw the backdrop graph
 		drawYAxis();
 		//Draw the required points
-		for (var j = 0; j < session.length; j++)
+		for (var i = 0; i < session.length; i++)
 		{
-			for (var i = 0; i < session[j].participant.length; i++)
+			if (session[i].researcherScore != undefined)
 			{
-				if (session[j].participant[i].researcherScore != undefined)
-				{
-					plotScore(session[j].participant[i].researcherScore, randomiseAge(parseInt(session[j].participant[i].age)), session[j].participant[i].applicationScore);
-				}
-				else
-				{
-					plotScore('N/A', randomiseAge(parseInt(session[j].participant[i].age)), session[j].participant[i].applicationScore);
-				};
+				plotScore(session[i].researcherScore, randomiseAge(parseInt(session[i].age)), session[i].applicationScore);
+			}
+			else
+			{
+				plotScore('N/A', randomiseAge(parseInt(session[i].age)), session[i].applicationScore);
 			};
 		};
 		

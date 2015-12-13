@@ -215,7 +215,8 @@ $(document).ready(function(){
 
 
 
-/*                                            NULL === NO 
+/*               ----- KEY -----                          NULL === NO 
+
 		use1: null, ever
 		use2: null, currently
 		use3: null, future
@@ -227,7 +228,8 @@ $(document).ready(function(){
 		need6: null, no motivation
 		need7: null, no confidence
 		need8: null, no need
-		convenience: null, 1-4 very conveniant to very inconveniant (null is don't know)
+		convenience: null, 1-4 
+		confidence: null, 1-4
 		accessWhere1: null, home
 		accessWhere2: null, mobile
 		accessWhere3: null, public
@@ -242,8 +244,8 @@ $(document).ready(function(){
 		accessHCI2: null, occational/task
 		accessNeed1: null, good/bad
 		accessNeed2: null, aquired
-		learn: null, 1-4 very confident to very unsure (null is don't know)
-		saftey: null, 1-4 very confident to very unsure (null is don't know no idea
+		learn: null, 1-4
+		saftey: null, 1-4
 		row1: null, search engine
 		row2: null, search engine advanced
 		row3: null, site search
@@ -256,10 +258,90 @@ $(document).ready(function(){
 		row10: null, shopping
 		row11: null, Gov services online
 		row12: null, install/uninstall
-		row13: null, high bandwidth
+		row13: null, high bandwidth --ACCESS--
+
+
+1: Never have, never will 
+2: Was online, but no longer online 
+3: Willing and unable 
+4: Reluctantly online 
+5: Learning the ropes 
+6: Task specific 
+7: Basic digital skills and capabilities 
+8: Confident 
+9: Expert 
+
+
+
 */
 
+		//Calc number of devices
+		var deviceTypeCount = 0;
+		if(participant.accessDevice1 != null) deviceTypeCount++;
+		if(participant.accessDevice2 != null) deviceTypeCount++;
+		if(participant.accessDevice3 != null) deviceTypeCount++;
+		if(participant.accessDevice4 != null) deviceTypeCount++;
+		if(participant.accessDevice5 != null) deviceTypeCount++;
 
+		//Calc access score
+		var accessScore = 0;
+		if(participant.accessWhere1 != null) accessScore++;
+		if(participant.accessWhere2 != null) accessScore++;
+		if(participant.accessWhere3 != null) accessScore++;
+		if(participant.accessWhere4 != null) accessScore++;
+		switch(deviceTypeCount)
+		{
+			case 1: accessScore+=1; break;
+			case 2: accessScore+=2; break;
+			case 3: accessScore+=3; break;
+			case 4: accessScore+=4; break;
+			case 5: accessScore+=5; break;
+			default: accessScore-=1; break;
+		}
+		if(participant.accessHCI1 != null) accessScore--;
+		if(participant.accessHCI2 != null) accessScore--;
+		if(participant.accessNeed1 != null) accessScore--;
+		if(participant.accessNeed2 != null) accessScore--;
+		if(participant.row13 != null) accessScore++;
+
+		//Calc skill score
+		var skillScore = 0;
+		if(participant.row1 != null) skillScore++;
+		if(participant.row2 != null) skillScore++;
+		if(participant.row3 != null) skillScore++;
+		if(participant.row4 != null) skillScore++;
+		if(participant.row5 != null) skillScore++;
+		if(participant.row6 != null) skillScore++;
+		if(participant.row7 != null) skillScore++;
+		if(participant.row8 != null) skillScore++;
+		if(participant.row9 != null) skillScore++;
+		if(participant.row10 != null) skillScore++;
+		if(participant.row11 != null) skillScore++;
+		if(participant.row12 != null) skillScore++;
+		
+
+//Begin score routeing
+
+		//Lvl 1: Dosen't ever use && not use in future && feels no need && has no devices
+		if((participant.use1 == null) && (participant.use3 == null) && (participant.need8 == null) && (deviceTypeCount == 0)){return 1;}
+		else//Lvl 2: Dosen't currently use && won't use in future && has few devices
+		if ((participant.use2 == null) && (participant.use3 == null) && (deviceTypeCount <= 1)){return 2;}
+		else//Lvl 3: Low confidence && access && learning && safety &| has good/bad days && has few device types (has brick phone?)
+		if ((parseInt(participant.confidence) <= 2) && (accessScore <= 3) && (parseInt(participant.learn) <= 2) && (parseInt(participant.safety) <= 2) && (deviceTypeCount <= 2)) {return 3;}
+		else//Lvl 4: Low learning && confidence && needs assistance everytime? (few devices types)
+		if ((parseInt(participant.learn) <= 2) && (parseInt(participant.confidence) <= 2) && (accessScore <= 5) && (deviceTypeCount <= 3)) {return 4;}
+		else//Lvl 5: High learning confidence but low skill, needs assistance occasionally (has smartphone)
+		if ((parseInt(participant.learn) >=3) && (skillScore <= 4) && (participant.accessHCI2 != null)) {return 5;}
+		else//Lvl 6: Yes to task specific (weekly/monthy), needs assistance occasionally, internet for work, the more standard ‘basic skills’ msging/soical media, new sites, shopping
+		if ((parseInt(participant.fequencyOnline) <=2) && (participant.accessHCI2 != null) && (skillScore <= 8)) {return 6;}
+		else//Lvl 7: Yes to majority of the skills (daily) (moderate devices types) possibly missing advanced search
+		if ((parseInt(participant.fequencyOnline) >=3) && (deviceTypeCount >=3) && (skillScore <= 10)) {return 7;}
+		else//Lvl 8: Regularly online, highly confident, high access
+		if ((parseInt(participant.fequencyOnline) >=3) && (parseInt(participant.confidence) >=3) && (accessScore >= 8)) {return 8;}
+		else//Lvl 9: yes to everything (lots of device types) high bandwidth || advanced search 
+		{return 9;}	
+
+/*
 		if(participant.use1 != null)//Ever
 		{//Never used the internet "Never have, never will"
 			return 1;
@@ -362,6 +444,6 @@ $(document).ready(function(){
 
 		dataObj.appDebugScore  = calc;
 
-		return score;
+		return score; */
 	}
 });

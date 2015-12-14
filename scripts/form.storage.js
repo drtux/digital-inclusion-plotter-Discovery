@@ -11,12 +11,12 @@
 			if(input.attr('type') == 'radio'){
 				data[input.attr('name')] = input.attr("data-storage");
 			}
-			else if(input.attr('type') == 'checkbox'){
+			else if(input.attr('type') == 'checkbox'){//BUG FIX
 				if(input.is(":checked"))
 				{
-					data[input.attr('name')] = input.attr("data-storage");
+					data[input.attr('id')] = input.attr("data-storage");
 				}else {
-					delete data[input.attr('name')];
+					delete data[input.attr('id')];
 				}
 			}else if(input.attr('type') == 'file') {
 				var value = input.val();
@@ -52,6 +52,7 @@
 						var input = $(this);
 						var inputid = $(this).attr('id');
 						var value = data[input.attr('name')];
+						if (input.attr('type') == 'checkbox'){value = data[input.attr('id')];}// BUG FIX
 						if(input.attr('type') == 'radio' || input.attr('type') == 'checkbox') {
 							if(value==input.attr('data-storage')) {
 								$('#'+inputid).attr('checked', input.is(':checked')).attr('class',  'radio-checked');

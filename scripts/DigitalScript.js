@@ -15,8 +15,8 @@ $(document).ready(function(){
 	{
 		switch($(this).attr('navType'))
 		{
-			case 'newParticipant': newParticipant($(this)); break;
-			case 'cancelParticipant': cancelParticipant($(this)); break;
+			case 'newparticipant': newparticipant($(this)); break;
+			case 'cancelparticipant': cancelparticipant($(this)); break;
 			case 'newSession': newSession($(this)); break;
 			case 'cancelSession': cancelSession($(this)); break;
 			case 'endSession': endSession($(this)); break;
@@ -39,7 +39,7 @@ $(document).ready(function(){
 		}
 	}
 
-	function newParticipant(btn) {
+	function newparticipant(btn) {
 	    if($('form').length){
 	    	if($('form').isValid())
 			{
@@ -70,7 +70,7 @@ $(document).ready(function(){
 			localStorage.removeItem("sessionForm");//Delete current session form data
 			window.location.replace(URL + btn.attr('nextPage') + FILETYPE);
 	}
-	function cancelParticipant(btn) {
+	function cancelparticipant(btn) {
 			localStorage.removeItem("participantForm");//Delete current participant form data
 			window.location.replace(URL + btn.attr('nextPage') + FILETYPE);
 	}
@@ -89,47 +89,48 @@ $(document).ready(function(){
 				sessionComment: null,
 				researchDateTime: null,
 				age: null,
-				use1: null,
-				use2: null,
-				use3: null,
-				need1: null,
-				need2: null,
-				need3: null,
-				need4: null,
-				need5: null,
-				need6: null,
-				need7: null,
-				need8: null,
-				convenience: null,
-				accessWhere1: null,
-				accessWhere2: null,
-				accessWhere3: null,
-				accessWhere4: null,
-				accessDevice1: null,
-				accessDevice2: null,
-				accessDevice3: null,
-				accessDevice4: null,
-				accessDevice5: null,
+				useEver: null,
+				useCurrent: null,
+				useFuture: null,
+				needYDay: null,
+				needYWork: null,
+				needYTask: null,
+				needNSkill: null,
+				needNAccess: null,
+				needNMotivation: null,
+				needNConfidence: null,
+				needNo: null,
+				convenience: null, 
+				confidence: null,
+				accessWhereHome: null,
+				accessWhereMobile: null,
+				accessWherePublic: null,
+				accessWhereWork: null,
+				accessDeviceDesktop: null,
+				accessDeviceLaptop: null,
+				accessDeviceTablet: null,
+				accessDeviceSmartphone: null,
+				accessDeviceBrickphone: null,
 				fequencyOnline: null,
-				accessHCI1: null,
-				accessHCI2: null,
-				accessNeed1: null,
-				accessNeed2: null,
+				accessHCIEvery: null,
+				accessHCIOccasional: null,
+				accessNeedGoodBad: null,
+				accessNeed: null,
 				learn: null,
 				saftey: null,
-				row1: null,
-				row2: null,
-				row3: null,
-				row4: null,
-				row5: null,
-				row6: null,
-				row7: null,
-				row8: null,
-				row9: null,
-				row10: null,
-				row11: null,
-				row12: null,
-				row13: null,
+				rowSearch: null,
+				rowSearchAdv: null,
+				rowSearchSite: null,
+				rowUpDlFile: null,
+				rowHist: null,
+				rowMsg: null,
+				rowVoIP: null,
+				rowNews: null,
+				rowBank: null,
+				rowShop: null,
+				rowGov: null,
+				rowInstall: null,
+				rowBandwidth: null,
 				researcherScore: null,
 				researcherComment: null,
 				appDebugScore: null
@@ -139,66 +140,7 @@ $(document).ready(function(){
 
 
 		if(typeof(Storage)!=="undefined")
-		{
-			if (localStorage.getItem("sessionForm") === "{}" || localStorage.getItem("sessionForm") == null) {
-				//Do nothing as no session started
-			}
-			else
-			{//A session has been started
-				if (localStorage.getItem("participantForm") === "{}" || localStorage.getItem("participantForm") == null)
-				{
-					//Do nothing must have participant to save
-		        }
-		        else
-		        {//Have both session and participant so can save
-		        	var sCount = 0;//Default to there being no other sessions
-		        	var pCount = 0;//Default to there being no other partipipants
-
-					if (localStorage.getItem("session") != null)
-					{//There are other sessions so get their data
-						session = JSON.parse(localStorage.getItem("session"));
-					}
-					if (localStorage.getItem("sCount") != null)
-					{//There are other participants get the count
-						sCount = parseInt(JSON.parse(localStorage.getItem("sCount")));
-					}
-					if (localStorage.getItem("pCount") != null)
-					{//There are other participants get the count
-						pCount = parseInt(JSON.parse(localStorage.getItem("pCount")));
-					}
-
-					
-
-					dataObj.sessionID = sCount;
-					//Appending the session header
-					var head = JSON.parse(localStorage.getItem("sessionForm"));
-					for (var key in head) {
-						if (head.hasOwnProperty(key)) {
-							dataObj[key] = head[key];
-						}
-					}
-
-					dataObj.researchDateTime = now.toUTCString(); //Append the current date/time
-
-					dataObj.participantID = pCount;
-					//Append the participant data body
-					var body = JSON.parse(localStorage.getItem("participantForm"));
-					for (var key in body) {
-						if (body.hasOwnProperty(key)) {
-							dataObj[key] = body[key];
-						}
-					}
-					dataObj.applicationScore = generateScore(dataObj); // Generate the application score for this participant
-					
-					pCount++;//Recored the added participant
-					localStorage.setItem("pCount", JSON.stringify(pCount));
-
-					//Save the participants data
-					session[session.length] = dataObj;
-					localStorage.setItem("session", JSON.stringify(session));
-				}
-					
-		    }
+		{p
 			
 		}
 		else
@@ -213,54 +155,122 @@ $(document).ready(function(){
 		var score = 0;
 		var calc = [];
 
+///////////////////////////////
+/* ---- CONFIG: ROUTING ---- */
+///////////////////////////////
+
+//NULL === Negative responce
+		
+/* ---- USE ---- */
+		participant.useEver
+		participant.useCurrent
+		participant.useFuture
+
+/* ---- NEED ---- */ var needScore = 0;
+
+		if(participant.needYDay != null){needScore += 4}
+		if(participant.needYWork != null){needScore += 1}
+		if(participant.needYTask != null){needScore += 1}
+		if(participant.needNSkill != null){needScore -= 1}
+		if(participant.needNAccess != null){needScore -= 1}
+		if(participant.needNMotivation != null){needScore -= 1}
+		if(participant.needNConfidence != null){needScore -= 1}
+		participant.needNo//Route based on this?
+
+/* ---- DEVICE ---- */ var deviceTypeCount = 0;
+		if(participant.accessDeviceDesktop != null){deviceTypeCount++;}
+		if(participant.accessDeviceLaptop != null){deviceTypeCount++;}
+		if(participant.accessDeviceTablet != null){deviceTypeCount++;}
+		if(participant.accessDeviceSmartphone != null){deviceTypeCount++;}
+		if(participant.accessDeviceBrickphone != null){deviceTypeCount++;}
+
+/* ---- ACCESS ---- */ var accessScore = 0;
+
+		if(participant.accessWhereHome != null){accessScore += 10;}
+		if(participant.accessWhereMobile != null){accessScore += 5;}
+		if(participant.accessWherePublic != null){accessScore += 2;}
+		if(participant.accessWhereWork != null){accessScore += 2;}
+		if(participant.accessDeviceDesktop != null){accessScore += 2;}
+		if(participant.accessDeviceLaptop != null){accessScore += 2;}
+		if(participant.accessDeviceTablet != null){accessScore += 2;}
+		if(participant.accessDeviceSmartphone != null){accessScore += 2;}
+		if(participant.accessDeviceBrickphone != null){accessScore -= 2;}
+		if(participant.accessHCIEvery != null){accessScore -= 10;}
+		if(participant.accessHCIOccasional != null){accessScore -= 5;}
+		if(participant.accessNeedGoodBad != null){accessScore -= 5;}
+		if(participant.accessNeed != null){accessScore -= 10;}
+
+		switch(parseInt(participant.fequencyOnline))
+		{
+			case 1: accessScore -= 4; break;
+			case 2: accessScore -= 2; break;
+			case 3: accessScore += 2; break;
+			case 4: accessScore += 4; break;
+			default: break;
+		}
+
+/* ---- MOTIVATION ---- */ var motivationScore = 0;
+
+		switch(parseInt(participant.convenience))
+		{
+			case 1: motivationScore -= 4; break;
+			case 2: motivationScore -= 2; break;
+			case 3: motivationScore += 2; break;
+			case 4: motivationScore += 4; break;
+			default: break;
+		}
+
+/* ---- CONFIDENCE ---- */ var confidenceScore = 0;
+
+		switch(parseInt(participant.confidence))
+		{
+			case 1: confidenceScore -= 4; break;
+			case 2: confidenceScore -= 2; break;
+			case 3: confidenceScore += 2; break;
+			case 4: confidenceScore += 4; break;
+			default: break;
+		}
+
+		switch(parseInt(participant.learn))
+		{
+			case 1: confidenceScore -= 4; break;
+			case 2: confidenceScore -= 2; break;
+			case 3: confidenceScore += 2; break;
+			case 4: confidenceScore += 4; break;
+			default: break;
+		}
+
+		switch(parseInt(participant.saftey))
+		{
+			case 1: confidenceScore -= 4; break;
+			case 2: confidenceScore -= 2; break;
+			case 3: confidenceScore += 2; break;
+			case 4: confidenceScore += 4; break;
+			default: break;
+		}
+
+/* ---- SKILL ---- */ var skillScore = 0;
+
+		if(participant.rowSearch != null){skillScore += 1}
+		if(participant.rowSearchAdv != null){skillScore += 3}
+		if(participant.rowSearchSite != null){skillScore += 1}
+		if(participant.rowUpDlFile != null){skillScore += 1}
+		if(participant.rowHist != null){skillScore += 1}
+		if(participant.rowMsg != null){skillScore += 1}
+		if(participant.rowVoIP != null){skillScore += 1}
+		if(participant.rowNews != null){skillScore += 1}
+		if(participant.rowBank != null){skillScore += 2}
+		if(participant.rowShop != null){skillScore += 1}
+		if(participant.rowGov != null){skillScore += 1}
+		if(participant.rowInstall != null){skillScore += 1}
+		if(participant.rowBandwidth != null){skillScore += 2}
 
 
-/*               ----- KEY -----                          NULL === NO 
+//////////////////////////////
+/* ---- START: ROUTING ---- */
+//////////////////////////////
 
-		use1: null, ever
-		use2: null, currently
-		use3: null, future
-		need1: null, yes everyday
-		need2: null, yes work
-		need3: null, yes tasks
-		need4: null, no skills
-		need5: null, no access
-		need6: null, no motivation
-		need7: null, no confidence
-		need8: null, no need
-		convenience: null, 1-4 
-		confidence: null, 1-4
-		accessWhere1: null, home
-		accessWhere2: null, mobile
-		accessWhere3: null, public
-		accessWhere4: null, work
-		accessDevice1: null, desktop
-		accessDevice2: null, laptop
-		accessDevice3: null, tablet
-		accessDevice4: null, smartphone
-		accessDevice5: null, brickphone
-		fequencyOnline: null, 1-4 daily, weekly, monthly, yearly
-		accessHCI1: null, every
-		accessHCI2: null, occational/task
-		accessNeed1: null, good/bad
-		accessNeed2: null, aquired
-		learn: null, 1-4
-		saftey: null, 1-4
-		row1: null, search engine
-		row2: null, search engine advanced
-		row3: null, site search
-		row4: null, Upload/downlonad + email attachment
-		row5: null, History
-		row6: null, Msging
-		row7: null, VoIP
-		row8: null, news online
-		row9: null, banking
-		row10: null, shopping
-		row11: null, Gov services online
-		row12: null, install/uninstall
-		row13: null, high bandwidth --ACCESS--
-
-
+/* ---- KEY ----
 1: Never have, never will 
 2: Was online, but no longer online 
 3: Willing and unable 
@@ -270,21 +280,32 @@ $(document).ready(function(){
 7: Basic digital skills and capabilities 
 8: Confident 
 9: Expert 
-
-
-
 */
 
+
+
+
+
+
+
+
+
+////////////////////////////
+/* ---- END: ROUTING ---- */
+////////////////////////////
+
+
+/*
 		//Calc number of devices
-		var deviceTypeCount = 0;
+		var deviceTypeCount=0;
 		if(participant.accessDevice1 != null) deviceTypeCount++;
 		if(participant.accessDevice2 != null) deviceTypeCount++;
 		if(participant.accessDevice3 != null) deviceTypeCount++;
 		if(participant.accessDevice4 != null) deviceTypeCount++;
 		if(participant.accessDevice5 != null) deviceTypeCount++;
 
-		//Calc access score
-		var accessScore = 0;
+		//Calc access score + conveniance
+		var accessScore=0;
 		if(participant.accessWhere1 != null) accessScore++;
 		if(participant.accessWhere2 != null) accessScore++;
 		if(participant.accessWhere3 != null) accessScore++;
@@ -305,7 +326,7 @@ $(document).ready(function(){
 		if(participant.row13 != null) accessScore++;
 
 		//Calc skill score
-		var skillScore = 0;
+		var skillScore=0;
 		if(participant.row1 != null) skillScore++;
 		if(participant.row2 != null) skillScore++;
 		if(participant.row3 != null) skillScore++;
@@ -319,27 +340,81 @@ $(document).ready(function(){
 		if(participant.row11 != null) skillScore++;
 		if(participant.row12 != null) skillScore++;
 		
+		//Calc motivation score
+		var motivationScore = 0;
+
+
+		//Calc confidence score
+		var confidenceScore = 0;
+
+
+		
+
 
 //Begin score routeing
 
 		//Lvl 1: Dosen't ever use && not use in future && feels no need && has no devices
-		if((participant.use1 == null) && (participant.use3 == null) && (participant.need8 == null) && (deviceTypeCount == 0)){return 1;}
+		if((participant.use1 == null) &&
+			(participant.use3 == null) &&
+			(participant.need8 == null) &&
+			(deviceTypeCount == 0))
+			{return 1;}
 		else//Lvl 2: Dosen't currently use && won't use in future && has few devices
-		if ((participant.use2 == null) && (participant.use3 == null) && (deviceTypeCount <= 1)){return 2;}
-		else//Lvl 3: Low confidence && access && learning && safety &| has good/bad days && has few device types (has brick phone?)
-		if ((parseInt(participant.confidence) <= 2) && (accessScore <= 3) && (parseInt(participant.learn) <= 2) && (parseInt(participant.safety) <= 2) && (deviceTypeCount <= 2)) {return 3;}
-		else//Lvl 4: Low learning && confidence && needs assistance everytime? (few devices types)
-		if ((parseInt(participant.learn) <= 2) && (parseInt(participant.confidence) <= 2) && (accessScore <= 5) && (deviceTypeCount <= 3)) {return 4;}
-		else//Lvl 5: High learning confidence but low skill, needs assistance occasionally (has smartphone)
-		if ((parseInt(participant.learn) >=3) && (skillScore <= 4) && (participant.accessHCI2 != null)) {return 5;}
+		if ((participant.use2 == null) &&
+			(participant.use3 == null) &&
+			(deviceTypeCount <= 1))
+			{return 2;}
+		else//Lvl 3: Low confidence && access && learning && safety && has good/bad days && has few device types (has brick phone?) && inconvenient
+		if ((parseInt(participant.confidence) <= 2) &&
+			(accessScore <= 3) &&
+			(parseInt(participant.learn) <= 2) &&
+			(parseInt(participant.safety) <= 2) &&
+			(deviceTypeCount <= 2) &&
+			(participant.convenience <= 2))
+			{return 3;}
+		else//Lvl 4: Low learning && confidence && needs assistance everytime && few devices types && inconveniant
+		if ((parseInt(participant.learn) <= 2) &&
+			(parseInt(participant.confidence) <= 2) &&
+			(accessScore <= 5) &&
+			(deviceTypeCount <= 3) &&
+			(participant.convenience <= 2))
+			{return 4;}
+		else//Lvl 5: High learning confidence but low skill, needs assistance occasionally (has smartphone) && inconvenient
+		if ((parseInt(participant.learn) >=3) &&
+			(skillScore <= 4) &&
+			(participant.accessHCI2 != null) &&
+			(participant.convenience <= 2))
+			{return 5;}
 		else//Lvl 6: Yes to task specific (weekly/monthy), needs assistance occasionally, internet for work, the more standard ‘basic skills’ msging/soical media, new sites, shopping
-		if ((parseInt(participant.fequencyOnline) <=2) && (participant.accessHCI2 != null) && (skillScore <= 8)) {return 6;}
+		if ((parseInt(participant.fequencyOnline) <= 2) &&
+			(participant.accessHCI2 != null) &&
+			(skillScore <= 8))
+			{return 6;}
 		else//Lvl 7: Yes to majority of the skills (daily) (moderate devices types) possibly missing advanced search
-		if ((parseInt(participant.fequencyOnline) >=3) && (deviceTypeCount >=3) && (skillScore <= 10)) {return 7;}
+		if ((parseInt(participant.fequencyOnline) >=3) &&
+			(deviceTypeCount >= 3) &&
+			(skillScore <= 10) &&
+			(participant.convenience >= 3))
+			{return 7;}
 		else//Lvl 8: Regularly online, highly confident, high access
-		if ((parseInt(participant.fequencyOnline) >=3) && (parseInt(participant.confidence) >=3) && (accessScore >= 8)) {return 8;}
-		else//Lvl 9: yes to everything (lots of device types) high bandwidth || advanced search 
-		{return 9;}	
+		if ((parseInt(participant.fequencyOnline) >=3) &&
+			(parseInt(participant.confidence) >=3) &&
+			(accessScore >= 8))
+			{return 8;}
+		else//Lvl 9: yes to everything (lots of device types) high bandwidth && advanced search 
+		if((deviceTypeCount >= 3) &&
+			(skillScore == 12) &&
+			(accessScore == 10) &&
+			(parseInt(participant.confidence) >= 3) &&
+			(parseInt(participant.fequencyOnline) >=3) && 
+			(parseInt(participant.learn) >= 3) &&
+			(parseInt(participant.safety) >= 3) &&
+			(participant.convenience >= 3))
+			{return 9;}
+		else
+		{return 0;}	
+
+*/
 
 /*
 		if(participant.use1 != null)//Ever

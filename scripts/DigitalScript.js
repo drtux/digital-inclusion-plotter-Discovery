@@ -117,7 +117,7 @@ $(document).ready(function(){
 				accessNeedGoodBad: null,
 				accessNeed: null,
 				learn: null,
-				saftey: null,
+				safety: null,
 				rowSearch: null,
 				rowSearchAdv: null,
 				rowSearchSite: null,
@@ -189,7 +189,9 @@ $(document).ready(function(){
 							dataObj[key] = body[key];
 						}
 					}
-					dataObj.applicationScore = generateScore(dataObj); // Generate the application score for this participant
+					var scoreObj = generateScore(dataObj)// Generate the application score for this participant
+					dataObj.applicationScore = scoreObj.score;
+					dataObj.appDebugScore = scoreObj.debugScore;
 					
 					pCount++;//Recored the added participant
 					localStorage.setItem("pCount", JSON.stringify(pCount));
@@ -210,8 +212,10 @@ $(document).ready(function(){
 	//Generate the application score for the given participant
 	function generateScore(participant)
 	{
-		var score = 0;
-		var calc = [];
+		var result = {
+			score: 0,
+			debugScore: []
+		};
 
 ///////////////////////////////
 /* ---- CONFIG: ROUTING ---- */
@@ -237,6 +241,7 @@ $(document).ready(function(){
 		if(participant.needNMotivation != null){needScore -= 1}
 		if(participant.needNConfidence != null){needScore -= 1}
 
+		result.debugScore.push(needScore);
 
 /* ---- DEVICE ---- */ var deviceTypeCount = 0;
 		if(participant.accessDeviceDesktop != null){deviceTypeCount++;}
@@ -244,6 +249,8 @@ $(document).ready(function(){
 		if(participant.accessDeviceTablet != null){deviceTypeCount++;}
 		if(participant.accessDeviceSmartphone != null){deviceTypeCount++;}
 		if(participant.accessDeviceBrickphone != null){deviceTypeCount++;}
+
+		result.debugScore.push(deviceTypeCount);
 
 /* ---- ACCESS ---- */ var accessScore = 0;
 
@@ -270,6 +277,8 @@ $(document).ready(function(){
 			default: break;
 		}
 
+		result.debugScore.push(accessScore);
+
 /* ---- CONFIDENCE ---- */ var confidenceScore = 0;
 		switch(parseInt(participant.confidence))
 		{
@@ -279,6 +288,9 @@ $(document).ready(function(){
 			case 4: confidenceScore += 4; break;
 			default: break;
 		}
+
+		result.debugScore.push(confidenceScore);
+
 /* ---- LEARNING ---- */ var learningScore = 0; 
 		switch(parseInt(participant.learn))
 		{
@@ -289,15 +301,19 @@ $(document).ready(function(){
 			default: break;
 		}
 
-/* ---- SAFETY ---- */ var safteyScore = 0;
-		switch(parseInt(participant.saftey))
+		result.debugScore.push(learningScore);
+
+/* ---- SAFETY ---- */ var safetyScore = 0;
+		switch(parseInt(participant.safety))
 		{
-			case 1: safteyScore -= 4; break;
-			case 2: safteyScore -= 2; break;
-			case 3: safteyScore += 2; break;
-			case 4: safteyScore += 4; break;
+			case 1: safetyScore -= 4; break;
+			case 2: safetyScore -= 2; break;
+			case 3: safetyScore += 2; break;
+			case 4: safetyScore += 4; break;
 			default: break;
 		}
+
+		result.debugScore.push(safetyScore);
 
 /* ---- SKILL ---- */ var skillScore = 0; 
 
@@ -315,6 +331,7 @@ $(document).ready(function(){
 		if(participant.rowInstall != null){skillScore += 1}
 		if(participant.rowBandwidth != null){skillScore += 2}
 
+		result.debugScore.push(skillScore);
 
 //////////////////////////////
 /* ---- START: ROUTING ---- */
@@ -346,29 +363,31 @@ Lvl 8: Regularly online, highly confident, high access
 Lvl 9: yes to everything (lots of device types) high bandwidth && advanced search
 */
 
-/* ---- Max scores ---- *||* ---- Min Scores ---- */
-// needScore:       10   ||  needScore:       -8
-// deviceTypeCount: 4    ||  deviceTypeCount:  0
-// accessScore:     31   ||  accessScore:     -4
-// confidenceScore: 4    ||  confidenceScore: -4
-// learningScore:   4    ||  learningScore:   -4
-// safetyScore:     4    ||  safetyScore:     -4
-// skillScore:      17   ||  skillScore:       0
+/*
+  - SCORES -      : - MAX - *||* - Min -
+  needScore       :    10    ||    -8
+  deviceTypeCount :    4     ||     0
+  accessScore     :    31    ||    -4
+  confidenceScore :    4     ||    -4
+  learningScore   :    4     ||    -4
+  safetyScore     :    4     ||    -4
+  skillScore      :    17    ||     0
+*/
 
-/* 1 */	if((participant.useEver == null) && (participant.useFuture == null) && (participant.needNo == null) && (deviceTypeCount == 0)){return 1;}
-/* 2 */	else if ((participant.useCurrent == null) && (participant.useFuture == null) && (deviceTypeCount <= 1)){return 2;}
-/* 3 */	else if ((confidenceScore <= 2) && (accessScore <= 2) && (learningScore <= 2) && (safetyScore <= 2) && (deviceTypeCount <= 2) && (needScore <= 2) && (skillScore <= 2)){return 3;}
-/* 4 */	else if ((confidenceScore <= 2) && (accessScore <= 3) && (learningScore <= 2) && (safetyScore <= 2) && (deviceTypeCount <= 2) && (needScore <= 2) && (skillScore <= 2)){return 4;}
-/* 5 */	else if ((confidenceScore <= 2) && (accessScore <= 3) && (learningScore <= 2) && (safetyScore <= 2) && (deviceTypeCount <= 2) && (needScore <= 2) && (skillScore <= 2)){return 5;}
-/* 6 */	else if ((confidenceScore <= 2) && (accessScore <= 3) && (learningScore <= 2) && (safetyScore <= 2) && (deviceTypeCount <= 2) && (needScore <= 2) && (skillScore <= 2)){return 6;}
-/* 7 */	else if ((confidenceScore <= 2) && (accessScore <= 3) && (learningScore <= 2) && (safetyScore <= 2) && (deviceTypeCount <= 2) && (needScore <= 2) && (skillScore <= 2)){return 7;}
-/* 8 */	else if ((confidenceScore <= 2) && (accessScore <= 3) && (learningScore <= 2) && (safetyScore <= 2) && (deviceTypeCount <= 2) && (needScore <= 2) && (skillScore <= 2)){return 8;}
-/* 9 */	else if ((confidenceScore <= 2) && (accessScore <= 3) && (learningScore <= 2) && (safetyScore <= 2) && (deviceTypeCount <= 2) && (needScore <= 2) && (skillScore <= 2)){return 9;}
+/* 1 */	if((participant.useEver == null) && (participant.useFuture == null) && (participant.needNo == null) && (deviceTypeCount == 0)){result.score =  1;}
+/* 2 */	else if (((participant.useCurrent == null) && (participant.useFuture == null) && (deviceTypeCount <= 1))||((confidenceScore < 0) && (accessScore < 0) && (learningScore < 0) && (safetyScore < 0) && (deviceTypeCount <= 1) && (needScore < 0) && (skillScore <= 1))){result.score =  2;}
+/* 3 */	else if ((confidenceScore < 0) && (accessScore <= 4) && (learningScore < 0) && (safetyScore < 0) && (deviceTypeCount <= 2) && (needScore <= 1) && (skillScore <= 3)){result.score =  3;}
+/* 4 */	else if ((confidenceScore < 0) && (accessScore <= 8) && (learningScore < 0) && (safetyScore < 0) && (deviceTypeCount <= 2) && (needScore <= 2) && (skillScore <= 5)){result.score =  4;}
+/* 5 */	else if ((confidenceScore > 0) && (accessScore <= 16) && (learningScore > 0) && (safetyScore < 0) && (deviceTypeCount <= 2) && (needScore <= 4) && (skillScore <= 7)){result.score =  5;}
+/* 6 */	else if ((confidenceScore > 0) && (accessScore <= 20) && (learningScore > 0) && (safetyScore > 0) && (deviceTypeCount <= 3) && (needScore <= 6) && (skillScore <= 9)){result.score =  6;}
+/* 7 */	else if ((confidenceScore > 0) && (accessScore <= 24) && (learningScore > 0) && (safetyScore > 0) && (deviceTypeCount <= 3) && (needScore <= 8) && (skillScore <= 11)){result.score =  7;}
+/* 8 */	else if ((confidenceScore > 2) && (accessScore <= 28) && (learningScore > 2) && (safetyScore > 2) && (deviceTypeCount <= 4) && (needScore <= 9) && (skillScore <= 14)){result.score =  8;}
+/* 9 */	else if ((confidenceScore > 2) && (accessScore <= 31) && (learningScore > 2) && (safetyScore > 2) && (deviceTypeCount <= 4) && (needScore <= 10) && (skillScore <= 17)){result.score =  9;}
 		else//ERROR case
-		{return 0;}	
+		{result.score = 0;}	
 
 
-
+		return result;
 
 
 

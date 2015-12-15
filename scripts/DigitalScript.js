@@ -15,8 +15,8 @@ $(document).ready(function(){
 	{
 		switch($(this).attr('navType'))
 		{
-			case 'newparticipant': newparticipant($(this)); break;
-			case 'cancelparticipant': cancelparticipant($(this)); break;
+			case 'newParticipant': newParticipant($(this)); break;
+			case 'cancelParticipant': cancelParticipant($(this)); break;
 			case 'newSession': newSession($(this)); break;
 			case 'cancelSession': cancelSession($(this)); break;
 			case 'endSession': endSession($(this)); break;
@@ -39,7 +39,7 @@ $(document).ready(function(){
 		}
 	}
 
-	function newparticipant(btn) {
+	function newParticipant(btn) {
 	    if($('form').length){
 	    	if($('form').isValid())
 			{
@@ -70,7 +70,7 @@ $(document).ready(function(){
 			localStorage.removeItem("sessionForm");//Delete current session form data
 			window.location.replace(URL + btn.attr('nextPage') + FILETYPE);
 	}
-	function cancelparticipant(btn) {
+	function cancelParticipant(btn) {
 			localStorage.removeItem("participantForm");//Delete current participant form data
 			window.location.replace(URL + btn.attr('nextPage') + FILETYPE);
 	}
@@ -140,8 +140,66 @@ $(document).ready(function(){
 
 
 		if(typeof(Storage)!=="undefined")
-		{p
-			
+		{
+			if (localStorage.getItem("sessionForm") === "{}" || localStorage.getItem("sessionForm") == null) {
+				//Do nothing as no session started
+			}
+			else
+			{//A session has been started
+				if (localStorage.getItem("participantForm") === "{}" || localStorage.getItem("participantForm") == null)
+				{
+					//Do nothing must have participant to save
+		        }
+		        else
+		        {//Have both session and participant so can save
+		        	var sCount = 0;//Default to there being no other sessions
+		        	var pCount = 0;//Default to there being no other partipipants
+
+					if (localStorage.getItem("session") != null)
+					{//There are other sessions so get their data
+						session = JSON.parse(localStorage.getItem("session"));
+					}
+					if (localStorage.getItem("sCount") != null)
+					{//There are other participants get the count
+						sCount = parseInt(JSON.parse(localStorage.getItem("sCount")));
+					}
+					if (localStorage.getItem("pCount") != null)
+					{//There are other participants get the count
+						pCount = parseInt(JSON.parse(localStorage.getItem("pCount")));
+					}
+
+					
+
+					dataObj.sessionID = sCount;
+					//Appending the session header
+					var head = JSON.parse(localStorage.getItem("sessionForm"));
+					for (var key in head) {
+						if (head.hasOwnProperty(key)) {
+							dataObj[key] = head[key];
+						}
+					}
+
+					dataObj.researchDateTime = now.toUTCString(); //Append the current date/time
+
+					dataObj.participantID = pCount;
+					//Append the participant data body
+					var body = JSON.parse(localStorage.getItem("participantForm"));
+					for (var key in body) {
+						if (body.hasOwnProperty(key)) {
+							dataObj[key] = body[key];
+						}
+					}
+					dataObj.applicationScore = generateScore(dataObj); // Generate the application score for this participant
+					
+					pCount++;//Recored the added participant
+					localStorage.setItem("pCount", JSON.stringify(pCount));
+
+					//Save the participants data
+					session[session.length] = dataObj;
+					localStorage.setItem("session", JSON.stringify(session));
+				}
+					
+		    }
 		}
 		else
 		{
@@ -160,13 +218,16 @@ $(document).ready(function(){
 ///////////////////////////////
 
 //NULL === Negative responce
-		
-/* ---- USE ---- */
-		participant.useEver
-		participant.useCurrent
-		participant.useFuture
 
 /* ---- NEED ---- */ var needScore = 0;
+		switch(parseInt(participant.convenience))
+		{
+			case 1: needScore -= 4; break;
+			case 2: needScore -= 2; break;
+			case 3: needScore += 2; break;
+			case 4: needScore += 4; break;
+			default: break;
+		}
 
 		if(participant.needYDay != null){needScore += 4}
 		if(participant.needYWork != null){needScore += 1}
@@ -175,7 +236,7 @@ $(document).ready(function(){
 		if(participant.needNAccess != null){needScore -= 1}
 		if(participant.needNMotivation != null){needScore -= 1}
 		if(participant.needNConfidence != null){needScore -= 1}
-		participant.needNo//Route based on this?
+
 
 /* ---- DEVICE ---- */ var deviceTypeCount = 0;
 		if(participant.accessDeviceDesktop != null){deviceTypeCount++;}
@@ -209,19 +270,7 @@ $(document).ready(function(){
 			default: break;
 		}
 
-/* ---- MOTIVATION ---- */ var motivationScore = 0;
-
-		switch(parseInt(participant.convenience))
-		{
-			case 1: motivationScore -= 4; break;
-			case 2: motivationScore -= 2; break;
-			case 3: motivationScore += 2; break;
-			case 4: motivationScore += 4; break;
-			default: break;
-		}
-
 /* ---- CONFIDENCE ---- */ var confidenceScore = 0;
-
 		switch(parseInt(participant.confidence))
 		{
 			case 1: confidenceScore -= 4; break;
@@ -230,26 +279,27 @@ $(document).ready(function(){
 			case 4: confidenceScore += 4; break;
 			default: break;
 		}
-
+/* ---- LEARNING ---- */ var learningScore = 0; 
 		switch(parseInt(participant.learn))
 		{
-			case 1: confidenceScore -= 4; break;
-			case 2: confidenceScore -= 2; break;
-			case 3: confidenceScore += 2; break;
-			case 4: confidenceScore += 4; break;
+			case 1: learningScore -= 4; break;
+			case 2: learningScore -= 2; break;
+			case 3: learningScore += 2; break;
+			case 4: learningScore += 4; break;
 			default: break;
 		}
 
+/* ---- SAFETY ---- */ var safteyScore = 0;
 		switch(parseInt(participant.saftey))
 		{
-			case 1: confidenceScore -= 4; break;
-			case 2: confidenceScore -= 2; break;
-			case 3: confidenceScore += 2; break;
-			case 4: confidenceScore += 4; break;
+			case 1: safteyScore -= 4; break;
+			case 2: safteyScore -= 2; break;
+			case 3: safteyScore += 2; break;
+			case 4: safteyScore += 4; break;
 			default: break;
 		}
 
-/* ---- SKILL ---- */ var skillScore = 0;
+/* ---- SKILL ---- */ var skillScore = 0; 
 
 		if(participant.rowSearch != null){skillScore += 1}
 		if(participant.rowSearchAdv != null){skillScore += 3}
@@ -283,7 +333,39 @@ $(document).ready(function(){
 */
 
 
+/* ---- Definitions used ---- */
+/*		
+Lvl 1: Dosen't ever use && not use in future && feels no need && has no devices
+Lvl 2: Dosen't currently use && won't use in future && has few devices
+Lvl 3: Low confidence && access && learning && safety && has good/bad days && has few device types (has brick phone?) && inconvenient
+Lvl 4: Low learning && confidence && needs assistance everytime && few devices types && inconveniant
+Lvl 5: High learning confidence but low skill, needs assistance occasionally (has smartphone) && inconvenient
+Lvl 6: Yes to task specific (weekly/monthy), needs assistance occasionally, internet for work, the more standard ‘basic skills’ msging/soical media, new sites, shopping
+Lvl 7: Yes to majority of the skills (daily) (moderate devices types) possibly missing advanced search
+Lvl 8: Regularly online, highly confident, high access
+Lvl 9: yes to everything (lots of device types) high bandwidth && advanced search
+*/
 
+/* ---- Max scores ---- *||* ---- Min Scores ---- */
+// needScore:       10   ||  needScore:       -8
+// deviceTypeCount: 4    ||  deviceTypeCount:  0
+// accessScore:     31   ||  accessScore:     -4
+// confidenceScore: 4    ||  confidenceScore: -4
+// learningScore:   4    ||  learningScore:   -4
+// safetyScore:     4    ||  safetyScore:     -4
+// skillScore:      17   ||  skillScore:       0
+
+/* 1 */	if((participant.useEver == null) && (participant.useFuture == null) && (participant.needNo == null) && (deviceTypeCount == 0)){return 1;}
+/* 2 */	else if ((participant.useCurrent == null) && (participant.useFuture == null) && (deviceTypeCount <= 1)){return 2;}
+/* 3 */	else if ((confidenceScore <= 2) && (accessScore <= 2) && (learningScore <= 2) && (safetyScore <= 2) && (deviceTypeCount <= 2) && (needScore <= 2) && (skillScore <= 2)){return 3;}
+/* 4 */	else if ((confidenceScore <= 2) && (accessScore <= 3) && (learningScore <= 2) && (safetyScore <= 2) && (deviceTypeCount <= 2) && (needScore <= 2) && (skillScore <= 2)){return 4;}
+/* 5 */	else if ((confidenceScore <= 2) && (accessScore <= 3) && (learningScore <= 2) && (safetyScore <= 2) && (deviceTypeCount <= 2) && (needScore <= 2) && (skillScore <= 2)){return 5;}
+/* 6 */	else if ((confidenceScore <= 2) && (accessScore <= 3) && (learningScore <= 2) && (safetyScore <= 2) && (deviceTypeCount <= 2) && (needScore <= 2) && (skillScore <= 2)){return 6;}
+/* 7 */	else if ((confidenceScore <= 2) && (accessScore <= 3) && (learningScore <= 2) && (safetyScore <= 2) && (deviceTypeCount <= 2) && (needScore <= 2) && (skillScore <= 2)){return 7;}
+/* 8 */	else if ((confidenceScore <= 2) && (accessScore <= 3) && (learningScore <= 2) && (safetyScore <= 2) && (deviceTypeCount <= 2) && (needScore <= 2) && (skillScore <= 2)){return 8;}
+/* 9 */	else if ((confidenceScore <= 2) && (accessScore <= 3) && (learningScore <= 2) && (safetyScore <= 2) && (deviceTypeCount <= 2) && (needScore <= 2) && (skillScore <= 2)){return 9;}
+		else//ERROR case
+		{return 0;}	
 
 
 

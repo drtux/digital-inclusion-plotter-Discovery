@@ -32,257 +32,276 @@
 <body>
 
 	<header data-includefile="header"></header>
-	<main id="content" role="main">
+
+	<main role="main">
 		<div data-includefile="banner-alpha"></div>
 
+		<div class="floatingNav">
+			<ul class="list-bullet">
+				<li><a href="#link-age">Age</a></li>
+				<li><a href="#link-use">Digital use</a></li>
+				<li><a href="#link-need">Digital need</a></li>
+				<li><a href="#link-convenience">Convenience</a></li>
+				<li><a href="#link-confidence">Confidence</a></li>
+				<li><a href="#link-accessWhere">Access where</a></li>
+				<li><a href="#link-accessDevice">Access device</a></li>
+				<li><a href="#link-fequencyOnline">Frequency online</a></li>
+				<li><a href="#link-accessHCI">Access HCI</a></li>
+				<li><a href="#link-accessNeedlink">Access need</a></li>
+				<li><a href="#link-learn">Digital learning</a></li>
+				<li><a href="#link-safety">Digital safety</a></li>
+				<li><a href="#link-skills">Digital skills</a></li>
+				<li><a href="#link-researcherScore">Researcher's score</a></li>
+				<li><a href="#link-researcherComment">Researcher's comment</a></li>
+			</ul>
+		</div>
+
+		<div id="content">
 		<h1 class="heading-xlarge">
 			Assessment of Digital Inclusion
 			<span class="heading-secondary">
-				This is capturing whether the participant is <strong>able/motivated/confident</strong> to access digital services.
+				The definition of digital is:</br>
+				A device such as PCs, Macs, tablets, mobile phones that access the internet
 			</span>
 		</h1>
-		<p>The definition of digital is:</br>
-		A device such as PCs, Macs, tablets, mobile phones that access the internet</p>
-		<p>Unless denoted by a <span class="required">*</span> as a required field, leaving a question blank is assumbed to be a 'don't know'/negative answer</p>
+		<p>Unless denoted by a <span class="required">*</span> as a required field, leaving a question blank is assumed to be a 'don't know'/negative answer</p>
+		<h2 class="heading-large">Assessment questions</h2>
+		<p>This is capturing whether the participant is <strong>able/motivated/confident</strong> to access digital services.</p>
 
+		<form name="participantForm" class="form" autocomplete="off">
+		
+<!-- Age -->
+			<div class="form-group"><a name="link-age"></a>
+				<label class="form-label-bold" for="age"><span class="required">*</span>Participant's age</label>
+				<input id="age1" name="age" type="radio" data-validation="required" data-storage="1" data-labelauty="10-17"/>
+				<input id="age2" name="age" type="radio" data-validation="required" data-storage="2" data-labelauty="18-25"/>
+				<input id="age3" name="age" type="radio" data-validation="required" data-storage="3" data-labelauty="26-30"/>
+				<input id="age4" name="age" type="radio" data-validation="required" data-storage="4" data-labelauty="31-40"/>
+				<input id="age5" name="age" type="radio" data-validation="required" data-storage="5" data-labelauty="41-50"/>
+				<input id="age6" name="age" type="radio" data-validation="required" data-storage="6" data-labelauty="51-60"/>
+				<input id="age7" name="age" type="radio" data-validation="required" data-storage="7" data-labelauty="61-70"/>
+				<input id="age8" name="age" type="radio" data-validation="required" data-storage="8" data-labelauty="71-80"/>
+				<input id="age9" name="age" type="radio" data-validation="required" data-storage="9" data-labelauty="81-90"/>
+				<input id="age10" name="age" type="radio" data-validation="required" data-storage="10" data-labelauty="91-100"/>
+				<input id="age11" name="age" type="radio" data-validation="required" data-storage="11" data-labelauty="100+"/>
+			</div>
 
-			<h2 class="heading-large">Assessment questions</h2>
-			<p>This is capturing whether the participant is <strong>able/motivated/confident</strong> to access digital services.</p>
+<!-- Digital Use -->
+			<div class="form-group"><a name="link-use"></a>
+				<label class="form-label-bold" for="use">What is the participants internet use?</label>
+				<input id="useEver" name="use" type="checkbox" data-storage="1" data-labelauty="Ever: No|Ever: Yes"/>
+				<input id="useCurrent" name="use" type="checkbox" data-storage="1" data-labelauty="Currently: No|Currently: Yes"/>
+				<input id="useFuture" name="use" type="checkbox" data-storage="1" data-labelauty="Future: No|Future: Yes"/>
+			</div>
 
-			<form name="participantForm" class="form" autocomplete="off">
+<!-- Need -->
+			<div class="form-group"><a name="link-need"></a>
+				<label class="form-label-bold" for="need">Does the participant feel the need/want to use the internet?</label>
+				<input id="needYDay" name="need" type="checkbox" data-storage="1" data-labelauty="Yes - for everyday usage"/>
+				<input id="needYWork" name="need" type="checkbox" data-storage="1" data-labelauty="Yes - for work"/>
+				<input id="needYTask" name="need" type="checkbox" data-storage="1" data-labelauty="Yes - for certain tasks"/>
+				<input id="needNSkill" name="need" type="checkbox" data-storage="1" data-labelauty="No - Limited skills"/>
+				<input id="needNAccess" name="need" type="checkbox" data-storage="1" data-labelauty="No - Limited the access"/>
+				<input id="needNMotivation" name="need" type="checkbox" data-storage="1" data-labelauty="No - Limited motivation"/>
+				<input id="needNConfidence" name="need" type="checkbox" data-storage="1" data-labelauty="No - Limited confidence"/>
+				<input id="needNo" name="need" type="checkbox" data-storage="1" data-labelauty="No - Lacks the need"/>
+			</div>
+
+<!-- Convenience -->
+			<div class="form-group"><a name="link-convenience"></a>
+				<label class="form-label-bold" for="convenience">Does the participant find it convenient to use the internet regularly to complete tasks?</label>
+				<input id="convenience4" name="convenience" type="radio" data-storage="4" data-labelauty="Very convenient"/>
+				<input id="convenience3" name="convenience" type="radio" data-storage="3" data-labelauty="Convenient"/>
+				<input id="convenience2" name="convenience" type="radio" data-storage="2" data-labelauty="Inconvenient"/>
+				<input id="convenience1" name="convenience" type="radio" data-storage="1" data-labelauty="Very inconvenient"/>
+			</div>
+
+<!-- Confidence -->
+			<div class="form-group"><a name="link-confidence"></a>
+				<label class="form-label-bold" for="confidence">Is the participant confident using digital?</label>
+				<input id="confidence4" name="confidence" type="radio" data-storage="4" data-labelauty="Very confident"/>
+				<input id="confidence3" name="confidence" type="radio" data-storage="3" data-labelauty="Confident"/>
+				<input id="confidence2" name="confidence" type="radio" data-storage="2" data-labelauty="Unsure"/>
+				<input id="confidence1" name="confidence" type="radio" data-storage="1" data-labelauty="Very unsure"/>
+			</div>
+
+<!-- How access -->
+			<div class="form-group"><a name="link-accessWhere"></a>
+				<label class="form-label-bold" for="accessWhere">Where does the participant predominantly access the internet from?</label>
+				<input id="accessWhereHome" name="accessWhere" type="checkbox" data-storage="1" data-labelauty="Home"/>
+				<input id="accessWhereMobile" name="accessWhere" type="checkbox" data-storage="1" data-labelauty="Mobile internet or hotspots"/>
+				<input id="accessWherePublic" name="accessWhere" type="checkbox" data-storage="1" data-labelauty="Public place - E.g. cyber-cafe or library"/>
+				<input id="accessWhereWork" name="accessWhere" type="checkbox" data-storage="1" data-labelauty="At work"/>
+			</div>
+
+<!-- Device access -->
+			<div class="form-group"><a name="link-accessDevice"></a>
+				<label class="form-label-bold" for="accessDevice">What device/s does the participant use to access the internet?</label>
+				<input id="accessDeviceDesktop" name="accessDevice" type="checkbox" data-storage="1" data-labelauty="Desktop"/>
+				<input id="accessDeviceLaptop" name="accessDevice" type="checkbox" data-storage="1" data-labelauty="Laptop"/>
+				<input id="accessDeviceTablet" name="accessDevice" type="checkbox" data-storage="1" data-labelauty="Tablet"/>
+				<input id="accessDeviceSmartphone" name="accessDevice" type="checkbox" data-storage="1" data-labelauty="Smartphone - Touchscreen"/>
+				<input id="accessDeviceBrickphone" name="accessDevice" type="checkbox" data-storage="1" data-labelauty="Mobile phone - Non-touchscreen"/>
+			</div>
+
+<!-- Frequency Online -->
+			<div class="form-group"><a name="link-fequencyOnline"></a>
+				<label class="form-label-bold" for="fequencyOnline">How often dose the participant use the internet?</label>
+				<input id="fequencyOnline4" name="fequencyOnline" type="radio" data-storage="4" data-labelauty="Daily - E.g. To access social media, or at work"/>
+				<input id="fequencyOnline3" name="fequencyOnline" type="radio" data-storage="3" data-labelauty="Weekly - E.g. To email family/friends"/>
+				<input id="fequencyOnline2" name="fequencyOnline" type="radio" data-storage="2" data-labelauty="Monthly - E.g. To pay bills"/>
+				<input id="fequencyOnline1" name="fequencyOnline" type="radio" data-storage="1" data-labelauty="Yearly - E.g. To use Government services"/>
+			</div>
+
+<!-- HCI access -->
+			<div class="form-group"><a name="link-accessHCI"></a>
+				<label class="form-label-bold" for="accessHCI">Does the participant have help (Hareware/Software/People) to get online?</label>
+				<input id="accessHCIEvery" name="accessHCI" type="checkbox" data-storage="1" data-labelauty="Every time: No|Every time: Yes"/>
+				<input id="accessHCIOccasional" name="accessHCI" type="checkbox" data-storage="1" data-labelauty="Occasionally/Specific tasks: No|Occasionally/Specific tasks: Yes"/>
+			</div>
+
+<!-- Access need -->
+			<div class="form-group"><a name="link-accessNeed"></a>
+				<label class="form-label-bold" for="accessNeed">Does/has the participants ability to get online change over time?</label>
+				<input id="accessNeedGoodBad" name="accessNeed" type="checkbox" data-storage="1" data-labelauty="Good/Bad days: No|Good/Bad days: Yes"/>
+				<input id="accessNeed" name="accessNeed" type="checkbox" data-storage="1" data-labelauty="Access need: No|Access need: Yes"/>
+			</div>			
+
+<!-- Digital learning -->
+			<div class="form-group"><a name="link-learn"></a>
+				<label class="form-label-bold" for="learn">Does the participant feel confident learning to use a new internet service/process?</label>
+				<input id="learn4" name="learn" type="radio" data-storage="4" data-labelauty="Very confident"/>
+				<input id="learn3" name="learn" type="radio" data-storage="3" data-labelauty="Confident"/>
+				<input id="learn2" name="learn" type="radio" data-storage="2" data-labelauty="Unsure"/>
+				<input id="learn1" name="learn" type="radio" data-storage="1" data-labelauty="Very unsure"/>
+			</div>
+
+<!-- Digital saftey -->
+			<div class="form-group"><a name="link-safety"></a>
+				<label class="form-label-bold" for="safety">Does the participant feel like they know how to be safe online?</label>
+				<p class="form-hint">Aweness of malware/viruses, spyware, phishing - email/website scams</p>
+				<input id="safety4" name="safety" type="radio" data-storage="4" data-labelauty="Very confident"/>
+				<input id="safety3" name="safety" type="radio" data-storage="3" data-labelauty="Confident"/>
+				<input id="safety2" name="safety" type="radio" data-storage="2" data-labelauty="Unsure"/>
+				<input id="safety1" name="safety" type="radio" data-storage="1" data-labelauty="Very unsure"/>
+			</div>
 			
-	<!-- Age -->
-				<div class="form-group">
-					<label class="form-label-bold" for="age"><span class="required">*</span>Participant's age</label>
-					<input id="age1" name="age" type="radio" data-validation="required" data-storage="1" data-labelauty="10-17"/>
-					<input id="age2" name="age" type="radio" data-validation="required" data-storage="2" data-labelauty="18-25"/>
-					<input id="age3" name="age" type="radio" data-validation="required" data-storage="3" data-labelauty="26-30"/>
-					<input id="age4" name="age" type="radio" data-validation="required" data-storage="4" data-labelauty="31-40"/>
-					<input id="age5" name="age" type="radio" data-validation="required" data-storage="5" data-labelauty="41-50"/>
-					<input id="age6" name="age" type="radio" data-validation="required" data-storage="6" data-labelauty="51-60"/>
-					<input id="age7" name="age" type="radio" data-validation="required" data-storage="7" data-labelauty="61-70"/>
-					<input id="age8" name="age" type="radio" data-validation="required" data-storage="8" data-labelauty="71-80"/>
-					<input id="age9" name="age" type="radio" data-validation="required" data-storage="9" data-labelauty="81-90"/>
-					<input id="age10" name="age" type="radio" data-validation="required" data-storage="10" data-labelauty="91-100"/>
-					<input id="age11" name="age" type="radio" data-validation="required" data-storage="11" data-labelauty="100+"/>
-				</div>
-
-	<!-- Digital Use -->
-				<div class="form-group">
-					<label class="form-label-bold" for="use">What is the participants internet use?</label>
-					<input id="useEver" name="use" type="checkbox" data-storage="1" data-labelauty="Ever: No|Ever: Yes"/>
-					<input id="useCurrent" name="use" type="checkbox" data-storage="1" data-labelauty="Currently: No|Currently: Yes"/>
-					<input id="useFuture" name="use" type="checkbox" data-storage="1" data-labelauty="Future: No|Future: Yes"/>
-				</div>
-
-	<!-- Need -->
-				<div class="form-group">
-					<label class="form-label-bold" for="need">Does the participant feel the need/want to use the internet?</label>
-					<input id="needYDay" name="need" type="checkbox" data-storage="1" data-labelauty="Yes - for everyday usage"/>
-					<input id="needYWork" name="need" type="checkbox" data-storage="1" data-labelauty="Yes - for work"/>
-					<input id="needYTask" name="need" type="checkbox" data-storage="1" data-labelauty="Yes - for certain tasks"/>
-					<input id="needNSkill" name="need" type="checkbox" data-storage="1" data-labelauty="No - Limited skills"/>
-					<input id="needNAccess" name="need" type="checkbox" data-storage="1" data-labelauty="No - Limited the access"/>
-					<input id="needNMotivation" name="need" type="checkbox" data-storage="1" data-labelauty="No - Limited motivation"/>
-					<input id="needNConfidence" name="need" type="checkbox" data-storage="1" data-labelauty="No - Limited confidence"/>
-					<input id="needNo" name="need" type="checkbox" data-storage="1" data-labelauty="No - Lacks the need"/>
-				</div>
-
-	<!-- Convenience -->
-				<div class="form-group">
-					<label class="form-label-bold" for="convenience">Does the participant find it convenient to use the internet regularly to complete tasks?</label>
-					<input id="convenience4" name="convenience" type="radio" data-storage="4" data-labelauty="Very convenient"/>
-					<input id="convenience3" name="convenience" type="radio" data-storage="3" data-labelauty="Convenient"/>
-					<input id="convenience2" name="convenience" type="radio" data-storage="2" data-labelauty="Inconvenient"/>
-					<input id="convenience1" name="convenience" type="radio" data-storage="1" data-labelauty="Very inconvenient"/>
-				</div>
-
-	<!-- Confidence -->
-				<div class="form-group">
-					<label class="form-label-bold" for="confidence">Is the participant confident using digital?</label>
-					<input id="confidence4" name="confidence" type="radio" data-storage="4" data-labelauty="Very confident"/>
-					<input id="confidence3" name="confidence" type="radio" data-storage="3" data-labelauty="Confident"/>
-					<input id="confidence2" name="confidence" type="radio" data-storage="2" data-labelauty="Unsure"/>
-					<input id="confidence1" name="confidence" type="radio" data-storage="1" data-labelauty="Very unsure"/>
-				</div>
-
-	<!-- How access -->
-				<div class="form-group">
-					<label class="form-label-bold" for="accessWhere">Where does the participant predominantly access the internet from?</label>
-					<input id="accessWhereHome" name="accessWhere" type="checkbox" data-storage="1" data-labelauty="Home"/>
-					<input id="accessWhereMobile" name="accessWhere" type="checkbox" data-storage="1" data-labelauty="Mobile internet or hotspots"/>
-					<input id="accessWherePublic" name="accessWhere" type="checkbox" data-storage="1" data-labelauty="Public place - E.g. cyber-cafe or library"/>
-					<input id="accessWhereWork" name="accessWhere" type="checkbox" data-storage="1" data-labelauty="At work"/>
-				</div>
-
-	<!-- Device access -->
-				<div class="form-group">
-					<label class="form-label-bold" for="accessDevice">What device/s does the participant use to access the internet?</label>
-					<input id="accessDeviceDesktop" name="accessDevice" type="checkbox" data-storage="1" data-labelauty="Desktop"/>
-					<input id="accessDeviceLaptop" name="accessDevice" type="checkbox" data-storage="1" data-labelauty="Laptop"/>
-					<input id="accessDeviceTablet" name="accessDevice" type="checkbox" data-storage="1" data-labelauty="Tablet"/>
-					<input id="accessDeviceSmartphone" name="accessDevice" type="checkbox" data-storage="1" data-labelauty="Smartphone - Touchscreen"/>
-					<input id="accessDeviceBrickphone" name="accessDevice" type="checkbox" data-storage="1" data-labelauty="Mobile phone - Non-touchscreen"/>
-				</div>
-
-	<!-- Fequency Online -->
-				<div class="form-group">
-					<label class="form-label-bold" for="fequencyOnline">How often dose the participant use the internet?</label>
-					<input id="fequencyOnline4" name="fequencyOnline" type="radio" data-storage="4" data-labelauty="Daily - E.g. To access social media, or at work"/>
-					<input id="fequencyOnline3" name="fequencyOnline" type="radio" data-storage="3" data-labelauty="Weekly - E.g. To email family/friends"/>
-					<input id="fequencyOnline2" name="fequencyOnline" type="radio" data-storage="2" data-labelauty="Monthly - E.g. To pay bills"/>
-					<input id="fequencyOnline1" name="fequencyOnline" type="radio" data-storage="1" data-labelauty="Yearly - E.g. To use Government services"/>
-				</div>
-
-	<!-- HCI access -->
-				<div class="form-group">
-					<label class="form-label-bold" for="accessHCI">Does the participant have help (Hareware/Software/People) to get online?</label>
-					<input id="accessHCIEvery" name="accessHCI" type="checkbox" data-storage="1" data-labelauty="Every time: No|Every time: Yes"/>
-					<input id="accessHCIOccasional" name="accessHCI" type="checkbox" data-storage="1" data-labelauty="Occasionally/Specific tasks: No|Occasionally/Specific tasks: Yes"/>
-				</div>
-
-	<!-- Access need -->
-				<div class="form-group">
-					<label class="form-label-bold" for="accessNeed">Does/has the participants ability to get online change over time?</label>
-					<input id="accessNeedGoodBad" name="accessNeed" type="checkbox" data-storage="1" data-labelauty="Good/Bad days: No|Good/Bad days: Yes"/>
-					<input id="accessNeed" name="accessNeed" type="checkbox" data-storage="1" data-labelauty="Access need: No|Access need: Yes"/>
-				</div>			
-
-	<!-- Digital learning -->
-				<div class="form-group">
-					<label class="form-label-bold" for="learn">Does the participant feel confident learning to use a new internet service/process?</label>
-					<input id="learn4" name="learn" type="radio" data-storage="4" data-labelauty="Very confident"/>
-					<input id="learn3" name="learn" type="radio" data-storage="3" data-labelauty="Confident"/>
-					<input id="learn2" name="learn" type="radio" data-storage="2" data-labelauty="Unsure"/>
-					<input id="learn1" name="learn" type="radio" data-storage="1" data-labelauty="Very unsure"/>
-				</div>
-
-	<!-- Digital saftey -->
-				<div class="form-group">
-					<label class="form-label-bold" for="safety">Does the participant feel like they know how to be safe online?</label>
-					<p class="form-hint">Aweness of malware/viruses, spyware, phishing - email/website scams</p>
-					<input id="safety4" name="safety" type="radio" data-storage="4" data-labelauty="Very confident"/>
-					<input id="safety3" name="safety" type="radio" data-storage="3" data-labelauty="Confident"/>
-					<input id="safety2" name="safety" type="radio" data-storage="2" data-labelauty="Unsure"/>
-					<input id="safety1" name="safety" type="radio" data-storage="1" data-labelauty="Very unsure"/>
-				</div>
-				
-	<!-- Digital Skills -->
-				<table class="form-group">
-					<tr>
-						<th>Action/Activity</th>
-						<th>Could the participant do this?</th>
-					</tr>
-					<tr>
-						<td><label for="rowSearch">Use a search engine to look for information online</label></td>
-						<td><input id="rowSearch" name="rowSearch" type="checkbox" data-storage="1" data-labelauty="No|Yes"/></td>
-					</tr>
-					<tr>
-						<td><label for="rowSearch">Use a search engines advances search operators to filter the search results</label></td>
-						<td><input id="rowSearchAdv" name="rowSearchAdv" type="checkbox" data-storage="1" data-labelauty="No|Yes"/></td>
-					</tr>
-					<tr>
-						<td><label for="rowSearchSite">Use a websites search to find the information/page needed</label></td>
-						<td><input id="rowSearchSite" name="rowSearchSite" type="checkbox" data-storage="1" data-labelauty="No|Yes"/></td>
-					</tr>
-					<tr>
-						<td><label for="rowUpDlFile">Upload/Download a file (E.g. Flickr, Instergram, Email Attachmen)</label></td>
-						<td><input id="rowUpDlFile" name="rowUpDlFile" type="checkbox" data-storage="1" data-labelauty="No|Yes"/></td>
-					</tr>
-					<tr>
-						<td><label for="rowHist">Find a website you have visited before</label></td>
-						<td><input id="rowHist" name="rowHist" type="checkbox" data-storage="1" data-labelauty="No|Yes"/></td>
-					</tr>
-					<tr>
-						<td><label for="rowMsg">Send a personal message to another person (E.g. WeChat, WhatsApp, Kik, Email, Skype, Viber)</label></td>
-						<td><input id="rowMsg" name="rowMsg" type="checkbox" data-storage="1" data-labelauty="No|Yes"/></td>
-					</tr>
-					<tr>
-						<td><label for="rowVoIP">Hold a video call with another person (E.g. Skype, Facetime)</label></td>
-						<td><input id="rowVoIP" name="rowVoIP" type="checkbox" data-storage="1" data-labelauty="No|Yes"/></td>
-					</tr>
-					<tr>
-						<td><label for="rowNews">Browse an online news/magazine website (E.g. BBC news, HelloMagazine, TimeOut)</label></td>
-						<td><input id="rowNews" name="rowNews" type="checkbox" data-storage="1" data-labelauty="No|Yes"/></td>
-					</tr>
-					<tr>
-						<td><label for="rowBank">Use your banks online banking service</label></td>
-						<td><input id="rowBank" name="rowBank" type="checkbox" data-storage="1" data-labelauty="No|Yes"/></td>
-					</tr>
-					<tr>
-						<td><label for="rowShop">Buy items or services from a website (E.g. Amazon, Ebay)</label></td>
-						<td><input id="rowShop" name="rowShop" type="checkbox" data-storage="1" data-labelauty="No|Yes"/></td>
-					</tr>
-					<tr>
-						<td><label for="rowGov">Apply for a Government serveice (E.g. Drivers licence, Passport)</label></td>
-						<td><input id="rowGov" name="rowGov" type="checkbox" data-storage="1" data-labelauty="No|Yes"/></td>
-					</tr>
-					<tr>
-						<td><label for="rowInstall">Install/Uninstall software on a device</label></td>
-						<td><input id="rowInstall" name="rowInstall" type="checkbox" data-storage="1" data-labelauty="No|Yes"/></td>
-					</tr>
-					<tr>
-						<td><label for="rowBandwidth">Access high bandwidth services with no issue (E.g. Youtube, iPlayer, Netflix, Multiplayer gaming)</label></td>
-						<td><input id="rowBandwidth" name="rowBandwidth" type="checkbox" data-storage="1" data-labelauty="No|Yes"/></td>
-					</tr>
-				</table>
+<!-- Digital Skills -->
+			<table class="form-group"><a name="link-skills"></a>
+				<tr>
+					<th>Action/Activity</th>
+					<th>Could the participant do this?</th>
+				</tr>
+				<tr>
+					<td><label for="rowSearch">Use a search engine to look for information online</label></td>
+					<td><input id="rowSearch" name="rowSearch" type="checkbox" data-storage="1" data-labelauty="No|Yes"/></td>
+				</tr>
+				<tr>
+					<td><label for="rowSearch">Use a search engines advances search operators to filter the search results</label></td>
+					<td><input id="rowSearchAdv" name="rowSearchAdv" type="checkbox" data-storage="1" data-labelauty="No|Yes"/></td>
+				</tr>
+				<tr>
+					<td><label for="rowSearchSite">Use a websites search to find the information/page needed</label></td>
+					<td><input id="rowSearchSite" name="rowSearchSite" type="checkbox" data-storage="1" data-labelauty="No|Yes"/></td>
+				</tr>
+				<tr>
+					<td><label for="rowUpDlFile">Upload/Download a file (E.g. Flickr, Instergram, Email Attachmen)</label></td>
+					<td><input id="rowUpDlFile" name="rowUpDlFile" type="checkbox" data-storage="1" data-labelauty="No|Yes"/></td>
+				</tr>
+				<tr>
+					<td><label for="rowHist">Find a website you have visited before</label></td>
+					<td><input id="rowHist" name="rowHist" type="checkbox" data-storage="1" data-labelauty="No|Yes"/></td>
+				</tr>
+				<tr>
+					<td><label for="rowMsg">Send a personal message to another person (E.g. WeChat, WhatsApp, Kik, Email, Skype, Viber)</label></td>
+					<td><input id="rowMsg" name="rowMsg" type="checkbox" data-storage="1" data-labelauty="No|Yes"/></td>
+				</tr>
+				<tr>
+					<td><label for="rowVoIP">Hold a video call with another person (E.g. Skype, Facetime)</label></td>
+					<td><input id="rowVoIP" name="rowVoIP" type="checkbox" data-storage="1" data-labelauty="No|Yes"/></td>
+				</tr>
+				<tr>
+					<td><label for="rowNews">Browse an online news/magazine website (E.g. BBC news, HelloMagazine, TimeOut)</label></td>
+					<td><input id="rowNews" name="rowNews" type="checkbox" data-storage="1" data-labelauty="No|Yes"/></td>
+				</tr>
+				<tr>
+					<td><label for="rowBank">Use your banks online banking service</label></td>
+					<td><input id="rowBank" name="rowBank" type="checkbox" data-storage="1" data-labelauty="No|Yes"/></td>
+				</tr>
+				<tr>
+					<td><label for="rowShop">Buy items or services from a website (E.g. Amazon, Ebay)</label></td>
+					<td><input id="rowShop" name="rowShop" type="checkbox" data-storage="1" data-labelauty="No|Yes"/></td>
+				</tr>
+				<tr>
+					<td><label for="rowGov">Apply for a Government serveice (E.g. Drivers licence, Passport)</label></td>
+					<td><input id="rowGov" name="rowGov" type="checkbox" data-storage="1" data-labelauty="No|Yes"/></td>
+				</tr>
+				<tr>
+					<td><label for="rowInstall">Install/Uninstall software on a device</label></td>
+					<td><input id="rowInstall" name="rowInstall" type="checkbox" data-storage="1" data-labelauty="No|Yes"/></td>
+				</tr>
+				<tr>
+					<td><label for="rowBandwidth">Access high bandwidth services with no issue (E.g. YouTube, iPlayer, Netflix, Multiplayer gaming)</label></td>
+					<td><input id="rowBandwidth" name="rowBandwidth" type="checkbox" data-storage="1" data-labelauty="No|Yes"/></td>
+				</tr>
+			</table>
 
 			<h2 class="heading-large">Researcher's assessment</h2>
-			<p>This is your chance to assess the participants placment on the Digital Inclusion Scale.</p>
+			<p>This is your chance to assess the participants placement on the Digital Inclusion Scale.</p>
 
 
-				<div class="form-group">
-					<label class="form-label-bold" for="researcherScore"><span class="required">*</span>Please choose a score for this participant</label>
-					<div class="inline">
-						<input id="researcherScore1" name="researcherScore" type="radio" data-validation="required" data-storage="1" data-labelauty="1: Never have, never will"/>
-						<input id="researcherScore2" name="researcherScore" type="radio" data-validation="required" data-storage="2" data-labelauty="2: Was online, but no longer online"/>
-						<input id="researcherScore3" name="researcherScore" type="radio" data-validation="required" data-storage="3" data-labelauty="3: Willing and unable"/>
-						<input id="researcherScore4" name="researcherScore" type="radio" data-validation="required" data-storage="4" data-labelauty="4: Reluctantly online"/>
-						<input id="researcherScore5" name="researcherScore" type="radio" data-validation="required" data-storage="5" data-labelauty="5: Learning the ropes"/>
-						<input id="researcherScore6" name="researcherScore" type="radio" data-validation="required" data-storage="6" data-labelauty="6: Task specific"/>
-						<input id="researcherScore7" name="researcherScore" type="radio" data-validation="required" data-storage="7" data-labelauty="7: Basic digital skills and capabilities"/>
-						<input id="researcherScore8" name="researcherScore" type="radio" data-validation="required" data-storage="8" data-labelauty="8: Confident"/>
-						<input id="researcherScore9" name="researcherScore" type="radio" data-validation="required" data-storage="9" data-labelauty="9: Expert"/>
+			<div class="form-group"><a name="link-researcherScore"></a>
+				<label class="form-label-bold" for="researcherScore"><span class="required">*</span>Please choose a score for this participant</label>
+				<div class="inline">
+					<input id="researcherScore1" name="researcherScore" type="radio" data-validation="required" data-storage="1" data-labelauty="1: Never have, never will"/>
+					<input id="researcherScore2" name="researcherScore" type="radio" data-validation="required" data-storage="2" data-labelauty="2: Was online, but no longer online"/>
+					<input id="researcherScore3" name="researcherScore" type="radio" data-validation="required" data-storage="3" data-labelauty="3: Willing and unable"/>
+					<input id="researcherScore4" name="researcherScore" type="radio" data-validation="required" data-storage="4" data-labelauty="4: Reluctantly online"/>
+					<input id="researcherScore5" name="researcherScore" type="radio" data-validation="required" data-storage="5" data-labelauty="5: Learning the ropes"/>
+					<input id="researcherScore6" name="researcherScore" type="radio" data-validation="required" data-storage="6" data-labelauty="6: Task specific"/>
+					<input id="researcherScore7" name="researcherScore" type="radio" data-validation="required" data-storage="7" data-labelauty="7: Basic digital skills and capabilities"/>
+					<input id="researcherScore8" name="researcherScore" type="radio" data-validation="required" data-storage="8" data-labelauty="8: Confident"/>
+					<input id="researcherScore9" name="researcherScore" type="radio" data-validation="required" data-storage="9" data-labelauty="9: Expert"/>
+				</div>
+				<details class="form-group">
+					<summary role="button" aria-controls="researcherScore-help" tabindex="0" aria-expanded="false">
+						<span class="summary">Help with choosing a score</span>
+					</summary>
+					<div class="panel-indent" id="researcherScore-help" aria-hidden="true" style="display: none;">
+						<p><strong>1: Never have, never will</strong></br>
+						They may feel they have ‘missed the boat’ and that learning how to use the internet doesn't fit into their lives.</p>
+
+						<p><strong>2: Was online, but no longer online</strong></br>
+						 They might have lost trust in the internet. They might be afraid of fraud or seeing inappropriate things online. They might have lost internet access because of cost or physical or mental capability.</p>
+
+						<p><strong>3: Willing and unable</strong></br>
+						People in this category predominantly have a positive perception of being online but have problems with low skills and they struggle to learn.</p>
+
+						<p><strong>4: Reluctantly online</strong></br>
+						They understand the general benefits of being online, they have yet to experience them personally.</p>
+
+						<p><strong>5: Learning the ropes</strong></br>
+						These users are predominantly very positive about the benefits of the internet and have willingly started to engage with digital technologies.</p>
+
+						<p><strong>6: Task specific</strong></br>
+						Their tasks may include online banking or updating social media. These tasks are often limited and specific.</p>
+
+						<p><strong>7: Basic digital skills and capabilities</strong></br>
+						These people have enough skills to be able to navigate online independently and perform all tasks at a basic level.</p>
+
+						<p><strong>8: Confident</strong></br>
+						Confident users make use of digital tools at work and in their everyday lives.</p>
+
+						<p><strong>9: Expert</strong></br>
+						Expert internet users have advanced digital skills.</p>
 					</div>
-					<details class="form-group">
-						<summary role="button" aria-controls="details-content-0" tabindex="0" aria-expanded="false">
-							<span class="summary">Help with choosing a score</span>
-						</summary>
-						<div class="panel-indent" id="details-content-0" aria-hidden="true" style="display: none;">
-							<p><strong>1: Never have, never will</strong></br>
-							They may feel they have ‘missed the boat’ and that learning how to use the internet doesn’t fit into their lives.</p>
-
-							<p><strong>2: Was online, but no longer online</strong></br>
-							 They might have lost trust in the internet. They might be afraid of fraud or seeing inappropriate things online. They might have lost internet access because of cost or physical or mental capability.</p>
-
-							<p><strong>3: Willing and unable</strong></br>
-							People in this category predominantly have a positive perception of being online but have problems with low skills and they struggle to learn.</p>
-
-							<p><strong>4: Reluctantly online</strong></br>
-							They understand the general benefits of being online, they have yet to experience them personally.</p>
-
-							<p><strong>5: Learning the ropes</strong></br>
-							These users are predominantly very positive about the benefits of the internet and have willingly started to engage with digital technologies.</p>
-
-							<p><strong>6: Task specific</strong></br>
-							Their tasks may include online banking or updating social media. These tasks are often limited and specific.</p>
-
-							<p><strong>7: Basic digital skills and capabilities</strong></br>
-							These people have enough skills to be able to navigate online independently and perform all tasks at a basic level.</p>
-
-							<p><strong>8: Confident</strong></br>
-							Confident users make use of digital tools at work and in their everyday lives.</p>
-
-							<p><strong>9: Expert</strong></br>
-							Expert internet users have advanced digital skills.</p>
-						</div>
-					</details>
-				</div>
-				<div class="form-group">
-					<label class="form-label-bold" for="researcherComment">Researcher's comments <span class="form-hint">Any comments you have about this participant and the plotter</span></label>
-					<textarea class="form-control" style="width:100%" cols="100" rows="10" id="researcherComment" name="researchComment"></textarea>
-				</div>
-			</form>
+				</details>
+			</div>
+			<div class="form-group"><a name="link-researcherComment"></a>
+				<label class="form-label-bold" for="researcherComment">Researcher's comments <span class="form-hint">Any comments you have about this participant and the plotter</span></label>
+				<textarea class="form-control" style="width:100%" cols="100" rows="10" id="researcherComment" name="researchComment"></textarea>
+			</div>
+		</form>
 
 		<div class="plotterNav">
 			<a class="button navigation" navType="cancelParticipant" nextPage="Questions">Cancel</a>
@@ -290,10 +309,7 @@
 			<hr>
 			<a class="button navigation" navType="endSession" nextPage="Summary">View summary</a>
 		</div>
-		
-
-<!-- STOP DELETING! -->
-
+		</div>
 	</main>
 
 	<footer data-includefile="footer"></footer>

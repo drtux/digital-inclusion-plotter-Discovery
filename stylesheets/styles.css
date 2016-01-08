@@ -11,15 +11,14 @@ footer{
 #questionsPage {
 	float: right;
 	width: 600px;
-	height: 500px;
+	height: 600px;
 	overflow: scroll;
-    padding-left: 10px;
-    padding-right: 10px;
-    margin-top: 1%;
+    
+    margin-top: 25px;
 }
 .floatingNav{
 	z-index: 1;
-	width: 18%;
+	width: 15%;
     position: fixed;
     margin-top: 1%;
     margin-left: 1%;

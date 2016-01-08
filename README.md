@@ -66,4 +66,5 @@ _Not all of these are things to be included, they are suggestions, ideas and pro
 - Enable flexible for researchers to "add" questions to the plotter themselves. They could then categories the questions into DI related categories, which the plotter would then plot.
 
 ##Other
-- Fix score calculation
+- Revert back to GDS usability templates to observe impact on input speed
+- What happens if 'don't know' options included in skill table?

@@ -37,26 +37,38 @@
 		<div data-includefile="banner-alpha"></div>
 
 		<div class="floatingNav">
-			<ul class="list-bullet">
-				<li><a href="#link-age">Age</a></li>
-				<li><a href="#link-use">Digital use</a></li>
-				<li><a href="#link-need">Digital need</a></li>
-				<li><a href="#link-convenience">Convenience</a></li>
-				<li><a href="#link-confidence">Confidence</a></li>
-				<li><a href="#link-accessWhere">Access where</a></li>
-				<li><a href="#link-accessDevice">Access device</a></li>
-				<li><a href="#link-fequencyOnline">Frequency online</a></li>
-				<li><a href="#link-accessHCI">Access HCI</a></li>
-				<li><a href="#link-accessNeedlink">Access need</a></li>
-				<li><a href="#link-learn">Digital learning</a></li>
-				<li><a href="#link-safety">Digital safety</a></li>
+			<h3 class="heading-small">Navigate to section</h3>
+			<ul class="menu">
+				<li><a href="#link-questions">Routing</a>
+					<ul>
+						<li><a href="#link-age">Age</a></li>
+						<li><a href="#link-use">Digital use</a></li>
+						<li><a href="#link-need">Digital need</a></li>
+					</ul>
+				<li><a href="#link-questions">Questions</a>
+					<ul>
+						<li><a href="#link-convenience">Convenience</a></li>
+						<li><a href="#link-confidence">Confidence</a></li>
+						<li><a href="#link-accessWhere">Access where</a></li>
+						<li><a href="#link-accessDevice">Access device</a></li>
+						<li><a href="#link-fequencyOnline">Frequency online</a></li>
+						<li><a href="#link-accessHCI">Access HCI</a></li>
+						<li><a href="#link-accessNeed">Access need</a></li>
+						<li><a href="#link-learn">Digital learning</a></li>
+						<li><a href="#link-safety">Digital safety</a></li>
+					</ul>
+				</li>
 				<li><a href="#link-skills">Digital skills</a></li>
-				<li><a href="#link-researcherScore">Researcher's score</a></li>
-				<li><a href="#link-researcherComment">Researcher's comment</a></li>
+				<li><a href="#link-researcherTools">Researcher Tools</a>
+					<ul>
+						<li><a href="#link-researcherScore">Researcher's score</a></li>
+						<li><a href="#link-researcherComment">Researcher's comment</a></li>
+					</ul>
+				</li>
 			</ul>
 		</div>
 
-		<div id="content">
+		<div id="questionsPage">
 		<h1 class="heading-xlarge">
 			Assessment of Digital Inclusion
 			<span class="heading-secondary">
@@ -65,7 +77,7 @@
 			</span>
 		</h1>
 		<p>Unless denoted by a <span class="required">*</span> as a required field, leaving a question blank is assumed to be a 'don't know'/negative answer</p>
-		<h2 class="heading-large">Assessment questions</h2>
+		<h2 class="heading-large"></a>Assessment questions</h2>
 		<p>This is capturing whether the participant is <strong>able/motivated/confident</strong> to access digital services.</p>
 
 		<form name="participantForm" class="form" autocomplete="off">
@@ -179,7 +191,7 @@
 <!-- Digital saftey -->
 			<div class="form-group"><a name="link-safety"></a>
 				<label class="form-label-bold" for="safety">Does the participant feel like they know how to be safe online?</label>
-				<p class="form-hint">Aweness of malware/viruses, spyware, phishing - email/website scams</p>
+				<p class="form-hint">Awareness of malware/viruses, spyware, phishing - email/website scams</p>
 				<input id="safety4" name="safety" type="radio" data-storage="4" data-labelauty="Very confident"/>
 				<input id="safety3" name="safety" type="radio" data-storage="3" data-labelauty="Confident"/>
 				<input id="safety2" name="safety" type="radio" data-storage="2" data-labelauty="Unsure"/>
@@ -187,7 +199,8 @@
 			</div>
 			
 <!-- Digital Skills -->
-			<table class="form-group"><a name="link-skills"></a>
+			
+			<table class="form-group"><label class="form-label-bold">Basic digital skills</label><a name="link-skills"></a>
 				<tr>
 					<th>Action/Activity</th>
 					<th>Could the participant do this?</th>
@@ -246,9 +259,9 @@
 				</tr>
 			</table>
 
-			<h2 class="heading-large">Researcher's assessment</h2>
+			
+			<h2 class="heading-large"><a name="link-researcherTools"></a>Researcher's assessment</h2>
 			<p>This is your chance to assess the participants placement on the Digital Inclusion Scale.</p>
-
 
 			<div class="form-group"><a name="link-researcherScore"></a>
 				<label class="form-label-bold" for="researcherScore"><span class="required">*</span>Please choose a score for this participant</label>

@@ -39,7 +39,7 @@
 		<div class="floatingNav">
 			<h3 class="heading-small">Navigate to section</h3>
 			<ul class="menu">
-				<li><a href="#link-questions">Routing</a>
+				<li><a href="#link-routing">Routing</a>
 					<ul>
 						<li><a href="#link-age">Age</a></li>
 						<li><a href="#link-use">Digital use</a></li>
@@ -83,7 +83,7 @@
 		<form name="participantForm" class="form" autocomplete="off">
 		
 <!-- Age -->
-			<div class="form-group"><a name="link-age"></a>
+			<div class="form-group"><a name="link-age"></a><a name="link-routing"></a>
 				<label class="form-label-bold" for="age"><span class="required">*</span>Participant's age</label>
 				<input id="age1" name="age" type="radio" data-validation="required" data-storage="1" data-labelauty="10-17"/>
 				<input id="age2" name="age" type="radio" data-validation="required" data-storage="2" data-labelauty="18-25"/>
@@ -120,7 +120,7 @@
 			</div>
 
 <!-- Convenience -->
-			<div class="form-group"><a name="link-convenience"></a>
+			<div class="form-group"><a name="link-convenience"></a><a name="link-questions"></a>
 				<label class="form-label-bold" for="convenience">Does the participant find it convenient to use the internet regularly to complete tasks?</label>
 				<input id="convenience4" name="convenience" type="radio" data-storage="4" data-labelauty="Very convenient"/>
 				<input id="convenience3" name="convenience" type="radio" data-storage="3" data-labelauty="Convenient"/>
@@ -199,8 +199,9 @@
 			</div>
 			
 <!-- Digital Skills -->
-			
-			<table class="form-group"><label class="form-label-bold">Basic digital skills</label><a name="link-skills"></a>
+			<table class="form-group"><a name="link-skills"></a>
+				<tr>
+					<th colspan="2" class="form-label-bold" style="border-bottom-width: 0px;">Basic digital skills</th>
 				<tr>
 					<th>Action/Activity</th>
 					<th>Could the participant do this?</th>

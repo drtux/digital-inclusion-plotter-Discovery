@@ -8,19 +8,13 @@ footer{
 	clear: both;
 }
 
-#content {
-	float: right;
-    width: 675px;
-    margin-top: 25px;
-}
 .floatingNav{
-	width: 205px;
     position: fixed;
     margin-top: 10px;
 }
 
 .rightCol {
-	max-width: 44%;
+	max-width: 74%;
 	float: right;
 	margin-left: 1%;
 }
@@ -28,11 +22,6 @@ footer{
 	max-width: 44%;
 	float:left;
 	margin-right: 1%; 
-}
-.plotterNav {
-	clear:both;
-	max-width: 100%;
-	text-align: center;
 }
 
 .required {

@@ -63,6 +63,7 @@ _Not all of these are things to be included, they are suggestions, ideas and pro
 - Device based digital inclusion scale
 - More then one point on scale - one for mobile and tablet / one for desktop
 - Hierarchy of action buttons - one major plus secondary
+- Enable flexible for researchers to "add" questions to the plotter themselves. They could then categories the questions into DI related categories, which the plotter would then plot.
 
 ##Other
 - Fix score calculation

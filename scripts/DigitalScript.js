@@ -1,12 +1,12 @@
 $(document).ready(function(){
 	if($("form").length >0)
-	{//If a form element exsists
+	{//If a form element exists begin conversion to toggle inputs
 		if($(":checkbox").length && $(":radio").length)
 		{
 			$(":checkbox").labelauty();
 			$(":radio").labelauty();
 		}
-		$.validate();
+		$.validate();//Set up validation on the form
 	}
 
 /** LISTENERS **/
@@ -20,7 +20,8 @@ $(document).ready(function(){
 			case 'newSession': newSession($(this)); break;
 			case 'cancelSession': cancelSession($(this)); break;
 			case 'endSession': endSession($(this)); break;
-			default: break;
+			case 'dataImport': dataImport($(this)); break;
+			default: window.alert("Unknown navigation target"); break;
 		}
 
 		
@@ -28,6 +29,37 @@ $(document).ready(function(){
 
 	var URL = "digitalInclusion_";
 	var FILETYPE = ".html";
+
+
+	$("#fileImport").change(handleFileImport);
+
+
+
+	function handleFileImport(evt) {
+		var file = evt.target.files[0];
+		//Show 'Please wait...'
+		$('#overlay').show();
+		Papa.parse(file, {
+			
+			header: true,
+			dynamicTyping: true,
+			error: function(err, file)
+				{
+					console.log("ERROR:", err, file);
+					firstError = firstError || err;
+					errorCount++;
+				},
+			complete: function(results)
+				{//migrate data to localstorage and change page
+					migrateImport(results);
+					manageSessions();
+					window.location.replace(URL + /*$('.button').attr('nextPage')*/ 'Summary' + FILETYPE);
+				}
+		});
+	}
+
+
+/** NAVIGATION LOGIC **/
 
 	function endSession(btn) {
     	if($('form').isValid())
@@ -54,15 +86,7 @@ $(document).ready(function(){
 	}
 
 	function newSession(btn) {
-	    localStorage.removeItem("participantForm");//Delete old participant form data
-		localStorage.removeItem("sessionForm");//Delete old session form data
-		var sCount = 0;//Default to first session
-		if (localStorage.getItem("sCount") != null)
-		{//There are other participants get the count
-			sCount = parseInt(JSON.parse(localStorage.getItem("sCount")));
-			sCount++;//Increment for new session
-		}
-		localStorage.setItem("sCount", JSON.stringify(sCount));//Save the Count
+	    manageSessions();
 		window.location.replace(URL + btn.attr('nextPage') + FILETYPE);
 	}
 
@@ -75,7 +99,46 @@ $(document).ready(function(){
 			window.location.replace(URL + btn.attr('nextPage') + FILETYPE);
 	}
 
-/** FUNCTIONS **/
+/** UTILITY FUNCTIONS **/
+	
+	function migrateImport(results) {
+		if(typeof(Storage)!=="undefined")
+		{
+			var sCount = 0;//Default to first session
+			var session = [];//Default to first session
+			if (localStorage.getItem("sCount") != null)
+			{//There are other sessions get the count
+				sCount = localStorage.getItem("sCount");
+			}
+			if (localStorage.getItem("session") != null)
+			{//There are other sessions get them
+				session = JSON.parse(localStorage.getItem("session"));
+			}
+
+			for (var i = 0; i < results.data.length; i++) {//Append all the imported data
+				session.push(results.data[i]); 
+				sCount++;
+			};
+
+			localStorage.setItem("sCount", sCount);//Save the Count
+			localStorage.setItem("session", JSON.stringify(session));//Save the session
+		}
+	}
+
+	function manageSessions() {
+		if(typeof(Storage)!=="undefined")
+		{
+			localStorage.removeItem("participantForm");//Delete old participant form data
+			localStorage.removeItem("sessionForm");//Delete old session form data
+			var sCount = 0;//Default to first session
+			if (localStorage.getItem("sCount") != null)
+			{//There are other sessions get the count
+				sCount = parseInt(JSON.parse(localStorage.getItem("sCount")));
+				sCount++;//Increment for new session
+			}
+			localStorage.setItem("sCount", JSON.stringify(sCount));//Save the Count
+		}
+	}
 
 	//Connect to local storage and save the form data
 	function connectAndSave()

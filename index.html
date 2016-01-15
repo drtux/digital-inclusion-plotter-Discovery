@@ -22,7 +22,7 @@
 	<script type="text/javascript" src="scripts/application.js"></script>
 	<script type="text/javascript" src="scripts/details.polyfill.js"></script>
 
-	<script src="scripts/jquery.form-validator.min.js"></script>
+	<script type="text/javascript" src="scripts/papaparse.js"></script>
 	<script type="text/javascript" src="scripts/DigitalScript.js"></script>
 	<link rel="stylesheet" type="text/css" href="stylesheets/styles.css" />
 </head>
@@ -50,11 +50,18 @@
 		</ul>
 
 		<a class="button navigation" navType="newSession" nextPage="Metadata">Start now</a>
+		<p>Or choose a CSV file to import</p>
+		<input type="file" id="fileImport" name="fileImport"/>
 
 <!-- STOP DELETING! -->
 
 	</main>
 
 	<footer data-includefile="footer"></footer>
+
+
+	<div id="overlay" aria-hidden="true" style="display: none;">
+    <span>Processing file. Please wait...</span>
+</div>
 </body>
 </html>

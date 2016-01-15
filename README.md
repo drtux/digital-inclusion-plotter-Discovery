@@ -68,4 +68,3 @@ _Not all of these are things to be included, they are suggestions, ideas and pro
 ##Other
 - Revert back to GDS usability templates to observe impact on input speed
 - What happens if 'don't know' options included in skill table?
-- Canceling participants needs to change to the summary page

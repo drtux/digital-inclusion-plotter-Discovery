@@ -11,6 +11,7 @@ footer{
 .floatingNav{
     position: fixed;
     margin-top: 10px;
+    background: white;
 }
 
 .plotterNav {

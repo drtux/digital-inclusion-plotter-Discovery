@@ -6,8 +6,8 @@
 <!--[if gt IE 9]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
 	<meta charset="utf-8">
-	<title>GOV.UK</title>
-	<meta name="author" content="Tom Harrop" />
+	<title>Digital Inclusion Plotter</title>
+	<meta name="author" content="Ben Walker"/>
 	<meta name="Copyright" content="Open Government Licence v3.0, except where otherwise stated" />
 	<!--[if gt IE 8]><!--><link href="govuk-assets/stylesheets/govuk-template.css?0.12.0" media="screen" rel="stylesheet" type="text/css" /><!--<![endif]-->
 	<!--[if IE 6]><link href="govuk-assets/stylesheets/govuk-template-ie6.css?0.12.0" media="screen" rel="stylesheet" type="text/css" /><![endif]-->
@@ -78,13 +78,14 @@
 
 		<!--<div id='chart'><svg height="640"></svg></div>-->
 		<div class="plotterNav">
-			<p><a class="button navigation" navType="newSession" nextPage="Metadata">New reserch session</a></p>
+			<a class="button navigation" navType="newParticipant" nextPage="Questions">New participant</a>
+			<a class="button navigation" navType="newSession" nextPage="Metadata">New research session</a>
 			<hr>
 			<div class="inline">
 				<a href="#" class="button" id="exportCSV">Export CSV</a>
 				<a href="#" class="button" id="exportJSON" disabled="disabled">Export JSON</a>
 			</div>
-			<p>Press the button below to delete the tools current group of participants data to start again</p>
+			<p>Pressing the button below will delete the tools current project data</p>
 			<p><a href="index.html" class="button clearStorage">Clear saved data</a></p>
 		</div>
 <!-- STOP DELETING! -->

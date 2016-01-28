@@ -34,47 +34,41 @@
 	<main id="content" role="main">
 		<div data-includefile="banner-alpha"></div>
 
-		<h1 class="heading-xlarge">Session Metadata
-			<span class="heading-secondary">
-				This information is recorded to assist your recollection of the participant.
-			</span>
-		</h1>
-		<p>For this tool the definition of digital is:</br>
-			A device such as PCs, Macs, tablets, mobile phones that access the internet</p>
-		<p><span class="required">*</span> Required field</p>
+		<h1 class="heading-xlarge">Research session details</h1>
 
 		<form name="sessionForm" class="form" autocomplete="off">
 
 <!-- session alias -->
 			<div class="form-group">
-				<label class="form-label-bold" for="sessionName"><span class="required">*</span>Session name</label>
-				<input type="text" class="form-control" id="sessionName" name="sessionName" data-validation="required"/>
+				<label class="form-label-bold" for="sessionName">Research session name</label>
+				<p class="form-hint">E.g. </p>
+				<input type="text" class="form-control" id="sessionName" name="sessionName"/>
 			</div>
 
 <!-- Location -->
 			<div class="form-group">
 				<label class="form-label-bold" for="sessionLocation">Research session location</label>
+				<p class="form-hint">E.g. Croydon, Metropoint, User research lab</p>
 				<input type="text" class="form-control" id="sessionLocation" name="sessionLocation"/>
 			</div>
 
 <!-- Date -->
 			<div class="form-group">
-				<label class="form-label-bold" for="sessionDate">Research session Date</label>
+				<label class="form-label-bold" for="sessionDate">Research session date</label>
 				<input type="date" class="form-control" id="sessionDate" name="sessionDate"/>
 			</div>
 
 <!-- Session comment -->
 			<div class="form-group">
-				<label class="form-label-bold" for="sessionComment">Comments on this research session</label>
-				<p class="form-hint">Any comments you have about this participant and the plotter</p>
+				<label class="form-label-bold" for="sessionComment">Notes on this research session</label>
 				<textarea class="form-control" cols="100" rows="10" id="sessionComment" name="sessionComment"></textarea>
 			</div>
 
 <!-- End of Form -->
 		</form>
 		<div class="plotterNav">
-			<a class="button navigation" navType="cancelSession" nextPage="Summary">Cancel</a>
-			<a class="button navigation" navType="newParticipant" nextPage="Questions">Start session</a>
+			<a class="button navigation" navType="cancelSession" nextPage="Summary">Cancel session</a>
+			<a class="button navigation" navType="newParticipant" nextPage="Questions">Save & add participant</a>
 		</div>
 		<script type="text/javascript">
 

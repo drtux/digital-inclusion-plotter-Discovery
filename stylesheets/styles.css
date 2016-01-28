@@ -29,10 +29,16 @@ footer{
     top:50%;
 }
 
-.floatingNav{
+.floating{
     position: fixed;
     margin-top: 10px;
     background: white;
+}
+.nav{
+	margin: 1%;
+}
+.nav li{
+	font-size: 11pt;
 }
 
 .plotterNav {
@@ -47,7 +53,7 @@ footer{
 	margin-left: 1%;
 }
 .leftCol {
-	max-width: 44%;
+	max-width: 17%;
 	float:left;
 	margin-right: 1%; 
 }

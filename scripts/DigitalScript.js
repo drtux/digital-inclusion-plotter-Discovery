@@ -1,10 +1,9 @@
 $(document).ready(function(){
 	if($("form").length >0)
 	{//If a form element exists begin conversion to toggle inputs
-		if($(":checkbox").length && $(":radio").length)
+		if($(".toggle:checkbox").length)//If toggles are present
 		{
-			$(":checkbox").labelauty();
-			$(":radio").labelauty();
+			$(".toggle:checkbox").labelauty();
 		}
 		$.validate();//Set up validation on the form
 	}

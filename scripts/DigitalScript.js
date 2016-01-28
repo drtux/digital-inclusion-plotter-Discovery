@@ -19,7 +19,7 @@ $(document).ready(function(){
 			case 'cancelParticipant': cancelParticipant($(this)); break;
 			case 'newSession': newSession($(this)); break;
 			case 'cancelSession': cancelSession($(this)); break;
-			case 'endSession': endSession($(this)); break;
+			case 'viewSummary': viewSummary($(this)); break;
 			case 'dataImport': dataImport($(this)); break;
 			default: window.alert("Unknown navigation target"); break;
 		}
@@ -61,12 +61,11 @@ $(document).ready(function(){
 
 /** NAVIGATION LOGIC **/
 
-	function endSession(btn) {
+	function viewSummary(btn) {
     	if($('form').isValid())
 		{
 			connectAndSave();//Save the participant to storage
 			localStorage.removeItem("participantForm");//Delete old participant form data
-			localStorage.removeItem("sessionForm");//Delete old session form data
 			window.location.replace(URL + btn.attr('nextPage') + FILETYPE);
 		}
 	}

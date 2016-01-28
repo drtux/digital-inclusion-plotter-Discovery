@@ -48,6 +48,7 @@
 				<li><a href="#link-fequencyOnline">Frequency online</a></li>
 				<li><a href="#link-accessHCI">Access HCI</a></li>
 				<li><a href="#link-accessNeed">Access need</a></li>
+				<li><a href="#link-limit">Access limitation</a></li>
 				<li><a href="#link-learn">Digital learning</a></li>
 				<li><a href="#link-safety">Digital safety</a></li>
 				<li><a href="#link-skills">Digital skills</a></li>
@@ -88,7 +89,7 @@
 
 <!-- Digital Use -->
 			<fieldset class="form-group"><a name="link-use"></a>
-				<legend class="form-label-bold" for="use">What is the participants internet use?</legend>
+				<legend class="form-label-bold" for="use">Dose the participants use the internet?</legend>
 				<input id="useEver" name="use" type="checkbox" data-storage="1" data-labelauty="Ever: No|Ever: Yes"/>
 				<input id="useCurrent" name="use" type="checkbox" data-storage="1" data-labelauty="Currently: No|Currently: Yes"/>
 				<input id="useFuture" name="use" type="checkbox" data-storage="1" data-labelauty="Future: No|Future: Yes"/>
@@ -100,16 +101,19 @@
 				<input id="needYDay" name="need" type="checkbox" data-storage="1" data-labelauty="Yes - for everyday usage"/>
 				<input id="needYWork" name="need" type="checkbox" data-storage="1" data-labelauty="Yes - for work"/>
 				<input id="needYTask" name="need" type="checkbox" data-storage="1" data-labelauty="Yes - for certain tasks"/>
-				<input id="needNSkill" name="need" type="checkbox" data-storage="1" data-labelauty="No - Limited skills"/>
-				<input id="needNAccess" name="need" type="checkbox" data-storage="1" data-labelauty="No - Limited the access"/>
-				<input id="needNMotivation" name="need" type="checkbox" data-storage="1" data-labelauty="No - Limited motivation"/>
-				<input id="needNConfidence" name="need" type="checkbox" data-storage="1" data-labelauty="No - Limited confidence"/>
-				<input id="needNo" name="need" type="checkbox" data-storage="1" data-labelauty="No - Lacks the need"/>
+				<input id="needNo" name="need" type="checkbox" data-storage="1" data-labelauty="Lacks the need"/>
+			</fieldset>
+			<fieldset class="form-group"><a name="link-limit"></a>
+				<legend class="form-label-bold" for="need">Is the participant limited by anything when accessing digital services?</legend>
+				<input id="needNSkill" name="need" type="checkbox" data-storage="1" data-labelauty="Limited skills"/>
+				<input id="needNAccess" name="need" type="checkbox" data-storage="1" data-labelauty="Limited access"/>
+				<input id="needNMotivation" name="need" type="checkbox" data-storage="1" data-labelauty="Limited motivation"/>
+				<input id="needNConfidence" name="need" type="checkbox" data-storage="1" data-labelauty="Limited confidence"/>
 			</fieldset>
 
 <!-- Convenience -->
 			<fieldset class="form-group"><a name="link-convenience"></a>
-				<legend class="form-label-bold" for="convenience">Does the participant find it convenient to use the internet regularly to complete tasks?</legend>
+				<legend class="form-label-bold" for="convenience">Does the participant find it convenient to use the internet to complete tasks?</legend>
 				<input id="convenience4" name="convenience" type="radio" data-storage="4" data-labelauty="Very convenient"/>
 				<input id="convenience3" name="convenience" type="radio" data-storage="3" data-labelauty="Convenient"/>
 				<input id="convenience2" name="convenience" type="radio" data-storage="2" data-labelauty="Inconvenient"/>
@@ -125,9 +129,19 @@
 				<input id="confidence1" name="confidence" type="radio" data-storage="1" data-labelauty="Very unsure"/>
 			</fieldset>
 
+<!-- Digital saftey -->
+			<fieldset class="form-group"><a name="link-safety"></a>
+				<legend class="form-label-bold" for="safety">Does the participant feel like they know how to be safe online?</legend>
+				<p class="form-hint">Aweness of malware/viruses, spyware, phishing - email/website scams</p>
+				<input id="safety4" name="safety" type="radio" data-storage="4" data-labelauty="Very aware"/>
+				<input id="safety3" name="safety" type="radio" data-storage="3" data-labelauty="Aware"/>
+				<input id="safety2" name="safety" type="radio" data-storage="2" data-labelauty="Unaware"/>
+				<input id="safety1" name="safety" type="radio" data-storage="1" data-labelauty="Very unaware"/>
+			</fieldset>
+
 <!-- How access -->
 			<fieldset class="form-group"><a name="link-accessWhere"></a>
-				<legend class="form-label-bold" for="accessWhere">Where does the participant predominantly access the internet from?</legend>
+				<legend class="form-label-bold" for="accessWhere">Where does the participant access the internet from?</legend>
 				<input id="accessWhereHome" name="accessWhere" type="checkbox" data-storage="1" data-labelauty="Home"/>
 				<input id="accessWhereMobile" name="accessWhere" type="checkbox" data-storage="1" data-labelauty="Mobile internet or hotspots"/>
 				<input id="accessWherePublic" name="accessWhere" type="checkbox" data-storage="1" data-labelauty="Public place - E.g. cyber-cafe or library"/>
@@ -136,7 +150,7 @@
 
 <!-- Device access -->
 			<fieldset class="form-group"><a name="link-accessDevice"></a>
-				<legend class="form-label-bold" for="accessDevice">What device/s does the participant use to access the internet?</legend>
+				<legend class="form-label-bold" for="accessDevice">What device/s does the participant use?</legend>
 				<input id="accessDeviceDesktop" name="accessDevice" type="checkbox" data-storage="1" data-labelauty="Desktop"/>
 				<input id="accessDeviceLaptop" name="accessDevice" type="checkbox" data-storage="1" data-labelauty="Laptop"/>
 				<input id="accessDeviceTablet" name="accessDevice" type="checkbox" data-storage="1" data-labelauty="Tablet"/>
@@ -158,6 +172,7 @@
 				<legend class="form-label-bold" for="accessHCI">Does the participant have help (Hareware/Software/People) to get online?</legend>
 				<input id="accessHCIEvery" name="accessHCI" type="checkbox" data-storage="1" data-labelauty="Every time: No|Every time: Yes"/>
 				<input id="accessHCIOccasional" name="accessHCI" type="checkbox" data-storage="1" data-labelauty="Occasionally/Specific tasks: No|Occasionally/Specific tasks: Yes"/>
+				<input id="accessHCIAbandon" name="accessHCI" type="checkbox" data-storage="1" data-labelauty="Abandons task: No|Abandons tasks: Yes"/>
 			</fieldset>
 
 <!-- Access need -->
@@ -174,16 +189,6 @@
 				<input id="learn3" name="learn" type="radio" data-storage="3" data-labelauty="Confident"/>
 				<input id="learn2" name="learn" type="radio" data-storage="2" data-labelauty="Unconfident"/>
 				<input id="learn1" name="learn" type="radio" data-storage="1" data-labelauty="Very unconfident"/>
-			</fieldset>
-
-<!-- Digital saftey -->
-			<fieldset class="form-group"><a name="link-safety"></a>
-				<legend class="form-label-bold" for="safety">Does the participant feel like they know how to be safe online?</legend>
-				<p class="form-hint">Aweness of malware/viruses, spyware, phishing - email/website scams</p>
-				<input id="safety4" name="safety" type="radio" data-storage="4" data-labelauty="Very confident"/>
-				<input id="safety3" name="safety" type="radio" data-storage="3" data-labelauty="Confident"/>
-				<input id="safety2" name="safety" type="radio" data-storage="2" data-labelauty="Unconfident"/>
-				<input id="safety1" name="safety" type="radio" data-storage="1" data-labelauty="Very unconfident"/>
 			</fieldset>
 			
 <!-- Digital Skills -->

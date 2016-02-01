@@ -435,20 +435,50 @@ Lvl 9: yes to everything (lots of device types) high bandwidth && advanced searc
   skillScore      :    17    ||     0
 */
 
-/* 1 */	if(((confidenceScore < 0) && (accessScore < 0) && (learningScore < 0) && (safetyScore < 0) && (deviceTypeCount < 0) && (needScore < 0) && (skillScore <= 1)) || ((participant.useEver == null) && (participant.useFuture == null) && (participant.needNo == null) && (deviceTypeCount == 0))){result.score =  1;}
-/* 2 */	else if (((confidenceScore < 0) && (accessScore < 0) && (learningScore < 0) && (safetyScore < 0) && (deviceTypeCount <= 1) && (needScore < 0) && (skillScore <= 1))||((participant.useCurrent == null) && (participant.useFuture == null) && (deviceTypeCount <= 1))){result.score =  2;}
-/* 3 */	else if ((confidenceScore < 0) && (accessScore <= 4) && (learningScore < 0) && (safetyScore < 0) && (deviceTypeCount <= 2) && (needScore <= 1) && (skillScore <= 3)){result.score =  3;}
-/* 4 */	else if ((confidenceScore < 0) && (accessScore <= 8) && (learningScore < 0) && (safetyScore < 0) && (deviceTypeCount <= 2) && (needScore <= 2) && (skillScore <= 5)){result.score =  4;}
-/* 5 */	else if ((confidenceScore > 0) && (accessScore <= 16) && (learningScore > 0) && (safetyScore < 0) && (deviceTypeCount <= 2) && (needScore <= 4) && (skillScore <= 7)){result.score =  5;}
-/* 6 */	else if ((confidenceScore > 0) && (accessScore <= 20) && (learningScore > 0) && (safetyScore > 0) && (deviceTypeCount <= 3) && (needScore <= 6) && (skillScore <= 9)){result.score =  6;}
-/* 7 */	else if ((confidenceScore > 0) && (accessScore <= 24) && (learningScore > 0) && (safetyScore > 0) && (deviceTypeCount <= 3) && (needScore <= 8) && (skillScore <= 11)){result.score =  7;}
-/* 8 */	else if ((confidenceScore > 2) && (accessScore <= 28) && (learningScore > 2) && (safetyScore > 2) && (deviceTypeCount <= 4) && (needScore <= 9) && (skillScore <= 14)){result.score =  8;}
-/* 9 */	else if ((confidenceScore > 2) && (accessScore <= 31) && (learningScore > 2) && (safetyScore > 2) && (deviceTypeCount <= 4) && (needScore <= 10) && (skillScore <= 17)){result.score =  9;}
+/* 1 	if(((confidenceScore < 0) && (accessScore < 0) && (learningScore < 0) && (safetyScore < 0) && (deviceTypeCount < 0) && (needScore < 0) && (skillScore <= 1)) || ((participant.useEver == null) && (participant.useFuture == null) && (participant.needNo == null) && (deviceTypeCount == 0))){result.score =  1;}
+/* 2 	else if (((confidenceScore < 0) && (accessScore < 0) && (learningScore < 0) && (safetyScore < 0) && (deviceTypeCount <= 1) && (needScore < 0) && (skillScore <= 1))||((participant.useCurrent == null) && (participant.useFuture == null) && (deviceTypeCount <= 1))){result.score =  2;}
+/* 3 	else if ((confidenceScore < 0) && (accessScore <= 4) && (learningScore < 0) && (safetyScore < 0) && (deviceTypeCount <= 2) && (needScore <= 1) && (skillScore <= 3)){result.score =  3;}
+/* 4 	else if ((confidenceScore < 0) && (accessScore <= 8) && (learningScore < 0) && (safetyScore < 0) && (deviceTypeCount <= 2) && (needScore <= 2) && (skillScore <= 5)){result.score =  4;}
+/* 5 	else if ((confidenceScore > 0) && (accessScore <= 16) && (learningScore > 0) && (safetyScore < 0) && (deviceTypeCount <= 2) && (needScore <= 4) && (skillScore <= 7)){result.score =  5;}
+/* 6 	else if ((confidenceScore > 0) && (accessScore <= 20) && (learningScore > 0) && (safetyScore > 0) && (deviceTypeCount <= 3) && (needScore <= 6) && (skillScore <= 9)){result.score =  6;}
+/* 7 	else if ((confidenceScore > 0) && (accessScore <= 24) && (learningScore > 0) && (safetyScore > 0) && (deviceTypeCount <= 3) && (needScore <= 8) && (skillScore <= 11)){result.score =  7;}
+/* 8 	else if ((confidenceScore > 2) && (accessScore <= 28) && (learningScore > 2) && (safetyScore > 2) && (deviceTypeCount <= 4) && (needScore <= 9) && (skillScore <= 14)){result.score =  8;}
+/* 9 	else if ((confidenceScore > 2) && (accessScore <= 31) && (learningScore > 2) && (safetyScore > 2) && (deviceTypeCount <= 4) && (needScore <= 10) && (skillScore <= 17)){result.score =  9;}
 		else//ERROR case
 		{result.score = 0;}	
 
 
 		return result;
+*/
+
+
+
+var calcScore = 0;
+calcScore += confidenceScore;
+calcScore += accessScore;
+calcScore += learningScore;
+calcScore += safetyScore;
+calcScore += deviceTypeCount;
+calcScore += needScore;
+calcScore += skillScore;
+
+/* 1 */	if(calcScore <= -10){result.score =  1;}
+/* 3 */	else if (calcScore <= 10){result.score =  3;}
+/* 4 */	else if (calcScore <= 20){result.score =  4;}
+/* 5 */	else if (calcScore <= 30){result.score =  5;}
+/* 6 */	else if (calcScore <= 40){result.score =  6;}
+/* 7 */	else if (calcScore <= 50){result.score =  7;}
+/* 8 */	else if (calcScore <= 60){result.score =  8;}
+/* 9 */	else if (calcScore > 60){result.score =  9;}
+		else//ERROR case
+		{result.score = 0;}	
+
+
+		return result;
+
+
+
+
 
 
 

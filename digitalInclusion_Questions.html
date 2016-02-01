@@ -15,7 +15,7 @@
 	<!--[if IE 8]><link href="govuk-assets/stylesheets/govuk-template-ie8.css?0.12.0" media="screen" rel="stylesheet" type="text/css" /><![endif]-->
 	<link href="govuk-assets/stylesheets/govuk-template-print.css?0.12.0" media="print" rel="stylesheet" type="text/css" />
 	<link href="govuk-assets/application.css" media="all" rel="stylesheet" type="text/css" />
-	<link href="govuk-assets/stylesheets/fonts.css?0.12.0" media="all" rel="stylesheet" type="text/css" />
+	<!--<link href="govuk-assets/stylesheets/fonts.css?0.12.0" media="all" rel="stylesheet" type="text/css" /> [REMOVED FOR GDS]-->
 
 	<script type="text/javascript" src="scripts/jquery.min.js"></script>
 	<script type="text/javascript" src="scripts/form.storage.js"></script>
@@ -24,10 +24,10 @@
 
 	<link href="stylesheets/theme-default.min.css" rel="stylesheet" type="text/css"/>
 	<script src="scripts/jquery.form-validator.min.js"></script>
-	<link rel="stylesheet" type="text/css" href="stylesheets/jquery-labelauty.css">
-	<script type="text/javascript" src="scripts/jquery-labelauty.js"></script>
+	
 	<script type="text/javascript" src="scripts/DigitalScript.js"></script>
 	<link rel="stylesheet" type="text/css" href="stylesheets/styles.css" />
+	
 </head>
 <body>
 
@@ -83,29 +83,29 @@
 			</fieldset>
 
 <!-- Digital Use -->
-			<fieldset class="form-group"><a name="link-use"></a>
+			<fieldset class="form-group inline"><a name="link-use"></a>
 				<legend class="form-label-bold" for="use">Dose the participants use the internet?</legend>
-				<input class="toggle" id="useEver" name="use" type="checkbox" data-storage="1" data-labelauty="Ever: No|Ever: Yes"/>
-				<input class="toggle" id="useCurrent" name="use" type="checkbox" data-storage="1" data-labelauty="Currently: No|Currently: Yes"/>
-				<input class="toggle" id="useFuture" name="use" type="checkbox" data-storage="1" data-labelauty="Future: No|Future: Yes"/>
+				<label class="block-label"><input id="useEver" name="use" type="checkbox" data-storage="1"/>Ever</label>
+				<label class="block-label"><input id="useCurrent" name="use" type="checkbox" data-storage="1"/>Currently</label>
+				<label class="block-label"><input id="useFuture" name="use" type="checkbox" data-storage="1"/>Future</label>
 			</fieldset>
 
 <!-- Need -->
 			<fieldset class="form-group inline"><a name="link-need"></a>
 				<legend class="form-label-bold" for="need">Does the participant feel the need/want to use the internet?</legend>
-				<label class="block-label"><input id="needYDay" name="need" type="checkbox" data-storage="1"/>Yes - for everyday usage</label>
-				<label class="block-label"><input id="needYWork" name="need" type="checkbox" data-storage="1"/>Yes - for work</label>
-				<label class="block-label"><input id="needYTask" name="need" type="checkbox" data-storage="1"/>Yes - for certain tasks</label>
-				<label class="block-label"><input id="needNo" name="need" type="checkbox" data-storage="1"/>No - Lacks the need</label>
-				<label class="block-label"><input id="need-1" name="need" type="checkbox" data-storage="-1"/>Don't know</label>
+				<label class="block-label"><input id="needYDay" name="need" type="checkbox" data-storage="1"/>Yes everyday</label>
+				<label class="block-label"><input id="needYWork" name="need" type="checkbox" data-storage="1"/>Yes work</label>
+				<label class="block-label"><input id="needYTask" name="need" type="checkbox" data-storage="1"/>Yes tasks</label>
+				<label class="block-label"><input id="needNo" name="need" type="checkbox" data-storage="1"/>No need</label>
+				<label class="block-label"><input id="needDK" name="need" type="checkbox" data-storage="-1"/>Don't know</label>
 			</fieldset>
 			<fieldset class="form-group inline"><a name="link-limit"></a>
-				<legend class="form-label-bold" for="need">Is the participant limited by anything when accessing digital services?</legend>
-				<label class="block-label"><input id="needNSkill" name="needLink" type="checkbox" data-storage="1"/>Limited skills</label>
-				<label class="block-label"><input id="needNAccess" name="needLink" type="checkbox" data-storage="1"/>Limited access</label>
-				<label class="block-label"><input id="needNMotivation" name="needLink" type="checkbox" data-storage="1"/>Limited motivation</label>
-				<label class="block-label"><input id="needNConfidence" name="needLink" type="checkbox" data-storage="1"/>Limited confidence</label>
-				<label class="block-label"><input id="needlimit-1" name="needLink" type="checkbox" data-storage="-1"/>Don't know</label>
+				<legend class="form-label-bold" for="needLink">Is the participant limited by anything when accessing digital services?</legend>
+				<label class="block-label"><input id="needLinkSkill" name="needLink" type="checkbox" data-storage="1"/>Skills</label>
+				<label class="block-label"><input id="needLinkAccess" name="needLink" type="checkbox" data-storage="1"/>Access</label>
+				<label class="block-label"><input id="needLinkMotivation" name="needLink" type="checkbox" data-storage="1"/>Motivation</label>
+				<label class="block-label"><input id="needLinkConfidence" name="needLink" type="checkbox" data-storage="1"/>Confidence</label>
+				<label class="block-label"><input id="needLinkimitDK" name="needLink" type="checkbox" data-storage="-1"/>Don't know</label>
 			</fieldset>
 
 <!-- Convenience -->
@@ -115,7 +115,7 @@
 				<label class="block-label"><input id="convenience3" name="convenience" type="radio" data-storage="3"/>Convenient</label>
 				<label class="block-label"><input id="convenience2" name="convenience" type="radio" data-storage="2"/>Inconvenient</label>
 				<label class="block-label"><input id="convenience1" name="convenience" type="radio" data-storage="1"/>Very inconvenient</label>
-				<label class="block-label"><input id="convenience-1" name="convenience" type="radio" data-storage="-1"/>Don't know</label>
+				<label class="block-label"><input id="convenienceDK" name="convenience" type="radio" data-storage="-1"/>Don't know</label>
 			</fieldset>
 
 <!-- Confidence -->
@@ -125,7 +125,7 @@
 				<label class="block-label"><input id="confidence3" name="confidence" type="radio" data-storage="3"/>Confident</label>
 				<label class="block-label"><input id="confidence2" name="confidence" type="radio" data-storage="2"/>Unsure</label>
 				<label class="block-label"><input id="confidence1" name="confidence" type="radio" data-storage="1"/>Very unsure</label>
-				<label class="block-label"><input id="confidence-1" name="confidence" type="radio" data-storage="-1"/>Don't know</label>
+				<label class="block-label"><input id="confidenceDK" name="confidence" type="radio" data-storage="-1"/>Don't know</label>
 			</fieldset>
 
 <!-- Digital saftey -->
@@ -136,17 +136,17 @@
 				<label class="block-label"><input id="safety3" name="safety" type="radio" data-storage="3"/>Aware</label>
 				<label class="block-label"><input id="safety2" name="safety" type="radio" data-storage="2"/>Unaware</label>
 				<label class="block-label"><input id="safety1" name="safety" type="radio" data-storage="1"/>Very unaware</label>
-				<label class="block-label"><input id="safety-1" name="safety" type="radio" data-storage="-1"/>Don't know</label>
+				<label class="block-label"><input id="safetyDK" name="safety" type="radio" data-storage="-1"/>Don't know</label>
 			</fieldset>
 
 <!-- How access -->
 			<fieldset class="form-group inline"><a name="link-accessWhere"></a>
 				<legend class="form-label-bold" for="accessWhere">Where does the participant access the internet from?</legend>
 				<label class="block-label"><input id="accessWhereHome" name="accessWhere" type="checkbox" data-storage="1"/>Home</label>
-				<label class="block-label"><input id="accessWhereMobile" name="accessWhere" type="checkbox" data-storage="1"/>Mobile internet or hotspots</label>
-				<label class="block-label"><input id="accessWherePublic" name="accessWhere" type="checkbox" data-storage="1"/>Public place - E.g. cyber-cafe or library</label>
-				<label class="block-label"><input id="accessWhereWork" name="accessWhere" type="checkbox" data-storage="1"/>At work</label>
-				<label class="block-label"><input id="accessWhere-1" name="accessWhere" type="checkbox" data-storage="-1"/>Don't know</label>
+				<label class="block-label"><input id="accessWhereMobile" name="accessWhere" type="checkbox" data-storage="1"/>Mobile/Hotspots</label>
+				<label class="block-label"><input id="accessWherePublic" name="accessWhere" type="checkbox" data-storage="1"/>Public place</label>
+				<label class="block-label"><input id="accessWhereWork" name="accessWhere" type="checkbox" data-storage="1"/>Work</label>
+				<label class="block-label"><input id="accessWhereDK" name="accessWhere" type="checkbox" data-storage="-1"/>Don't know</label>
 			</fieldset>
 
 <!-- Device access -->
@@ -155,35 +155,36 @@
 				<label class="block-label"><input id="accessDeviceDesktop" name="accessDevice" type="checkbox" data-storage="1"/>Desktop</label>
 				<label class="block-label"><input id="accessDeviceLaptop" name="accessDevice" type="checkbox" data-storage="1"/>Laptop</label>
 				<label class="block-label"><input id="accessDeviceTablet" name="accessDevice" type="checkbox" data-storage="1"/>Tablet</label>
-				<label class="block-label"><input id="accessDeviceSmartphone" name="accessDevice" type="checkbox" data-storage="1"/>Smartphone - Touchscreen</label>
-				<label class="block-label"><input id="accessDeviceBrickphone" name="accessDevice" type="checkbox" data-storage="1"/>Mobile phone - Non-touchscreen</label>
-				<label class="block-label"><input id="accessDevice-1" name="accessDevice" type="checkbox" data-storage="-1"/>Don't know</label>
+				<label class="block-label"><input id="accessDeviceSmartphone" name="accessDevice" type="checkbox" data-storage="1"/>Smartphone</label>
+				<label class="block-label"><input id="accessDeviceBrickphone" name="accessDevice" type="checkbox" data-storage="1"/>Mobilephone</label>
+				<label class="block-label"><input id="accessDeviceDK" name="accessDevice" type="checkbox" data-storage="-1"/>Don't know</label>
 			</fieldset>
 
 <!-- Frequency Online -->
 			<fieldset class="form-group inline"><a name="link-fequencyOnline"></a>
 				<legend class="form-label-bold" for="fequencyOnline">How often dose the participant use the internet?</legend>
-				<label class="block-label"><input id="fequencyOnline4" name="fequencyOnline" type="radio" data-storage="4"/>Daily - E.g. To access social media, or at work</label>
-				<label class="block-label"><input id="fequencyOnline3" name="fequencyOnline" type="radio" data-storage="3"/>Weekly - E.g. To email family/friends</label>
-				<label class="block-label"><input id="fequencyOnline2" name="fequencyOnline" type="radio" data-storage="2"/>Monthly - E.g. To pay bills</label>
-				<label class="block-label"><input id="fequencyOnline1" name="fequencyOnline" type="radio" data-storage="1"/>Yearly or less - E.g. To use Government services</label>
-				<label class="block-label"><input id="fequencyOnline-1" name="fequencyOnline" type="radio" data-storage="-1"/>Don't know</label>
+				<label class="block-label"><input id="fequencyOnline4" name="fequencyOnline" type="radio" data-storage="4"/>Daily</label>
+				<label class="block-label"><input id="fequencyOnline3" name="fequencyOnline" type="radio" data-storage="3"/>Weekly</label>
+				<label class="block-label"><input id="fequencyOnline2" name="fequencyOnline" type="radio" data-storage="2"/>Monthly</label>
+				<label class="block-label"><input id="fequencyOnline1" name="fequencyOnline" type="radio" data-storage="1"/>Yearly or less</label>
+				<label class="block-label"><input id="fequencyOnlineDK" name="fequencyOnline" type="radio" data-storage="-1"/>Don't know</label>
 			</fieldset>
 
 <!-- HCI access -->
 			<fieldset class="form-group inline"><a name="link-accessHCI"></a>
 				<legend class="form-label-bold" for="accessHCI">Does the participant have help (Hareware/Software/People) to get online?</legend>
-				<input class="toggle" id="accessHCIEvery" name="accessHCI" type="checkbox" data-storage="1" data-labelauty="Every time: No|Every time: Yes"/>
-				<input class="toggle" id="accessHCIOccasional" name="accessHCI" type="checkbox" data-storage="1" data-labelauty="Occasionally/Specific tasks: No|Occasionally/Specific tasks: Yes"/>
-				<input class="toggle" id="accessHCIAbandon" name="accessHCI" type="checkbox" data-storage="1" data-labelauty="Abandons task: No|Abandons tasks: Yes"/>
+				<label class="block-label"><input id="accessHCIEvery" name="accessHCI" type="checkbox" data-storage="1"/>Every time</label>
+				<label class="block-label"><input id="accessHCIOccasional" name="accessHCI" type="checkbox" data-storage="1"/>Occasionally</label>
+				<label class="block-label"><input id="accessHCISpecific" name="accessHCI" type="checkbox" data-storage="1"/>Specific tasks</label>
+				<label class="block-label"><input id="accessHCIAbandon" name="accessHCI" type="checkbox" data-storage="1"/>Abandons task</label>
 			</fieldset>
 
 <!-- Access need -->
-			<fieldset class="form-group"><a name="link-accessNeed"></a>
+			<fieldset class="form-group inline"><a name="link-accessNeed"></a>
 				<legend class="form-label-bold" for="accessNeed">Does/has the participants ability to get online change over time?</legend>
-				<input class="toggle" id="accessNeedGoodBad" name="accessNeed" type="checkbox" data-storage="1" data-labelauty="Good/Bad days: No|Good/Bad days: Yes"/>
-				<input class="toggle" id="accessNeed" name="accessNeed" type="checkbox" data-storage="1" data-labelauty="Access need: No|Access need: Yes"/>
-			</fieldset>			
+				<label class="block-label"><input id="accessNeedGoodBad" name="accessNeed" type="checkbox" data-storage="1"/>Good/Bad days</label>
+				<label class="block-label"><input id="accessNeed" name="accessNeed" type="checkbox" data-storage="1"/>Access need</label>
+			</fieldset>	
 
 <!-- Digital learning -->
 			<fieldset class="form-group inline"><a name="link-learn"></a>
@@ -192,79 +193,79 @@
 				<label class="block-label"><input id="learn3" name="learn" type="radio" data-storage="3"/>Confident</label>
 				<label class="block-label"><input id="learn2" name="learn" type="radio" data-storage="2"/>Unconfident</label>
 				<label class="block-label"><input id="learn1" name="learn" type="radio" data-storage="1"/>Very unconfident</label>
-				<label class="block-label"><input id="learn-1" name="learn" type="radio" data-storage="-1"/>Don't know</label>
+				<label class="block-label"><input id="learnDK" name="learn" type="radio" data-storage="-1"/>Don't know</label>
 			</fieldset>
 			
 <!-- Digital Skills -->
 			<table class="form-group"><a name="link-skills"></a>
 				<tr>
 					<th>Action/Activity</th>
-					<th>Could the participant do this?</th>
+					<th colspan="2">Could the participant do this?</th>
 				</tr>
 				<tr>
 					<td>Use a search engine to look for information online</td>
-					<td><input class="toggle" id="rowSearch" name="rowSearch" type="checkbox" data-storage="1" data-labelauty="No|Yes"/></td>
-					<td><label class="block-label"><input id="rowSearch-1" name="rowSearch" type="checkbox" data-storage="-1"/>Don't know</label></td>
+					<td><label class="block-label"><input id="rowSearch" name="rowSearch" type="radio" data-storage="1"/>Yes</label></td>
+					<td><label class="block-label"><input id="rowSearchDK" name="rowSearch" type="radio" data-storage="-1"/>Don't know</label></td>
 				</tr>
 				<tr>
 					<td>Use a search engines advances search operators to filter the search results</td>
-					<td><input class="toggle" id="rowSearchAdv" name="rowSearchAdv" type="checkbox" data-storage="1" data-labelauty="No|Yes"/></td>
-					<td><label class="block-label"><input id="rowSearchAdv-1" name="rowSearchAdv" type="checkbox" data-storage="-1"/>Don't know</label></td>
+					<td><label class="block-label"><input id="rowSearchAdv" name="rowSearchAdv" type="radio" data-storage="1"/>Yes</label></td>
+					<td><label class="block-label"><input id="rowSearchAdvDK" name="rowSearchAdv" type="radio" data-storage="-1"/>Don't know</label></td>
 				</tr>
 				<tr>
 					<td>Use a websites search to find the information/page needed</td>
-					<td><input class="toggle" id="rowSearchSite" name="rowSearchSite" type="checkbox" data-storage="1" data-labelauty="No|Yes"/></td>
-					<td><label class="block-label"><input id="rowSearchSite-1" name="rowSearchSite" type="checkbox" data-storage="-1"/>Don't know</label></td>
+					<td><label class="block-label"><input id="rowSearchSite" name="rowSearchSite" type="radio" data-storage="1"/>Yes</label></td>
+					<td><label class="block-label"><input id="rowSearchSiteDK" name="rowSearchSite" type="radio" data-storage="-1"/>Don't know</label></td>
 				</tr>
 				<tr>
-					<td>File">Upload/Download a file (E.g. Flickr, Instergram, Email Attachmen)</td>
-					<td><input class="toggle" id="rowUpDlFile" name="rowUpDlFile" type="checkbox" data-storage="1" data-labelauty="No|Yes"/></td>
-					<td><label class="block-label"><input id="rowUpDlFile-1" name="rowUpDlFile" type="checkbox" data-storage="-1"/>Don't know</label></td>
+					<td>File">Upload/Download a file (E.g. Flickr, Instergram, Email Attachment)</td>
+					<td><label class="block-label"><input id="rowUpDlFile" name="rowUpDlFile" type="radio" data-storage="1"/>Yes</label></td>
+					<td><label class="block-label"><input id="rowUpDlFileDK" name="rowUpDlFile" type="radio" data-storage="-1"/>Don't know</label></td>
 				</tr>
 				<tr>
 					<td>Find a website you have visited before</td>
-					<td><input class="toggle" id="rowHist" name="rowHist" type="checkbox" data-storage="1" data-labelauty="No|Yes"/></td>
-					<td><label class="block-label"><input id="rowHist-1" name="rowHist" type="checkbox" data-storage="-1"/>Don't know</label></td>
+					<td><label class="block-label"><input id="rowHist" name="rowHist" type="radio" data-storage="1"/>Yes</label></td>
+					<td><label class="block-label"><input id="rowHistDK" name="rowHist" type="radio" data-storage="-1"/>Don't know</label></td>
 				</tr>
 				<tr>
 					<td>Send a personal message to another person (E.g. WeChat, WhatsApp, Kik, Email, Skype, Viber)</td>
-					<td><input class="toggle" id="rowMsg" name="rowMsg" type="checkbox" data-storage="1" data-labelauty="No|Yes"/></td>
-					<td><label class="block-label"><input id="rowMsg-1" name="rowMsg" type="checkbox" data-storage="-1"/>Don't know</label></td>
+					<td><label class="block-label"><input id="rowMsg" name="rowMsg" type="radio" data-storage="1"/>Yes</label></td>
+					<td><label class="block-label"><input id="rowMsgDK" name="rowMsg" type="radio" data-storage="-1"/>Don't know</label></td>
 				</tr>
 				<tr>
 					<td>Hold a video call with another person (E.g. Skype, Facetime)</td>
-					<td><input class="toggle" id="rowVoIP" name="rowVoIP" type="checkbox" data-storage="1" data-labelauty="No|Yes"/></td>
-					<td><label class="block-label"><input id="rowVoIP-1" name="rowVoIP" type="checkbox" data-storage="-1"/>Don't know</label></td>
+					<td><label class="block-label"><input id="rowVoIP" name="rowVoIP" type="radio" data-storage="1"/>Yes</label></td>
+					<td><label class="block-label"><input id="rowVoIPDK" name="rowVoIP" type="radio" data-storage="-1"/>Don't know</label></td>
 				</tr>
 				<tr>
 					<td>Browse an online news/magazine website (E.g. BBC news, HelloMagazine, TimeOut)</td>
-					<td><input class="toggle" id="rowNews" name="rowNews" type="checkbox" data-storage="1" data-labelauty="No|Yes"/></td>
-					<td><label class="block-label"><input id="rowNews-1" name="rowNews" type="checkbox" data-storage="-1"/>Don't know</label></td>
+					<td><label class="block-label"><input id="rowNews" name="rowNews" type="radio" data-storage="1"/>Yes</label></td>
+					<td><label class="block-label"><input id="rowNewsDK" name="rowNews" type="radio" data-storage="-1"/>Don't know</label></td>
 				</tr>
 				<tr>
 					<td>Use your banks online banking service</td>
-					<td><input class="toggle" id="rowBank" name="rowBank" type="checkbox" data-storage="1" data-labelauty="No|Yes"/></td>
-					<td><label class="block-label"><input id="rowBank-1" name="rowBank" type="checkbox" data-storage="-1"/>Don't know</label></td>
+					<td><label class="block-label"><input id="rowSearch" name="rowBank" type="radio" data-storage="1"/>Yes</label></td>
+					<td><label class="block-label"><input id="rowSearchDK" name="rowBank" type="radio" data-storage="-1"/>Don't know</label></td>
 				</tr>
 				<tr>
 					<td>Buy items or services from a website (E.g. Amazon, Ebay)</td>
-					<td><input class="toggle" id="rowShop" name="rowShop" type="checkbox" data-storage="1" data-labelauty="No|Yes"/></td>
-					<td><label class="block-label"><input id="rowShop-1" name="rowShop" type="checkbox" data-storage="-1"/>Don't know</label></td>
+					<td><label class="block-label"><input id="rowShop" name="rowShop" type="radio" data-storage="1"/>Yes</label></td>
+					<td><label class="block-label"><input id="rowShopDK" name="rowShop" type="radio" data-storage="-1"/>Don't know</label></td>
 				</tr>
 				<tr>
 					<td>Apply for a Government serveice (E.g. Drivers licence, Passport)</td>
-					<td><input class="toggle" id="rowGov" name="rowGov" type="checkbox" data-storage="1" data-labelauty="No|Yes"/></td>
-					<td><label class="block-label"><input id="rowGov-1" name="rowGov" type="checkbox" data-storage="-1"/>Don't know</label></td>
+					<td><label class="block-label"><input id="rowGov" name="rowGov" type="radio" data-storage="1"/>Yes</label></td>
+					<td><label class="block-label"><input id="rowGovDK" name="rowGov" type="radio" data-storage="-1"/>Don't know</label></td>
 				</tr>
 				<tr>
 					<td>Install/Uninstall software on a device</td>
-					<td><input class="toggle" id="rowInstall" name="rowInstall" type="checkbox" data-storage="1" data-labelauty="No|Yes"/></td>
-					<td><label class="block-label"><input id="rowInstall-1" name="rowInstall" type="checkbox" data-storage="-1"/>Don't know</label></td>
+					<td><label class="block-label"><input id="rowInstall" name="rowInstall" type="radio" data-storage="1"/>Yes</label></td>
+					<td><label class="block-label"><input id="rowInstallDK" name="rowInstall" type="radio" data-storage="-1"/>Don't know</label></td>
 				</tr>
 				<tr>
 					<td>Access high bandwidth services with no issue (E.g. YouTube, iPlayer, Netflix, Multiplayer gaming)</td>
-					<td><input class="toggle" id="rowBandwidth" name="rowBandwidth" type="checkbox" data-storage="1" data-labelauty="No|Yes"/></td>
-					<td><label class="block-label"><input id="rowBandwidth-1" name="rowBandwidth" type="checkbox" data-storage="-1"/>Don't know</label></td>
+					<td><label class="block-label"><input id="rowBandwidth" name="rowBandwidth" type="radio" data-storage="1"/>Yes</label></td>
+					<td><label class="block-label"><input id="rowBandwidthDK" name="rowBandwidth" type="radio" data-storage="-1"/>Don't know</label></td>
 				</tr>
 			</table>
 

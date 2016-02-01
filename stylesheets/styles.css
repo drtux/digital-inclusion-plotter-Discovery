@@ -29,6 +29,15 @@ footer{
     top:50%;
 }
 
+fieldset>label{
+	width: 6.75em;
+}
+td>label{
+	width: 3em;
+	padding-top: 26px;
+	padding-bottom: 26px;
+}
+
 .floating{
     position: fixed;
     margin-top: 10px;

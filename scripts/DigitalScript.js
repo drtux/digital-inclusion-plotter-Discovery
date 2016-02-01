@@ -1,9 +1,9 @@
 $(document).ready(function(){
 	if($("form").length >0)
 	{//If a form element exists begin conversion to toggle inputs
-		if($(".toggle:checkbox").length)//If toggles are present
+		if($(".toggle").length)//If toggles are present
 		{
-			$(".toggle:checkbox").labelauty();
+			$(".toggle").labelauty();
 		}
 		$.validate();//Set up validation on the form
 	}
@@ -148,7 +148,7 @@ $(document).ready(function(){
 				sessionName: null,
 				sessionLocation: null,
 				sessionComment: null,
-				researchDateTime: null,
+				sessionDate: null,
 				age: null,
 				useEver: null,
 				useCurrent: null,
@@ -156,29 +156,33 @@ $(document).ready(function(){
 				needYDay: null,
 				needYWork: null,
 				needYTask: null,
-				needNSkill: null,
-				needNAccess: null,
-				needNMotivation: null,
-				needNConfidence: null,
 				needNo: null,
+				needDK: null,
+				needLinkSkill: null,
+				needLinkAccess: null,
+				needLinkMotivation: null,
+				needLinkConfidence: null,
+				needLinkDK: null,
 				convenience: null, 
 				confidence: null,
+				safety: null,
 				accessWhereHome: null,
 				accessWhereMobile: null,
 				accessWherePublic: null,
 				accessWhereWork: null,
+				accessWhereDK: null,
 				accessDeviceDesktop: null,
 				accessDeviceLaptop: null,
 				accessDeviceTablet: null,
 				accessDeviceSmartphone: null,
 				accessDeviceBrickphone: null,
+				accessDeviceDK: null,
 				fequencyOnline: null,
 				accessHCIEvery: null,
 				accessHCIOccasional: null,
 				accessNeedGoodBad: null,
 				accessNeed: null,
 				learn: null,
-				safety: null,
 				rowSearch: null,
 				rowSearchAdv: null,
 				rowSearchSite: null,
@@ -196,9 +200,6 @@ $(document).ready(function(){
 				researcherComment: null,
 				appDebugScore: null
 			};
-
-		var now = new Date;
-
 
 		if(typeof(Storage)!=="undefined")
 		{
@@ -240,7 +241,6 @@ $(document).ready(function(){
 						}
 					}
 
-					dataObj.researchDateTime = now.toUTCString(); //Append the current date/time
 
 					dataObj.participantID = pCount;
 					//Append the participant data body
@@ -294,22 +294,22 @@ $(document).ready(function(){
 			default: break;
 		}
 
-		if(participant.needYDay != null){needScore += 4}
-		if(participant.needYWork != null){needScore += 1}
-		if(participant.needYTask != null){needScore += 1}
-		if(participant.needNSkill != null){needScore -= 1}
-		if(participant.needNAccess != null){needScore -= 1}
-		if(participant.needNMotivation != null){needScore -= 1}
-		if(participant.needNConfidence != null){needScore -= 1}
+		if(participant.needYDay != null){needScore += 4;}
+		if(participant.needYWork != null){needScore += 1;}
+		if(participant.needYTask != null){needScore += 1;}
+		if(participant.needNSkill != null){needScore -= 1;}
+		if(participant.needNAccess != null){needScore -= 1;}
+		if(participant.needNMotivation != null){needScore -= 1;}
+		if(participant.needNConfidence != null){needScore -= 1;}
 
 		result.debugScore.push(needScore);
 
 /* ---- DEVICE ---- */ var deviceTypeCount = 0;
-		if(participant.accessDeviceDesktop != null){deviceTypeCount++;}
-		if(participant.accessDeviceLaptop != null){deviceTypeCount++;}
-		if(participant.accessDeviceTablet != null){deviceTypeCount++;}
-		if(participant.accessDeviceSmartphone != null){deviceTypeCount++;}
-		if(participant.accessDeviceBrickphone != null){deviceTypeCount++;}
+		if(participant.accessDeviceDesktop != null){deviceTypeCount += 1;}
+		if(participant.accessDeviceLaptop != null){deviceTypeCount += 1;}
+		if(participant.accessDeviceTablet != null){deviceTypeCount += 1;}
+		if(participant.accessDeviceSmartphone != null){deviceTypeCount += 1;}
+		if(participant.accessDeviceBrickphone != null){deviceTypeCount += 1;}
 
 		result.debugScore.push(deviceTypeCount);
 
@@ -435,8 +435,8 @@ Lvl 9: yes to everything (lots of device types) high bandwidth && advanced searc
   skillScore      :    17    ||     0
 */
 
-/* 1 */	if((participant.useEver == null) && (participant.useFuture == null) && (participant.needNo == null) && (deviceTypeCount == 0)){result.score =  1;}
-/* 2 */	else if (((participant.useCurrent == null) && (participant.useFuture == null) && (deviceTypeCount <= 1))||((confidenceScore < 0) && (accessScore < 0) && (learningScore < 0) && (safetyScore < 0) && (deviceTypeCount <= 1) && (needScore < 0) && (skillScore <= 1))){result.score =  2;}
+/* 1 */	if(((confidenceScore < 0) && (accessScore < 0) && (learningScore < 0) && (safetyScore < 0) && (deviceTypeCount < 0) && (needScore < 0) && (skillScore <= 1)) || ((participant.useEver == null) && (participant.useFuture == null) && (participant.needNo == null) && (deviceTypeCount == 0))){result.score =  1;}
+/* 2 */	else if (((confidenceScore < 0) && (accessScore < 0) && (learningScore < 0) && (safetyScore < 0) && (deviceTypeCount <= 1) && (needScore < 0) && (skillScore <= 1))||((participant.useCurrent == null) && (participant.useFuture == null) && (deviceTypeCount <= 1))){result.score =  2;}
 /* 3 */	else if ((confidenceScore < 0) && (accessScore <= 4) && (learningScore < 0) && (safetyScore < 0) && (deviceTypeCount <= 2) && (needScore <= 1) && (skillScore <= 3)){result.score =  3;}
 /* 4 */	else if ((confidenceScore < 0) && (accessScore <= 8) && (learningScore < 0) && (safetyScore < 0) && (deviceTypeCount <= 2) && (needScore <= 2) && (skillScore <= 5)){result.score =  4;}
 /* 5 */	else if ((confidenceScore > 0) && (accessScore <= 16) && (learningScore > 0) && (safetyScore < 0) && (deviceTypeCount <= 2) && (needScore <= 4) && (skillScore <= 7)){result.score =  5;}

@@ -34,10 +34,10 @@ $(document).ready(function()
 	var canvas = document.getElementById('scaleGraph');
 	var context = canvas.getContext('2d');
 	var plotRadius = 7;
-	var xOffSet = 34; //Account for the padding of graph
-	var yOffSet = 33; //Account for the padding of graph
+	var xOffSet = 22;//34; //Account for the padding of graph
+	var yOffSet = 16;//33; //Account for the padding of graph
 	var colourBarHeight = 13; //Account for the colour bar at bottom of graph
-	var graphHieght = 481; //Height of graph plotting area
+	var graphHieght = 485;//481; //Height of graph plotting area
 	var colWidth = 100; //Width of the graph col
 	var colCenter = -(colWidth/2) //Center on the col
 	// Y Axis scale
@@ -56,7 +56,7 @@ $(document).ready(function()
 
 	//Load GDS graph img
 	var imageObj = new Image();
-	imageObj.src = '/DigitalInclusionScale.png';
+	imageObj.src = '/DigitalInclusionScale_HighRes_Web.png';
 
 	imageObj.onload = function() //Once Img loaded draw the rest of the graph
 	{
@@ -86,7 +86,7 @@ $(document).ready(function()
 		//Style axis
 		context.strokeStyle="black"; //Line colour
 		context.fillStyle = 'black'; //Text colour
-		context.font="15px Georgia";
+		context.font="12.5px Georgia";
 
 		//Draw axis
 		context.beginPath();

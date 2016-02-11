@@ -103,23 +103,23 @@ $(document).ready(function(){
 		if(typeof(Storage)!=="undefined")
 		{
 			var sCount = 0;//Default to first session
-			var session = [];//Default to first session
+			var project = [];//Default to first session
 			if (localStorage.getItem("sCount") != null)
 			{//There are other sessions get the count
 				sCount = localStorage.getItem("sCount");
 			}
-			if (localStorage.getItem("session") != null)
+			if (localStorage.getItem("project") != null)
 			{//There are other sessions get them
-				session = JSON.parse(localStorage.getItem("session"));
+				project = JSON.parse(localStorage.getItem("project"));
 			}
 
 			for (var i = 0; i < results.data.length; i++) {//Append all the imported data
-				session.push(results.data[i]); 
+				project.push(results.data[i]); 
 				sCount++;
 			};
 
 			localStorage.setItem("sCount", sCount);//Save the Count
-			localStorage.setItem("session", JSON.stringify(session));//Save the session
+			localStorage.setItem("project", JSON.stringify(project));//Save the session
 		}
 	}
 
@@ -141,7 +141,7 @@ $(document).ready(function(){
 	//Connect to local storage and save the form data
 	function connectAndSave()
 	{
-		var session = [];
+		var project = [];
 		var dataObj = //HACK to get round CSV exporting limitations by ensuring all properties present 
 			{
 				sessionID: null,
@@ -217,9 +217,9 @@ $(document).ready(function(){
 		        	var sCount = 0;//Default to there being no other sessions
 		        	var pCount = 0;//Default to there being no other partipipants
 
-					if (localStorage.getItem("session") != null)
+					if (localStorage.getItem("project") != null)
 					{//There are other sessions so get their data
-						session = JSON.parse(localStorage.getItem("session"));
+						project = JSON.parse(localStorage.getItem("project"));
 					}
 					if (localStorage.getItem("sCount") != null)
 					{//There are other participants get the count
@@ -258,8 +258,8 @@ $(document).ready(function(){
 					localStorage.setItem("pCount", JSON.stringify(pCount));
 
 					//Save the participants data
-					session[session.length] = dataObj;
-					localStorage.setItem("session", JSON.stringify(session));
+					project[project.length] = dataObj;
+					localStorage.setItem("project", JSON.stringify(project));
 				}
 					
 		    }
@@ -291,7 +291,7 @@ $(document).ready(function(){
 			case 2: needScore -= 2; break;
 			case 3: needScore += 2; break;
 			case 4: needScore += 4; break;
-			default: break;
+			default: break;//Don't know
 		}
 
 		if(participant.needYDay != null){needScore += 4;}
@@ -335,7 +335,7 @@ $(document).ready(function(){
 			case 2: accessScore -= 2; break;
 			case 3: accessScore += 2; break;
 			case 4: accessScore += 4; break;
-			default: break;
+			default: break;//Don't know
 		}
 
 		result.debugScore.push(accessScore);
@@ -347,7 +347,7 @@ $(document).ready(function(){
 			case 2: confidenceScore -= 2; break;
 			case 3: confidenceScore += 2; break;
 			case 4: confidenceScore += 4; break;
-			default: break;
+			default: break;//Don't know
 		}
 
 		result.debugScore.push(confidenceScore);
@@ -359,7 +359,7 @@ $(document).ready(function(){
 			case 2: learningScore -= 2; break;
 			case 3: learningScore += 2; break;
 			case 4: learningScore += 4; break;
-			default: break;
+			default: break;//Don't know
 		}
 
 		result.debugScore.push(learningScore);
@@ -371,7 +371,7 @@ $(document).ready(function(){
 			case 2: safetyScore -= 2; break;
 			case 3: safetyScore += 2; break;
 			case 4: safetyScore += 4; break;
-			default: break;
+			default: break;//Don't know
 		}
 
 		result.debugScore.push(safetyScore);

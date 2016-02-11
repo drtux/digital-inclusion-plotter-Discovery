@@ -8,20 +8,20 @@ $(document).ready(function()
 	/*
 	 * START 'global' variables
 	 */
-	 var session = [];
+	 var project = [];
 
 	//Connect to local storage
 	if(typeof(Storage)!=="undefined")
 	{
-		if (localStorage.getItem("session") != null)
+		if (localStorage.getItem("project") != null)
 		{//There are other participants so get their data
-			session = JSON.parse(localStorage.getItem("session"));
+			project = JSON.parse(localStorage.getItem("project"));
 
 			//Set up the export to csv
-	        document.getElementById('exportCSV').setAttribute('href', 'data:text/csv;base64,' + window.btoa(Papa.unparse(session /*THIS NEED FIXING*/)));
+	        document.getElementById('exportCSV').setAttribute('href', 'data:text/csv;base64,' + window.btoa(Papa.unparse(project /*THIS NEED FIXING*/)));
 	        document.getElementById('exportCSV').setAttribute("download", "data.csv");
 	        //Set up the export to json
-	        document.getElementById('exportJSON').setAttribute('href', 'data:text/text;charset=utf-8,' + encodeURIComponent(JSON.stringify(session)));
+	        document.getElementById('exportJSON').setAttribute('href', 'data:text/text;charset=utf-8,' + encodeURIComponent(JSON.stringify(project)));
 	        document.getElementById('exportJSON').setAttribute("download", "data.json");
 		}
 	}
@@ -38,8 +38,8 @@ $(document).ready(function()
 	var yOffSet = 16;//33; //Account for the padding of graph
 	var colourBarHeight = 13; //Account for the colour bar at bottom of graph
 	var graphHieght = 485;//481; //Height of graph plotting area
-	var colWidth = 100; //Width of the graph col
-	var colCenter = -(colWidth/2) //Center on the col
+	var colWidth = 97;//100; //Width of the graph col
+	var colCenter = -(colWidth/2); //Center on the col
 	// Y Axis scale
 	var maxAge = 120;
 	var minAge = 10;
@@ -63,15 +63,15 @@ $(document).ready(function()
 		context.drawImage(imageObj, 0, 0); //Draw the backdrop graph
 		drawYAxis();
 		//Draw the required points
-		for (var i = 0; i < session.length; i++)
+		for (var i = 0; i < project.length; i++)
 		{
-			if (session[i].researcherScore != undefined)
+			if (project[i].researcherScore != undefined)
 			{
-				plotScore(session[i].researcherScore, randomiseAge(parseInt(session[i].age)), session[i].applicationScore);
+				plotScore(project[i].researcherScore, randomiseAge(parseInt(project[i].age)), project[i].applicationScore);
 			}
 			else
 			{
-				plotScore('N/A', randomiseAge(parseInt(session[i].age)), session[i].applicationScore);
+				plotScore('N/A', randomiseAge(parseInt(project[i].age)), project[i].applicationScore);
 			};
 		};
 		

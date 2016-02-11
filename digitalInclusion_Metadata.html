@@ -24,7 +24,7 @@
 
 	<link href="stylesheets/theme-default.min.css" rel="stylesheet" type="text/css"/>
 	<script src="scripts/jquery.form-validator.min.js"></script>
-	
+
 	<script type="text/javascript" src="scripts/DigitalScript.js"></script>
 	<link rel="stylesheet" type="text/css" href="stylesheets/styles.css" />
 </head>
@@ -35,6 +35,7 @@
 		<div data-includefile="banner-alpha"></div>
 
 		<h1 class="heading-xlarge">Research session details</h1>
+		<p><span class="required">*</span> Required field</p>
 
 		<form name="sessionForm" class="form" autocomplete="off">
 
@@ -54,8 +55,8 @@
 
 <!-- Date -->
 			<div class="form-group">
-				<label class="form-label-bold" for="sessionDate">Research session date</label>
-				<input type="date" class="form-control" id="sessionDate" name="sessionDate"/>
+				<label class="form-label-bold" for="sessionDate"><span class="required">*</span>Research session date</label>
+				<input type="date" class="form-control" id="sessionDate" name="sessionDate" data-validation="required"/>
 			</div>
 
 <!-- Session comment -->

@@ -118,6 +118,15 @@ $(document).ready(function(){
 				sCount++;
 			};
 
+			//DEBUG START : Regenerate application score
+			for (var i = 0; i < project.length; i++) {
+				scoreObj = generateScore(project[i]);
+				project[i].applicationScore = scoreObj.score;
+				project[i].appDebugScore = scoreObj.debugScore;
+			};		
+
+			//DEBUG END
+
 			localStorage.setItem("sCount", sCount);//Save the Count
 			localStorage.setItem("project", JSON.stringify(project));//Save the session
 		}
@@ -150,7 +159,7 @@ $(document).ready(function(){
 				sessionComment: null,
 				sessionDate: null,
 				age: null,
-				useEver: null,
+				usePast: null,
 				useCurrent: null,
 				useFuture: null,
 				needYDay: null,
@@ -158,11 +167,11 @@ $(document).ready(function(){
 				needYTask: null,
 				needNo: null,
 				needDK: null,
-				needLinkSkill: null,
-				needLinkAccess: null,
-				needLinkMotivation: null,
-				needLinkConfidence: null,
-				needLinkDK: null,
+				needLimitSkill: null,
+				needLimitAccess: null,
+				needLimitMotivation: null,
+				needLimitConfidence: null,
+				needLimitDK: null,
 				convenience: null, 
 				confidence: null,
 				safety: null,
@@ -177,7 +186,7 @@ $(document).ready(function(){
 				accessDeviceSmartphone: null,
 				accessDeviceBrickphone: null,
 				accessDeviceDK: null,
-				fequencyOnline: null,
+				frequencyOnline: null,
 				accessHCIEvery: null,
 				accessHCIOccasional: null,
 				accessNeedGoodBad: null,
@@ -282,9 +291,178 @@ $(document).ready(function(){
 /* ---- CONFIG: ROUTING ---- */
 ///////////////////////////////
 
-//NULL === Negative responce
 
-/* ---- NEED ---- */ var needScore = 0;
+/* ---- Motivation ---- */ var motivationScore = 0;
+	//Need
+		if(participant.needYDay != null){motivationScore += 4;}
+		if(participant.needYWork != null){motivationScore += 1;}
+		if(participant.needYTask != null){motivationScore += 1;}
+		if(participant.needNo != null){motivationScore -= 1;}
+		if(participant.needDK != null){motivationScore += 0;}
+	//Convenience
+		switch(parseInt(participant.convenience))
+		{
+			case 1: motivationScore -= 4; break;
+			case 2: motivationScore -= 2; break;
+			case 3: motivationScore += 2; break;
+			case 4: motivationScore += 4; break;
+			default: break;//Don't know
+		}
+
+		result.debugScore.push(motivationScore);
+
+/* ---- Confidence ---- */ var confidenceScore = 0;
+	//General
+		switch(parseInt(participant.confidence))
+		{
+			case 1: confidenceScore -= 4; break;
+			case 2: confidenceScore -= 2; break;
+			case 3: confidenceScore += 2; break;
+			case 4: confidenceScore += 4; break;
+			default: break;//Don't know
+		}
+
+	//Safety
+		switch(parseInt(participant.safety))
+		{
+			case 1: confidenceScore -= 4; break;
+			case 2: confidenceScore -= 2; break;
+			case 3: confidenceScore += 2; break;
+			case 4: confidenceScore += 4; break;
+			default: break;//Don't know
+		}
+
+	//Learning
+		switch(parseInt(participant.learn))
+		{
+			case 1: confidenceScore -= 4; break;
+			case 2: confidenceScore -= 2; break;
+			case 3: confidenceScore += 2; break;
+			case 4: confidenceScore += 4; break;
+			default: break;//Don't know
+		}
+
+		result.debugScore.push(confidenceScore);
+
+/* ---- Access ---- */var accessScore = 0;
+	//Where
+		if(participant.accessWhereHome != null){accessScore += 10;}
+		if(participant.accessWhereMobile != null){accessScore += 5;}
+		if(participant.accessWherePublic != null){accessScore += 2;}
+		if(participant.accessWhereWork != null){accessScore += 3;}
+		if(participant.accessWhereDK != null){accessScore += 0;}
+	//Devices
+		if(participant.accessDeviceDesktop != null){accessScore += 2;}
+		if(participant.accessDeviceLaptop != null){accessScore += 2;}
+		if(participant.accessDeviceTablet != null){accessScore += 2;}
+		if(participant.accessDeviceSmartphone != null){accessScore += 2;}
+		if(participant.accessDeviceBrickphone != null){accessScore -= 2;}
+		if(participant.accessDeviceDK != null){accessScore += 0;}
+	//HCI
+		if(participant.accessHCIEvery != null){accessScore -= 10;}
+		if(participant.accessHCIOccasional != null){accessScore -= 5;}
+	//Needs
+		if(participant.accessNeedGoodBad != null){accessScore -= 5;}
+		if(participant.accesNeed != null){accessScore -= 10;}
+
+		result.debugScore.push(accessScore);
+
+/* ---- Skills ---- */ var skillScore = 0;
+		if(parseInt(participant.rowSearch) == 1){skillScore += 1;}
+			else if(parseInt(participant.rowSearch) == -1){skillScore -= 1;}
+			else {/* Don't know */}
+		if(parseInt(participant.rowSearchAdv) == 1){skillScore += 2;}
+			else if(parseInt(participant.rowSearchAdv) == -1){skillScore -= 1;}
+			else {/* Don't know */}
+		if(parseInt(participant.rowHist) == 1){skillScore += 1;}
+			else if(parseInt(participant.rowHist) == -1){skillScore -= 1;}
+			else {/* Don't know */}
+		if(parseInt(participant.rowMsg) == 1){skillScore += 1;}
+		else if(parseInt(participant.rowMsg) == -1){skillScore -= 1;}
+		else {/* Don't know */}
+		if(parseInt(participant.rowVoIP) == 1){skillScore += 1;}
+		else if(parseInt(participant.rowVoIP) == -1){skillScore -= 1;}
+		else {/* Don't know */}
+		if(parseInt(participant.rowNews) == 1){skillScore += 1;}
+		else if(parseInt(participant.rowNews) == -1){skillScore -= 1;}
+		else {/* Don't know */}
+		if(parseInt(participant.rowBank) == 1){skillScore += 2;}
+		else if(parseInt(participant.rowBank) == -1){skillScore -= 1;}
+		else {/* Don't know */}
+		if(parseInt(participant.rowShop) == 1){skillScore += 1;}
+		else if(parseInt(participant.rowShop) == -1){skillScore -= 1;}
+		else {/* Don't know */}
+		if(parseInt(participant.rowGov) == 1){skillScore += 1;}
+		else if(parseInt(participant.rowGov) == -1){skillScore -= 1;}
+		else {/* Don't know */}
+		if(parseInt(participant.rowInstall) == 1){skillScore += 1;}
+		else if(parseInt(participant.rowInstall) == -1){skillScore -= 1;}
+		else {/* Don't know */}
+		if(parseInt(participant.rowBandwidth) == 1){skillScore += 2;}
+		else if(parseInt(participant.rowBandwidth) == -1){skillScore -= 1;}
+		else {/* Don't know */}
+
+		result.debugScore.push(skillScore);
+
+/* ---- Generate summary score ---- */
+	var calcScore = 0;
+	calcScore += confidenceScore;
+	calcScore += accessScore;
+	calcScore += motivationScore;
+	calcScore += skillScore;
+	result.debugScore.push(calcScore);
+
+/* ---- Weighting ---- */ var weight = 1;
+	//Use of Internet
+		if(participant.useCurrent != null){weight += 0.5;}
+		if(participant.useFuture != null){weight += 0.25;}
+	//Frequency of use
+		switch(parseInt(participant.frequencyOnline))
+		{
+			case 1: weight += 0.5; break;
+			case 2: weight += 0.25; break;
+			case 3: weight += 0.1; break;
+			case 4: weight -= 0.1; break;
+			default: break;//Don't know
+		}
+	//Limits
+		if(participant.needLimitSkill != null){weight -= 0.5;}
+		if(participant.needLimitAccess != null){weight -= 0.5;}
+		if(participant.needLimitMotivation != null){weight -= 0.5;}
+		if(participant.needLimitConfidence != null){weight -= 0.5;}
+
+		result.debugScore.push(weight);
+
+//Apply weight
+calcScore = calcScore * (1+weight);
+result.debugScore.push(calcScore);
+
+
+/* ---- Convert to Digital Inclusion Score ---- */
+
+//If hasn't used before, currently or in future then must be lvl1
+		if((participant.usePast == null) && (participant.useCurrent == null) && (participant.useFuture == null)){result.score = 1; return result;}
+
+/* 1 */	if (calcScore <= -3){result.score =  1;}
+/* 3 */	else if (calcScore <= 4){result.score =  3;}
+/* 4 */	else if (calcScore <= 6){result.score =  4;}
+/* 5 */	else if (calcScore <= 8){result.score =  5;}
+/* 6 */	else if (calcScore <= 12){result.score =  6;}
+/* 7 */	else if (calcScore <= 19){result.score =  7;}
+/* 8 */	else if (calcScore <= 25){result.score =  8;}
+/* 9 */	else if (calcScore > 25){result.score =  9;}
+		else//ERROR case
+		{result.score = 0;}	
+
+
+		return result;
+
+//y = 2.3611e0.2549x
+
+
+
+
+/* ---- NEED ----  var needScore = 0;
 		switch(parseInt(participant.convenience))
 		{
 			case 1: needScore -= 4; break;
@@ -297,14 +475,14 @@ $(document).ready(function(){
 		if(participant.needYDay != null){needScore += 4;}
 		if(participant.needYWork != null){needScore += 1;}
 		if(participant.needYTask != null){needScore += 1;}
-		if(participant.needNSkill != null){needScore -= 1;}
-		if(participant.needNAccess != null){needScore -= 1;}
-		if(participant.needNMotivation != null){needScore -= 1;}
-		if(participant.needNConfidence != null){needScore -= 1;}
+		if(participant.needLimitSkill != null){needScore -= 1;}
+		if(participant.needLimitAccess != null){needScore -= 1;}
+		if(participant.needLimitMotivation != null){needScore -= 1;}
+		if(participant.needLimitConfidence != null){needScore -= 1;}
 
 		result.debugScore.push(needScore);
 
-/* ---- DEVICE ---- */ var deviceTypeCount = 0;
+/* ---- DEVICE ----  var deviceTypeCount = 0;
 		if(participant.accessDeviceDesktop != null){deviceTypeCount += 1;}
 		if(participant.accessDeviceLaptop != null){deviceTypeCount += 1;}
 		if(participant.accessDeviceTablet != null){deviceTypeCount += 1;}
@@ -313,7 +491,7 @@ $(document).ready(function(){
 
 		result.debugScore.push(deviceTypeCount);
 
-/* ---- ACCESS ---- */ var accessScore = 0;
+/* ---- ACCESS ----  var accessScore = 0;
 
 		if(participant.accessWhereHome != null){accessScore += 10;}
 		if(participant.accessWhereMobile != null){accessScore += 5;}
@@ -340,7 +518,7 @@ $(document).ready(function(){
 
 		result.debugScore.push(accessScore);
 
-/* ---- CONFIDENCE ---- */ var confidenceScore = 0;
+/* ---- CONFIDENCE ----  var confidenceScore = 0;
 		switch(parseInt(participant.confidence))
 		{
 			case 1: confidenceScore -= 4; break;
@@ -352,7 +530,7 @@ $(document).ready(function(){
 
 		result.debugScore.push(confidenceScore);
 
-/* ---- LEARNING ---- */ var learningScore = 0; 
+/* ---- LEARNING ----  var learningScore = 0; 
 		switch(parseInt(participant.learn))
 		{
 			case 1: learningScore -= 4; break;
@@ -364,7 +542,7 @@ $(document).ready(function(){
 
 		result.debugScore.push(learningScore);
 
-/* ---- SAFETY ---- */ var safetyScore = 0;
+/* ---- SAFETY ----  var safetyScore = 0;
 		switch(parseInt(participant.safety))
 		{
 			case 1: safetyScore -= 4; break;
@@ -376,21 +554,21 @@ $(document).ready(function(){
 
 		result.debugScore.push(safetyScore);
 
-/* ---- SKILL ---- */ var skillScore = 0; 
+/* ---- SKILL ----  var skillScore = 0; 
 
-		if(participant.rowSearch != null){skillScore += 1}
-		if(participant.rowSearchAdv != null){skillScore += 3}
-		if(participant.rowSearchSite != null){skillScore += 1}
-		if(participant.rowUpDlFile != null){skillScore += 1}
-		if(participant.rowHist != null){skillScore += 1}
-		if(participant.rowMsg != null){skillScore += 1}
-		if(participant.rowVoIP != null){skillScore += 1}
-		if(participant.rowNews != null){skillScore += 1}
-		if(participant.rowBank != null){skillScore += 2}
-		if(participant.rowShop != null){skillScore += 1}
-		if(participant.rowGov != null){skillScore += 1}
-		if(participant.rowInstall != null){skillScore += 1}
-		if(participant.rowBandwidth != null){skillScore += 2}
+		if(parseInt(participant.rowSearch) ==1){skillScore += 1}
+		if(parseInt(participant.rowSearchAdv ) ==1){skillScore += 3}
+		if(parseInt(participant.rowSearchSite ) ==1){skillScore += 1}
+		if(parseInt(participant.rowUpDlFile ) ==1){skillScore += 1}
+		if(parseInt(participant.rowHist ) ==1){skillScore += 1}
+		if(parseInt(participant.rowMsg ) ==1){skillScore += 1}
+		if(parseInt(participant.rowVoIP ) ==1){skillScore += 1}
+		if(parseInt(participant.rowNews ) ==1){skillScore += 1}
+		if(parseInt(participant.rowBank ) ==1){skillScore += 2}
+		if(parseInt(participant.rowShop ) ==1){skillScore += 1}
+		if(parseInt(participant.rowGov ) ==1){skillScore += 1}
+		if(parseInt(participant.rowInstall ) ==1){skillScore += 1}
+		if(parseInt(participant.rowBandwidth ) ==1){skillScore += 2}
 
 		result.debugScore.push(skillScore);
 
@@ -449,8 +627,6 @@ Lvl 9: yes to everything (lots of device types) high bandwidth && advanced searc
 
 
 		return result;
-*/
-
 
 
 var calcScore = 0;
@@ -462,21 +638,21 @@ calcScore += deviceTypeCount;
 calcScore += needScore;
 calcScore += skillScore;
 
-/* 1 */	if(calcScore <= -10){result.score =  1;}
-/* 3 */	else if (calcScore <= 10){result.score =  3;}
-/* 4 */	else if (calcScore <= 20){result.score =  4;}
-/* 5 */	else if (calcScore <= 30){result.score =  5;}
-/* 6 */	else if (calcScore <= 40){result.score =  6;}
-/* 7 */	else if (calcScore <= 50){result.score =  7;}
-/* 8 */	else if (calcScore <= 60){result.score =  8;}
-/* 9 */	else if (calcScore > 60){result.score =  9;}
+/* 1 	if(calcScore <= -10){result.score =  1;}
+/* 3 	else if (calcScore <= 10){result.score =  3;}
+/* 4 	else if (calcScore <= 20){result.score =  4;}
+/* 5 	else if (calcScore <= 30){result.score =  5;}
+/* 6 	else if (calcScore <= 40){result.score =  6;}
+/* 7 	else if (calcScore <= 50){result.score =  7;}
+/* 8 	else if (calcScore <= 60){result.score =  8;}
+/* 9 	else if (calcScore > 60){result.score =  9;}
 		else//ERROR case
 		{result.score = 0;}	
 
 
 		return result;
 
-
+*/
 
 
 

@@ -352,8 +352,8 @@ $(document).ready(function(){
 		if(participant.accessWhereWork != null){accessScore += 3;}
 		if(participant.accessWhereDK != null){accessScore += 0;}
 	//Devices
-		if(participant.accessDeviceDesktop != null){accessScore += 2;}
-		if(participant.accessDeviceLaptop != null){accessScore += 2;}
+		if(participant.accessDeviceDesktop != null){accessScore += 4;}
+		if(participant.accessDeviceLaptop != null){accessScore += 3;}
 		if(participant.accessDeviceTablet != null){accessScore += 2;}
 		if(participant.accessDeviceSmartphone != null){accessScore += 2;}
 		if(participant.accessDeviceBrickphone != null){accessScore -= 2;}
@@ -414,6 +414,7 @@ $(document).ready(function(){
 
 /* ---- Weighting ---- */ var weight = 1;
 	//Use of Internet
+		if(participant.usePast != null){weight += 0.25;}
 		if(participant.useCurrent != null){weight += 0.5;}
 		if(participant.useFuture != null){weight += 0.25;}
 	//Frequency of use

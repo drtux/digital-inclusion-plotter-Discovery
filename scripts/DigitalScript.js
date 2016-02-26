@@ -118,14 +118,14 @@ $(document).ready(function(){
 				sCount++;
 			};
 
-			//DEBUG START : Regenerate application score
+			/*DEBUG START : Regenerate application score
 			for (var i = 0; i < project.length; i++) {
 				scoreObj = generateScore(project[i]);
 				project[i].applicationScore = scoreObj.score;
 				project[i].appDebugScore = scoreObj.debugScore;
 			};		
 
-			//DEBUG END
+			//DEBUG END*/
 
 			localStorage.setItem("sCount", sCount);//Save the Count
 			localStorage.setItem("project", JSON.stringify(project));//Save the session

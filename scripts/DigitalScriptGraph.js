@@ -170,7 +170,7 @@ $(document).ready(function()
 	{
 		var colour = 'black'; //Initalising colour
 		var xPosition = colWidth*score; //Where to position the plot on xAxis
-		var yPosition = graphHieght - ((age- minAge)*(interval/targetTicks));
+		var yPosition = graphHieght - ((age - minAge)*(interval/targetTicks));
 
 		switch (score) //Switch colour depending the othe participant score
 		{
@@ -199,12 +199,12 @@ $(document).ready(function()
 		if(score!=9)
 		{
 			context.textAlign = "left";
-			context.fillText('R-Score: ' + lable, xOffSet + plotRadius + xPosition + colCenter, yPosition - plotRadius);
+			context.fillText(' ' + lable, xOffSet + plotRadius + xPosition + colCenter, yPosition - plotRadius);
 		}
 		else
 		{
 			context.textAlign = "right";
-			context.fillText('R-Score: ' + lable, xOffSet + xPosition + colCenter - plotRadius, yPosition - plotRadius);
+			context.fillText(lable + ' ', xOffSet + xPosition + colCenter - plotRadius, yPosition - plotRadius);
 		}
 	}
 /** LISTENERS **/

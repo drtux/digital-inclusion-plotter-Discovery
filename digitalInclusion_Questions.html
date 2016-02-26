@@ -144,7 +144,7 @@
 				<p class="form-hint">E.g. </p>
 				<label class="block-label"><input id="safety4" name="safety" type="radio" data-storage="4"/>Very safe</label>
 				<label class="block-label"><input id="safety3" name="safety" type="radio" data-storage="3"/>Safe</label>
-				<label class="block-label"><input id="safety2" name="safety" type="radio" data-storage="2"/>Unsafee</label>
+				<label class="block-label"><input id="safety2" name="safety" type="radio" data-storage="2"/>Unsafe</label>
 				<label class="block-label"><input id="safety1" name="safety" type="radio" data-storage="1"/>Very unsafe</label>
 				<label class="block-label"><input id="safetyDK" name="safety" type="radio" data-storage="-1"/>Don't know</label>
 			</fieldset>
@@ -185,12 +185,13 @@
 
 <!-- HCI access -->
 			<fieldset class="form-group inline"><a name="link-accessHCI"></a>
-				<legend class="form-label-bold" for="accessHCI">Does the participant have help (Hareware/Software/People) to get online?</legend>
+				<legend class="form-label-bold" for="accessHCI">Does the participant have help (Hardware/Software/People) to get online?</legend>
 				<p class="form-hint">E.g. </p>
 				<label class="block-label"><input id="accessHCIEvery" name="accessHCI" type="checkbox" data-storage="1"/>Every time</label>
 				<label class="block-label"><input id="accessHCIOccasional" name="accessHCI" type="checkbox" data-storage="1"/>Occasionally</label>
 				<label class="block-label"><input id="accessHCISpecific" name="accessHCI" type="checkbox" data-storage="1"/>Specific tasks</label>
 				<label class="block-label"><input id="accessHCIAbandon" name="accessHCI" type="checkbox" data-storage="1"/>Abandons task</label>
+				<label class="block-label"><input id="accessHCIFine" name="accessHCI" type="checkbox" data-storage="1"/>Self-help E.g. online search</label>
 			</fieldset>
 
 <!-- Access need -->
@@ -304,17 +305,6 @@
 
 			<fieldset class="form-group"><a name="link-researcherScore"></a>
 				<legend class="form-label-bold" for="researcherScore"><span class="required">*</span>Please choose a score for this participant</legend>
-				<div class="inline">
-					<label class="block-label"><input id="researcherScore1" name="researcherScore" type="radio" data-validation="required" data-storage="1"/>1: Never have, never will</label>
-					<label class="block-label"><input id="researcherScore2" name="researcherScore" type="radio" data-validation="required" data-storage="2"/>2: Was online, but no longer online</label>
-					<label class="block-label"><input id="researcherScore3" name="researcherScore" type="radio" data-validation="required" data-storage="3"/>3: Willing and unable</label>
-					<label class="block-label"><input id="researcherScore4" name="researcherScore" type="radio" data-validation="required" data-storage="4"/>4: Reluctantly online</label>
-					<label class="block-label"><input id="researcherScore5" name="researcherScore" type="radio" data-validation="required" data-storage="5"/>5: Learning the ropes</label>
-					<label class="block-label"><input id="researcherScore6" name="researcherScore" type="radio" data-validation="required" data-storage="6"/>6: Task specific</label>
-					<label class="block-label"><input id="researcherScore7" name="researcherScore" type="radio" data-validation="required" data-storage="7"/>7: Basic digital skills and capabilities</label>
-					<label class="block-label"><input id="researcherScore8" name="researcherScore" type="radio" data-validation="required" data-storage="8"/>8: Confident</label>
-					<label class="block-label"><input id="researcherScore9" name="researcherScore" type="radio" data-validation="required" data-storage="9"/>9: Expert</label>
-				</div>
 				<details class="form-group">
 					<summary role="button" aria-controls="researcherScore-help" aria-expanded="false">
 						<span class="summary">Help with choosing a score</span>
@@ -348,6 +338,18 @@
 						Expert internet users have advanced digital skills.</p>
 					</div>
 				</details>
+				<div class="inline">
+					<label class="block-label"><input id="researcherScore1" name="researcherScore" type="radio" data-validation="required" data-storage="1"/>1: Never have, never will</label>
+					<label class="block-label"><input id="researcherScore2" name="researcherScore" type="radio" data-validation="required" data-storage="2"/>2: Was online, but no longer online</label>
+					<label class="block-label"><input id="researcherScore3" name="researcherScore" type="radio" data-validation="required" data-storage="3"/>3: Willing and unable</label>
+					<label class="block-label"><input id="researcherScore4" name="researcherScore" type="radio" data-validation="required" data-storage="4"/>4: Reluctantly online</label>
+					<label class="block-label"><input id="researcherScore5" name="researcherScore" type="radio" data-validation="required" data-storage="5"/>5: Learning the ropes</label>
+					<label class="block-label"><input id="researcherScore6" name="researcherScore" type="radio" data-validation="required" data-storage="6"/>6: Task specific</label>
+					<label class="block-label"><input id="researcherScore7" name="researcherScore" type="radio" data-validation="required" data-storage="7"/>7: Basic digital skills and capabilities</label>
+					<label class="block-label"><input id="researcherScore8" name="researcherScore" type="radio" data-validation="required" data-storage="8"/>8: Confident</label>
+					<label class="block-label"><input id="researcherScore9" name="researcherScore" type="radio" data-validation="required" data-storage="9"/>9: Expert</label>
+				</div>
+				
 			</fieldset>
 		</form>
 

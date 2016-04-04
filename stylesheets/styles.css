@@ -1,3 +1,75 @@
+main{
+	width: 900px;
+    min-width: 900px;
+    margin: 0 auto;
+}
+
+footer{
+	clear: both;
+}
+
+#overlay {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	text-align: center;
+	background-color: #000;
+	opacity: 0.5;    
+
+}
+
+#overlay span {
+    padding: 5px;
+    border-radius: 5px;
+    color: #000;
+    background-color: #fff;
+    position:relative;
+    top:50%;
+}
+
+fieldset>label{
+	width: 6.75em;
+}
+td>label{
+	width: 3em;
+	padding-top: 26px;
+	padding-bottom: 26px;
+}
+
+.floating{
+    position: fixed;
+    margin-top: 10px;
+    background: white;
+}
+.nav{
+	margin: 1%;
+}
+.nav li{
+	font-size: 11pt;
+}
+
+.plotterNav {
+ 	clear:both;
+ 	max-width: 100%;
+ 	text-align: center;
+ }
+
+.rightCol {
+	max-width: 74%;
+	float: right;
+	margin-left: 1%;
+}
+.leftCol {
+	max-width: 17%;
+	float:left;
+	margin-right: 1%; 
+}
+
+.required {
+	color: red;
+}
 
 .instructions {
 	padding: 20px;

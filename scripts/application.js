@@ -45,7 +45,4 @@ $( document ).ready(function() {
     localStorage.clear();
     $(this).html('&#10003; Data cleared');
   });
-
-
-
 });

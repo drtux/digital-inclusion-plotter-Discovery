@@ -22,7 +22,9 @@
 	<script type="text/javascript" src="scripts/application.js"></script>
 	<script type="text/javascript" src="scripts/details.polyfill.js"></script>
 
-	<script type="text/javascript" src="scripts/papaparse.js"></script>
+	<link href="stylesheets/theme-default.min.css" rel="stylesheet" type="text/css"/>
+	<script src="scripts/jquery.form-validator.min.js"></script>
+
 	<script type="text/javascript" src="scripts/DigitalScript.js"></script>
 	<link rel="stylesheet" type="text/css" href="stylesheets/styles.css" />
 </head>
@@ -32,21 +34,52 @@
 	<main id="content" role="main">
 		<div data-includefile="banner-alpha"></div>
 
-		<h1 class="heading-xlarge" style="margin-bottom: 40px">Digital Inclusion Plotter</h1>
+		<h1 class="heading-xlarge">Research session details</h1>
+		<p><span class="required">*</span> Required field</p>
 
-		<p><a class="button navigation" navType="newSession" nextPage="Metadata">Start a new project</a></p>
-		<p>Or choose a existing project CSV file to import (<10Mb)</br>
-		<input type="file" id="fileImport" name="fileImport"/></p>
+		<form name="sessionForm" class="form" autocomplete="off">
 
-		<p>If you need help documentation is <a href="https://docs.google.com/document/d/1PTt_RjT8UKAkpoWZKRggQ6uBL0yjYX5Anq_NZjEUfrw/edit?usp=sharing" target="_blank">available here</a>.</p>
+<!-- session alias -->
+			<div class="form-group">
+				<label class="form-label-bold" for="sessionName">Research session name</label>
+				<p class="form-hint">E.g. </p>
+				<input type="text" class="form-control" id="sessionName" name="sessionName"/>
+			</div>
+
+<!-- Location -->
+			<div class="form-group">
+				<label class="form-label-bold" for="sessionLocation">Research session location</label>
+				<p class="form-hint">E.g. Croydon, Metropoint, User research lab</p>
+				<input type="text" class="form-control" id="sessionLocation" name="sessionLocation"/>
+			</div>
+
+<!-- Date -->
+			<div class="form-group">
+				<label class="form-label-bold" for="sessionDate"><span class="required">*</span>Research session date</label>
+				<input type="date" class="form-control" id="sessionDate" name="sessionDate" data-validation="required"/>
+			</div>
+
+<!-- Session comment -->
+			<div class="form-group">
+				<label class="form-label-bold" for="sessionComment">Notes on this research session</label>
+				<textarea class="form-control" cols="100" rows="10" id="sessionComment" name="sessionComment"></textarea>
+			</div>
+
+<!-- End of Form -->
+		</form>
+		<div class="plotterNav">
+			<a class="button navigation" navType="cancelSession" nextPage="Summary">Cancel session</a>
+			<a class="button navigation" navType="newParticipant" nextPage="Questions">Save & add participant</a>
+		</div>
+		<script type="text/javascript">
+
+			
+		</script>
+
+<!-- STOP DELETING! -->
 
 	</main>
 
 	<footer data-includefile="footer"></footer>
-
-
-	<div id="overlay" aria-hidden="true" style="display: none;">
-    <span>Processing file. Please wait...</span>
-</div>
 </body>
 </html>

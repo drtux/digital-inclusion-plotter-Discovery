@@ -1,0 +1,102 @@
+<!doctype html>
+<!--[if lt IE 7 ]> <html class="ie ie6 ie-lt10 ie-lt9 ie-lt8 ie-lt7 no-js" lang="en"> <![endif]-->
+<!--[if IE 7 ]>    <html class="ie ie7 ie-lt10 ie-lt9 ie-lt8 no-js" lang="en"> <![endif]-->
+<!--[if IE 8 ]>    <html class="ie ie8 ie-lt10 ie-lt9 no-js" lang="en"> <![endif]-->
+<!--[if IE 9 ]>    <html class="ie ie9 ie-lt10 no-js" lang="en"> <![endif]-->
+<!--[if gt IE 9]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+	<meta charset="utf-8">
+	<title>Digital Inclusion Plotter</title>
+	<meta name="author" content="Ben Walker"/>
+	<meta name="Copyright" content="Open Government Licence v3.0, except where otherwise stated" />
+	<!--[if gt IE 8]><!--><link href="govuk-assets/stylesheets/govuk-template.css?0.12.0" media="screen" rel="stylesheet" type="text/css" /><!--<![endif]-->
+	<!--[if IE 6]><link href="govuk-assets/stylesheets/govuk-template-ie6.css?0.12.0" media="screen" rel="stylesheet" type="text/css" /><![endif]-->
+	<!--[if IE 7]><link href="govuk-assets/stylesheets/govuk-template-ie7.css?0.12.0" media="screen" rel="stylesheet" type="text/css" /><![endif]-->
+	<!--[if IE 8]><link href="govuk-assets/stylesheets/govuk-template-ie8.css?0.12.0" media="screen" rel="stylesheet" type="text/css" /><![endif]-->
+	<link href="govuk-assets/stylesheets/govuk-template-print.css?0.12.0" media="print" rel="stylesheet" type="text/css" />
+	<link href="govuk-assets/application.css" media="all" rel="stylesheet" type="text/css" />
+	<!--<link href="govuk-assets/stylesheets/fonts.css?0.12.0" media="all" rel="stylesheet" type="text/css" /> [REMOVED FOR GDS]-->
+
+	<script type="text/javascript" src="scripts/jquery.min.js"></script>
+	<script type="text/javascript" src="scripts/form.storage.js"></script>
+	<script type="text/javascript" src="scripts/application.js"></script>
+	<script type="text/javascript" src="scripts/details.polyfill.js"></script>
+
+	<link rel="stylesheet" type="text/css" href="stylesheets/styles.css" />
+	<script type="text/javascript" src="scripts/papaparse.js"></script>
+
+    <script type="text/javascript" src="scripts/DigitalScriptGraph.js"></script>
+    <script type="text/javascript" src="scripts/DigitalScript.js"></script>
+
+
+    <link href="http://nvd3.org/assets/css/nv.d3.css" rel="stylesheet">
+	<script src="http://nvd3.org/assets/lib/d3.v3.js"></script>
+	<script src="http://nvd3.org/assets/js/nv.d3.js"></script>
+
+
+</head>
+<body>
+
+	<header data-includefile="header"></header>
+
+	<main id="content" role="main">
+		<div data-includefile="banner-alpha"></div><!-- Editied to send feedback to mailto:benjamin.walker1@homeoffice.gsi.gov.uk -->
+
+<!-- DELETE FROM HERE -->
+
+		<h1 class="heading-xlarge">Project dashboard</h1>
+
+		<canvas id="scaleGraph" width="970" height="640"></canvas>
+
+		<details class="form-group">
+			<summary role="button" aria-controls="researcherScore-help" aria-expanded="false">
+				<span class="summary">Understanding the digital inclusion score</span>
+			</summary>
+			<div class="panel-indent" id="researcherScore-help" aria-hidden="true" style="display: none;">
+				<p><strong>1: Never have, never will</strong></br>
+				They may feel they have ‘missed the boat’ and that learning how to use the internet doesn't fit into their lives.</p>
+
+				<p><strong>2: Was online, but no longer online</strong></br>
+				 They might have lost trust in the internet. They might be afraid of fraud or seeing inappropriate things online. They might have lost internet access because of cost or physical or mental capability.</p>
+
+				<p><strong>3: Willing and unable</strong></br>
+				People in this category predominantly have a positive perception of being online but have problems with low skills and they struggle to learn.</p>
+
+				<p><strong>4: Reluctantly online</strong></br>
+				They understand the general benefits of being online, they have yet to experience them personally.</p>
+
+				<p><strong>5: Learning the ropes</strong></br>
+				These users are predominantly very positive about the benefits of the internet and have willingly started to engage with digital technologies.</p>
+
+				<p><strong>6: Task specific</strong></br>
+				Their tasks may include online banking or updating social media. These tasks are often limited and specific.</p>
+
+				<p><strong>7: Basic digital skills and capabilities</strong></br>
+				These people have enough skills to be able to navigate online independently and perform all tasks at a basic level.</p>
+
+				<p><strong>8: Confident</strong></br>
+				Confident users make use of digital tools at work and in their everyday lives.</p>
+
+				<p><strong>9: Expert</strong></br>
+				Expert internet users have advanced digital skills.</p>
+			</div>
+		</details>
+
+		<!--<div id='chart'><svg height="640"></svg></div>-->
+		<div class="plotterNav">
+			<a class="button navigation" navType="newParticipant" nextPage="Questions">New participant</a>
+			<a class="button navigation" navType="newSession" nextPage="Metadata">New research session</a>
+			<hr>
+			<div class="inline">
+				<a href="#" class="button" id="exportCSV">Export CSV</a>
+				<a href="#" class="button" id="exportJSON" disabled="disabled">Export JSON</a>
+			</div>
+			<p>Pressing the button below will delete the tools current project data</p>
+			<p><a href="index.html" class="button clearStorage">Clear saved data</a></p>
+		</div>
+<!-- STOP DELETING! -->
+
+	</main>
+	<footer data-includefile="footer"></footer>
+</body>
+</html>
